@@ -52,6 +52,10 @@
     border-bottom: 3px solid #EC4434;
 }
 
+.container-lista > a.active{
+    border-bottom: 3px solid #EC4434;
+}
+
 .container-pesquisa-logar{
     height: 100%;
     width: 25%;

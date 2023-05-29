@@ -4,7 +4,19 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: auto;
 }
+
+.main-pokedex::-webkit-scrollbar {
+    width: 10px;               /* width of the entire scrollbar */
+}
+
+.main-pokedex::-webkit-scrollbar-thumb {
+    background-color: #EC4434;    /* color of the scroll thumb */
+    border-radius: 20px;       /* roundness of the scroll thumb */
+    
+}
+
 
 .main-pokedex-container{
     width: 85%;

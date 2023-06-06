@@ -20,7 +20,7 @@ const Header = () => {
                 <div className="container-pesquisa-logar-divisao">
                     <div className="container-pesquisar"><TbSearch/></div>
                     <div className='container-logar'>
-                        <NavLink to="#"><BsPersonCircle className='icon-logar'/></NavLink>
+                        <NavLink to="/Cadastrar_usuario"><BsPersonCircle className='icon-logar'/></NavLink>
                     </div>
                 </div>
             </div>

@@ -1,0 +1,56 @@
+.main-informacoes-pokemons{
+    width: 100%;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #EFEEEE;
+    position: relative;
+}
+
+.main-informacoes-pokemons-triangulo{
+    width: 15%;
+    height: 35%;
+    background-image: url('../../Imagens/triangulo.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.main-informacoes-pokemons-logo{
+    width: 15%;
+    height: 34%;
+    background-image: url('../../Imagens/Logo-pokemon-design-element.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 90%;
+    position: absolute;
+    top: 4%;
+    right: 52%;
+}
+
+.bolinhas{
+    width: 10%;
+    height:15%;
+    background-image: url('../../Imagens/bolinhas.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 90%;
+    position: absolute;
+
+}
+
+.main-informacoes-pokemons-bolinhas1{
+    top: 3%;
+    left: 1%;
+}
+
+.main-informacoes-pokemons-bolinhas2{
+    bottom: 3%;
+    left: 50%;
+}
+
+

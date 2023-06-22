@@ -1,147 +1,88 @@
 import './style.css'
 import Header from '../../Components/Header'
+import { api } from '../../Services/API'
+import { useState, useEffect } from 'react'
+import { InformacoesPokemons } from '../informacoes_pokemon'
 
-export const Pokedex = () => {
+export const Pokedex = (props) => {
 
-    const verPokemonPeloId = () => {
-        window.location.href ='/'
+    const [carregando, setCarregando] = useState(false)
+    const [pokemon, setPokemon] = useState('')
+
+    const verPokemonPeloId = (pokemon_id) => {
+        window.location.href ='/Informacoes_pokemon/' + pokemon_id
+        const id = pokemon_id
+ 
     }
+
+    const pegarPokemons = async () => {
+
+        try {
+            const res = await api.get('/mostrar')
+            console.log(res.data)
+            setPokemon(res.data)
+            setCarregando(true)
+            
+        } catch (erro) {
+            console.log(erro)
+            
+        }
+        
+
+    }
+
+    useEffect(() => {
+        pegarPokemons()
+    }, [])
 
     return(
         <div>
             <Header/>
             <main className="main-pokedex">
                 <div className="main-pokedex-container">
-                    
-                    <div className="main-pokedex-container-card">
-                        <div className="main-pokedex-container-card-preto" onClick={() => verPokemonPeloId()}>
-                            
-                            <div className="main-pokedex-container-card-preto-vermelho">
-                                <div className="main-pokedex-container-card-preto-vermelho-branco">
-                                    <img src="https://i.ibb.co/MZGCnNy/pngwing-com-1.png" alt="" />
-                                </div> 
-                                <div className="main-pokedex-container-card-preto-vermelho-informacoes">
-                                    <div className="main-pokedex-container-card-preto-vermelho-informacoes-poder">
-                                        <img src="https://i.ibb.co/195Xs20/raio-2.png" alt="" />
-                                    </div>
-                                    <div className="main-pokedex-container-card-preto-vermelho-informacoes-nome">
-                                        <div className="main-pokedex-container-card-preto-vermelho-informacoes-nome-branco">      
-                                        </div>
-                                        <div className="main-pokedex-container-card-preto-vermelho-informacoes-nome-preto">
-                                            <p>Pikachu</p>
-                                        </div>
-                                    </div>
-                                    <div className="main-pokedex-container-card-preto-vermelho-informacoes-numero">
-                                        <p>#0001</p>
-                                    </div>   
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div className="main-pokedex-container-card">
-                        <div className="main-pokedex-container-card-preto" onClick={() => verPokemonPeloId()}>
-                            
-                            <div className="main-pokedex-container-card-preto-vermelho">
-                                <div className="main-pokedex-container-card-preto-vermelho-branco">
-                                    <img src="https://i.ibb.co/MZGCnNy/pngwing-com-1.png" alt="" />
-                                </div> 
-                                <div className="main-pokedex-container-card-preto-vermelho-informacoes">
-                                    <div className="main-pokedex-container-card-preto-vermelho-informacoes-poder">
-                                        <img src="https://i.ibb.co/195Xs20/raio-2.png" alt="" />
-                                    </div>
-                                    <div className="main-pokedex-container-card-preto-vermelho-informacoes-nome">
-                                        <div className="main-pokedex-container-card-preto-vermelho-informacoes-nome-branco">      
-                                        </div>
-                                        <div className="main-pokedex-container-card-preto-vermelho-informacoes-nome-preto">
-                                            <p>Pikachu</p>
-                                        </div>
-                                    </div>
-                                    <div className="main-pokedex-container-card-preto-vermelho-informacoes-numero">
-                                        <p>#0001</p>
-                                    </div>   
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div className="main-pokedex-container-card">
-                        <div className="main-pokedex-container-card-preto" onClick={() => verPokemonPeloId()}>
-                            
-                            <div className="main-pokedex-container-card-preto-vermelho">
-                                <div className="main-pokedex-container-card-preto-vermelho-branco">
-                                    <img src="https://i.ibb.co/MZGCnNy/pngwing-com-1.png" alt="" />
-                                </div> 
-                                <div className="main-pokedex-container-card-preto-vermelho-informacoes">
-                                    <div className="main-pokedex-container-card-preto-vermelho-informacoes-poder">
-                                        <img src="https://i.ibb.co/195Xs20/raio-2.png" alt="" />
-                                    </div>
-                                    <div className="main-pokedex-container-card-preto-vermelho-informacoes-nome">
-                                        <div className="main-pokedex-container-card-preto-vermelho-informacoes-nome-branco">      
-                                        </div>
-                                        <div className="main-pokedex-container-card-preto-vermelho-informacoes-nome-preto">
-                                            <p>Pikachu</p>
-                                        </div>
-                                    </div>
-                                    <div className="main-pokedex-container-card-preto-vermelho-informacoes-numero">
-                                        <p>#0001</p>
-                                    </div>   
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    {carregando?(
 
-                    <div className="main-pokedex-container-card">
-                        <div className="main-pokedex-container-card-preto" onClick={() => verPokemonPeloId()}>
-                            
-                            <div className="main-pokedex-container-card-preto-vermelho">
-                                <div className="main-pokedex-container-card-preto-vermelho-branco">
-                                    <img src="https://i.ibb.co/MZGCnNy/pngwing-com-1.png" alt="" />
-                                </div> 
-                                <div className="main-pokedex-container-card-preto-vermelho-informacoes">
-                                    <div className="main-pokedex-container-card-preto-vermelho-informacoes-poder">
-                                        <img src="https://i.ibb.co/195Xs20/raio-2.png" alt="" />
-                                    </div>
-                                    <div className="main-pokedex-container-card-preto-vermelho-informacoes-nome">
-                                        <div className="main-pokedex-container-card-preto-vermelho-informacoes-nome-branco">      
-                                        </div>
-                                        <div className="main-pokedex-container-card-preto-vermelho-informacoes-nome-preto">
-                                            <p>Pikachu</p>
-                                        </div>
-                                    </div>
-                                    <div className="main-pokedex-container-card-preto-vermelho-informacoes-numero">
-                                        <p>#0001</p>
-                                    </div>   
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                        <>
+                        {
+                            pokemon.map((item, index) => (
 
-                    <div className="main-pokedex-container-card">
-                        <div className="main-pokedex-container-card-preto" onClick={() => verPokemonPeloId()}>
-                            
-                            <div className="main-pokedex-container-card-preto-vermelho">
-                                <div className="main-pokedex-container-card-preto-vermelho-branco">
-                                    <img src="https://i.ibb.co/MZGCnNy/pngwing-com-1.png" alt="" />
-                                </div> 
-                                <div className="main-pokedex-container-card-preto-vermelho-informacoes">
-                                    <div className="main-pokedex-container-card-preto-vermelho-informacoes-poder">
-                                        <img src="https://i.ibb.co/195Xs20/raio-2.png" alt="" />
-                                    </div>
-                                    <div className="main-pokedex-container-card-preto-vermelho-informacoes-nome">
-                                        <div className="main-pokedex-container-card-preto-vermelho-informacoes-nome-branco">      
+                                <>
+
+                                    <div className="main-pokedex-container-card" key={index}>
+                                        <div className="main-pokedex-container-card-preto" onClick={() =>  verPokemonPeloId(item.pokemon_info_id)} >
+                                            
+                                            <div className="main-pokedex-container-card-preto-vermelho" >
+                                                <div className="main-pokedex-container-card-preto-vermelho-branco" >
+                                                    <img src={item.imagem} alt="" />
+                                                </div> 
+                                                <div className="main-pokedex-container-card-preto-vermelho-informacoes" >
+                                                    <div className="main-pokedex-container-card-preto-vermelho-informacoes-poder">
+                                                        <p>{item.tipo}</p>
+                                                    </div>
+                                                    <div className="main-pokedex-container-card-preto-vermelho-informacoes-nome">
+                                                        <div className="main-pokedex-container-card-preto-vermelho-informacoes-nome-branco">      
+                                                        </div>
+                                                        <div className="main-pokedex-container-card-preto-vermelho-informacoes-nome-preto">
+                                                            <p>{item.nome}</p>
+                                                        </div>
+                                                    </div>
+                                                    <div className="main-pokedex-container-card-preto-vermelho-informacoes-numero">
+                                                        <p>#{item.numero_pokemon}</p>
+                                                    </div>   
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div className="main-pokedex-container-card-preto-vermelho-informacoes-nome-preto">
-                                            <p>Pikachu</p>
-                                        </div>
                                     </div>
-                                    <div className="main-pokedex-container-card-preto-vermelho-informacoes-numero">
-                                        <p>#0001</p>
-                                    </div>   
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                                </>
+
+                            ))
+                        }
+                        
+                        </>
+                    ):(
+                        <h1>Carregando...</h1>
+                    )}
 
                 </div>
 

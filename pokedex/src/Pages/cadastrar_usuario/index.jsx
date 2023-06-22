@@ -8,7 +8,20 @@ export const LogarUsuario = () =>{
             <Header/>
             <main className="main-cadastrar-usuario">
                 <div className="main-cadastrar-usuario-conteiner">
-                    <div className="main-cadastrar-usuario-conteiner-vermelho"></div>
+                    <div className="main-cadastrar-usuario-conteiner-vermelho">
+                        <div className="main-cadastrar-usuario-conteiner-vermelho-container">
+                            <div className="main-cadastrar-usuario-conteiner-vermelho-container-logo"></div>
+                            <div className="main-cadastrar-usuario-conteiner-vermelho-container-titulo">
+                            <h3>Cadastre-se para adicionar novos pokemons!</h3>
+                            </div>
+                            <div className="main-cadastrar-usuario-conteiner-vermelho-container-texto">
+                            <p>Já possui uma conta?</p>
+                            </div>
+                            <div className="main-cadastrar-usuario-conteiner-vermelho-butao">
+                                <button>Logar</button>
+                            </div>
+                        </div>
+                    </div>
 
                     <div className="main-cadastrar-usuario-conteiner-branco">
 

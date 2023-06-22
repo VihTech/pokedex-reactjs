@@ -2,7 +2,6 @@ import './style.css'
 import Header from '../../Components/Header'
 import { api } from '../../Services/API'
 import { useState, useEffect } from 'react'
-import { InformacoesPokemons } from '../informacoes_pokemon'
 
 export const Pokedex = (props) => {
 
@@ -11,7 +10,6 @@ export const Pokedex = (props) => {
 
     const verPokemonPeloId = (pokemon_id) => {
         window.location.href ='/Informacoes_pokemon/' + pokemon_id
-        const id = pokemon_id
  
     }
 

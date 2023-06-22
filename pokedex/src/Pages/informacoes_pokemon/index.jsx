@@ -15,6 +15,7 @@ export const InformacoesPokemons = (props) => {
     const [sobreAtivo, setSobreAtivo] = useState('ativo')
     const [habilidadesAtivo, setHabillidadesAtivo] = useState('')
     const [fraquezasAtivo, setFraquezasAtivo] = useState('')
+    const [grafico, setGrafio] = useState('')
 
     const pegarTodasInformacoes = async () => {
         try {
@@ -125,10 +126,74 @@ export const InformacoesPokemons = (props) => {
                                                     <>
                                                     
                                                         <div className="main-informacoes-pokemons-informacoes-container-vermelho-container-informacoes-sobre">
-                                                            <h3>{pokemon.nome}</h3>
+                                                            <h2>{pokemon.nome}</h2>
                                                             <p>{pokemon.descricao}</p>
                                                         </div>
 
+                                                        <div className="main-informacoes-pokemons-informacoes-container-vermelho-container-informacoes-container">
+
+                                                            <div className="main-informacoes-pokemons-informacoes-container-vermelho-container-informacoes-container-pontos">
+
+                                                                <ul>
+                                                                    <il>Altura: {pokemon.altura}m</il>
+                                                                    <il>Peso: {pokemon.peso}g</il>
+                                                                    <il>Especial Defesa: {pokemon.especial_defesa}</il>
+                                                                    <il>Especial Ataque: {pokemon.especial_ataque}</il>
+                                                                    <il>Categoria: {pokemon.categoria}</il>
+                                                                    <il>Gênero: <img src="" alt="sds" /></il>
+                                                                </ul>
+
+                                                            </div>
+
+                                                            <div className="main-informacoes-pokemons-informacoes-container-vermelho-container-informacoes-container-grafico">
+
+                                                                <div className="main-informacoes-pokemons-informacoes-container-vermelho-container-informacoes-container-grafico-titulo">
+                                                                        <h3>STATUS</h3>
+                                                                </div>
+
+                                                                <div className="main-informacoes-pokemons-informacoes-container-vermelho-container-informacoes-container-grafico-container">
+                                                                    <div className="main-informacoes-pokemons-informacoes-container-vermelho-container-informacoes-container-grafico-container-pontos">
+                                                                        <div className="main-informacoes-pokemons-informacoes-container-vermelho-container-informacoes-container-grafico-container-pontos-coluna1 valores" style={{height: `${pokemon.hp}rem`}}>
+                                                                            <p className="valor">{pokemon.hp}</p>
+                                                                        </div>
+
+                                                                        <div className="main-informacoes-pokemons-informacoes-container-vermelho-container-informacoes-container-grafico-container-pontos-coluna2 valores" style={{height: `${pokemon.ataque}rem`}}>
+                                                                            <p className="valor">{pokemon.ataque}</p>
+                                                                        </div>
+                                                                        
+                                                                        <div className="main-informacoes-pokemons-informacoes-container-vermelho-container-informacoes-container-grafico-container-pontos-coluna3 valores" style={{height: `${pokemon.defesa}rem`}}>
+                                                                            <p className="valor">{pokemon.defesa}</p>
+                                                                        </div>
+
+                                                                        <div className="main-informacoes-pokemons-informacoes-container-vermelho-container-informacoes-container-grafico-container-pontos-coluna4 valores" style={{height: `${pokemon.especial_ataque}rem`}}>
+                                                                            <p className="valor">{pokemon.especial_ataque}</p>
+                                                                        </div>
+
+                                                                        <div className="main-informacoes-pokemons-informacoes-container-vermelho-container-informacoes-container-grafico-container-pontos-coluna5 valores" style={{height: `${pokemon.especial_defesa}rem`}}>
+                                                                            <p className="valor">{pokemon.especial_defesa}</p>
+                                                                        </div>
+
+                                                                        <div className="main-informacoes-pokemons-informacoes-container-vermelho-container-informacoes-container-grafico-container-pontos-coluna6 valores" style={{height: `${pokemon.velocidade}rem`}}>
+                                                                            <p className="valor">{pokemon.velocidade}</p>
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+
+                                                                <div className="main-informacoes-pokemons-informacoes-container-vermelho-container-informacoes-container-grafico-nomes">
+                                                                    <ul>
+                                                                        <il>HP</il>
+                                                                        <il>ATK</il>
+                                                                        <il>DF</il>
+                                                                        <il>SATK</il>
+                                                                        <il>SDF</il>
+                                                                        <il>SP</il>
+                                                                    </ul>
+                                                                </div>
+
+                                                            </div>
+
+                                                        </div>
                                                     </>
                                                 )}
 

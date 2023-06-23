@@ -4,6 +4,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 
 .main-cadastrar-usuario-conteiner{
@@ -15,6 +16,8 @@
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    position: absolute;
+    z-index: 0;
 }
 
 .main-cadastrar-usuario-conteiner-vermelho{

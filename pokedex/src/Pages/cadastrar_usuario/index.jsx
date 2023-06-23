@@ -7,6 +7,9 @@ export const LogarUsuario = () =>{
         <div>
             <Header/>
             <main className="main-cadastrar-usuario">
+                <div className="main-informacoes-pokemons-logo"></div>
+                <div className="main-informacoes-pokemons-bolinhas1 bolinhas"></div>
+                <div className="main-informacoes-pokemons-bolinhas2 bolinhas"></div>
                 <div className="main-cadastrar-usuario-conteiner">
                     <div className="main-cadastrar-usuario-conteiner-vermelho">
                         <div className="main-cadastrar-usuario-conteiner-vermelho-container">

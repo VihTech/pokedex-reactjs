@@ -37,6 +37,9 @@ export const Pokedex = (props) => {
         <div>
             <Header/>
             <main className="main-pokedex">
+                <div className="main-informacoes-pokemons-logo"></div>
+                <div className="main-informacoes-pokemons-bolinhas1 bolinhas"></div>
+                <div className="main-informacoes-pokemons-bolinhas2 bolinhas"></div>
                 <div className="main-pokedex-container">
 
                     {carregando?(

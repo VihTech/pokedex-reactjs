@@ -13,6 +13,7 @@ const Header = () => {
             <div className="container-lista">
                 <NavLink to="/">Inicio</NavLink>
                 <NavLink to="/Pokedex">Pokedex</NavLink>
+                <NavLink to="/Cadastrar_pokemons">Cadastrar</NavLink>
                 <NavLink to="#">Colaboradores</NavLink>
             </div>
             <div className="container-pesquisa-logar">

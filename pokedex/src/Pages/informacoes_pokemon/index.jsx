@@ -3,7 +3,10 @@ import './style.css'
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { api } from "../../Services/API";
-
+import Ambos from '../../Imagens/Ambos.png'
+import Feminino from '../../Imagens/Feminino.png'
+import Masculino from '../../Imagens/Masculino.png'
+import Desconhecido from '../../Imagens/Desconhecido.png'
 
 export const InformacoesPokemons = (props) => {
     const pokemon_info_id = useParams()
@@ -15,14 +18,26 @@ export const InformacoesPokemons = (props) => {
     const [sobreAtivo, setSobreAtivo] = useState('ativo')
     const [habilidadesAtivo, setHabillidadesAtivo] = useState('')
     const [fraquezasAtivo, setFraquezasAtivo] = useState('')
-    const [grafico, setGrafio] = useState('')
+    const [generoAtual, setGenero] = useState('')
 
     const pegarTodasInformacoes = async () => {
         try {
             const res = await api.get('/mostrar/' + pokemon_info_id.id)
             setPokemon(res.data)
             setCarregando(true)
-            console.log(pokemon)
+            console.log(res.data.genero)
+            if (res.data.genero == 'Feminino'){
+                setGenero(Feminino)
+            }
+            if(res.data.genero == 'Masculino'){
+                setGenero(Masculino)
+            }
+            if(res.data.genero == 'Ambos'){
+                setGenero(Ambos)
+            }
+            if(res.data.genero == 'Desconhecido'){
+                setGenero(Desconhecido)
+            }
 
         } catch (erro) {
             console.log(erro)
@@ -76,7 +91,7 @@ export const InformacoesPokemons = (props) => {
 
     useEffect(() => {
         pegarTodasInformacoes()
-    }, [])
+    }, pegarTodasInformacoes)
 
     return(
         <>  
@@ -140,7 +155,7 @@ export const InformacoesPokemons = (props) => {
                                                                     <il>Especial Defesa: {pokemon.especial_defesa}</il>
                                                                     <il>Especial Ataque: {pokemon.especial_ataque}</il>
                                                                     <il>Categoria: {pokemon.categoria}</il>
-                                                                    <il>Gênero: <img src="" alt="sds" /></il>
+                                                                    <il className="genero">Gênero: <img src={generoAtual} alt="" /></il>
                                                                 </ul>
 
                                                             </div>
@@ -153,27 +168,27 @@ export const InformacoesPokemons = (props) => {
 
                                                                 <div className="main-informacoes-pokemons-informacoes-container-vermelho-container-informacoes-container-grafico-container">
                                                                     <div className="main-informacoes-pokemons-informacoes-container-vermelho-container-informacoes-container-grafico-container-pontos">
-                                                                        <div className="main-informacoes-pokemons-informacoes-container-vermelho-container-informacoes-container-grafico-container-pontos-coluna1 valores" style={{height: `${pokemon.hp}rem`}}>
+                                                                        <div className="main-informacoes-pokemons-informacoes-container-vermelho-container-informacoes-container-grafico-container-pontos-coluna1 valores" style={{height: `${pokemon.hp}%`}}>
                                                                             <p className="valor">{pokemon.hp}</p>
                                                                         </div>
 
-                                                                        <div className="main-informacoes-pokemons-informacoes-container-vermelho-container-informacoes-container-grafico-container-pontos-coluna2 valores" style={{height: `${pokemon.ataque}rem`}}>
+                                                                        <div className="main-informacoes-pokemons-informacoes-container-vermelho-container-informacoes-container-grafico-container-pontos-coluna2 valores" style={{height: `${pokemon.ataque}%`}}>
                                                                             <p className="valor">{pokemon.ataque}</p>
                                                                         </div>
                                                                         
-                                                                        <div className="main-informacoes-pokemons-informacoes-container-vermelho-container-informacoes-container-grafico-container-pontos-coluna3 valores" style={{height: `${pokemon.defesa}rem`}}>
+                                                                        <div className="main-informacoes-pokemons-informacoes-container-vermelho-container-informacoes-container-grafico-container-pontos-coluna3 valores" style={{height: `${pokemon.defesa}%`}}>
                                                                             <p className="valor">{pokemon.defesa}</p>
                                                                         </div>
 
-                                                                        <div className="main-informacoes-pokemons-informacoes-container-vermelho-container-informacoes-container-grafico-container-pontos-coluna4 valores" style={{height: `${pokemon.especial_ataque}rem`}}>
+                                                                        <div className="main-informacoes-pokemons-informacoes-container-vermelho-container-informacoes-container-grafico-container-pontos-coluna4 valores" style={{height: `${pokemon.especial_ataque}%`}}>
                                                                             <p className="valor">{pokemon.especial_ataque}</p>
                                                                         </div>
 
-                                                                        <div className="main-informacoes-pokemons-informacoes-container-vermelho-container-informacoes-container-grafico-container-pontos-coluna5 valores" style={{height: `${pokemon.especial_defesa}rem`}}>
+                                                                        <div className="main-informacoes-pokemons-informacoes-container-vermelho-container-informacoes-container-grafico-container-pontos-coluna5 valores" style={{height: `${pokemon.especial_defesa}%`}}>
                                                                             <p className="valor">{pokemon.especial_defesa}</p>
                                                                         </div>
 
-                                                                        <div className="main-informacoes-pokemons-informacoes-container-vermelho-container-informacoes-container-grafico-container-pontos-coluna6 valores" style={{height: `${pokemon.velocidade}rem`}}>
+                                                                        <div className="main-informacoes-pokemons-informacoes-container-vermelho-container-informacoes-container-grafico-container-pontos-coluna6 valores" style={{height: `${pokemon.velocidade}%`}}>
                                                                             <p className="valor">{pokemon.velocidade}</p>
                                                                         </div>
 

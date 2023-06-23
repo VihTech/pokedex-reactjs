@@ -320,13 +320,13 @@
 
 .main-cadastrar-pokemons-container-formulario-container-informacoes-final-descricao> p{
     width: 70%;
-    height: 20%;
+    height: 15%;
     font-weight: bold;
 }
 
 .main-cadastrar-pokemons-container-formulario-container-informacoes-final-descricao> textarea{
     width: 70%;
-    height: 80%;
+    height: 60%;
     border: none;
     outline: none;
     background-color: #D9D9D9;
@@ -354,6 +354,37 @@
     border: none;
     outline: none;
     background-color: #D9D9D9;
+}
+
+.main-cadastrar-pokemons-container-formulario-container-informacoes-final-genero{
+    width: 100%;
+    height: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+}
+
+.main-cadastrar-pokemons-container-formulario-container-informacoes-final-genero> p{
+    width: 70%;
+    height: 35%;
+    font-weight: bold;
+}
+
+.main-cadastrar-pokemons-container-formulario-container-informacoes-final-genero .checkbox{
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.main-cadastrar-pokemons-container-formulario-container-informacoes-final-genero .checkbox> input{ 
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
 }
 
 
@@ -578,6 +609,52 @@
 }
 
 .main-cadastrar-pokemons-container-formulario-container-status-final-total> input{
+    width: 70%;
+    height: 50%;
+    border: none;
+    outline: none;
+    background-color: #D9D9D9;
+}
+
+.main-cadastrar-pokemons-container-formulario-container-status-final-peso{
+    width: 100%;
+    height: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.main-cadastrar-pokemons-container-formulario-container-status-final-peso> p{
+    width: 70%;
+    height: 35%;
+    font-weight: bold;
+}
+
+.main-cadastrar-pokemons-container-formulario-container-status-final-peso> input{
+    width: 70%;
+    height: 50%;
+    border: none;
+    outline: none;
+    background-color: #D9D9D9;
+}
+
+.main-cadastrar-pokemons-container-formulario-container-status-final-altura{
+    width: 100%;
+    height: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.main-cadastrar-pokemons-container-formulario-container-status-final-altura> p{
+    width: 70%;
+    height: 35%;
+    font-weight: bold;
+}
+
+.main-cadastrar-pokemons-container-formulario-container-status-final-altura> input{
     width: 70%;
     height: 50%;
     border: none;

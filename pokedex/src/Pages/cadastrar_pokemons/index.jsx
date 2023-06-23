@@ -5,7 +5,7 @@ import { api } from '../../Services/API'
 
 export const CadastrarPokemons = () =>{
     const [nome, setNome] = useState('')
-    const [tipo, setTipo] = useState('')
+    const [tipagem, setTipo] = useState('')
     const [descricao, setDescricao] = useState('')
     const [altura, setAltura] = useState('')
     const [peso, setPeso] = useState('')
@@ -22,8 +22,34 @@ export const CadastrarPokemons = () =>{
     const [numero_pokemon, setNumero_pokemon] = useState('')
     const [fraqueza, setFraqueza] = useState('')
     const [habilidade, setHabilidade] = useState('')
+    const [feminino, setFeminino] = useState('')
+    const [masculino, setMasculino] = useState('')
+    const [desconhecido, setDesconhecio] = useState('')
 
     const cadastrarPokemon = async () => {
+        if (feminino === 'on' && masculino === '' && desconhecido === ''){
+            setGenero('Feminino')
+        }
+        if (feminino === '' && masculino === 'on' && desconhecido === ''){
+            setGenero('Masculino')
+        }
+
+        if (feminino === '' && masculino === '' && desconhecido === 'on'){
+            setGenero('Desconhecido')
+        }
+
+        if (feminino === 'on' && masculino === 'on' && desconhecido === ''){
+            setGenero('Ambos')
+        }
+
+        if (feminino === '' && masculino === '' && desconhecido === ''){
+            setGenero('Inválido')
+        }
+        
+        if (feminino === 'on' && masculino === 'on' && desconhecido === 'on'){
+            setGenero('Inválido')
+        }
+
         try {
             const data = {
                 nome,
@@ -43,10 +69,10 @@ export const CadastrarPokemons = () =>{
                 numero_pokemon,
                 fraqueza,
                 habilidade,
-                tipo
+                tipagem
             }
 
-            const res = await api.post('/cadastrar' + data)
+            const res = await api.post('/cadastrar', data)
             console.log(res.data)
 
         } catch (error) {
@@ -68,7 +94,7 @@ export const CadastrarPokemons = () =>{
                     <div className="main-cadastrar-pokemons-container-vermelho">
                         <div className="main-cadastrar-pokemons-container-vermelho-logo"></div>
                         <h3>Insira as informações do pokemon que deseja cadastrar</h3>
-                        <button>Cadastrar</button>
+                        <button onClick={cadastrarPokemon}>Cadastrar</button>
                     </div>
                     <div className="main-cadastrar-pokemons-container-formulario">
                         <div className="main-cadastrar-pokemons-container-formulario-titulo">
@@ -129,6 +155,15 @@ export const CadastrarPokemons = () =>{
                                                 <input type="text" onChange={(e) => setNumero_pokemon(e.target.value)}/>
                                             </div>
 
+                                            <div className="main-cadastrar-pokemons-container-formulario-container-informacoes-final-genero">
+                                                <p>Gênero</p>
+                                                <div className="checkbox">
+                                                    <input type="checkbox" onChange={(e) => setFeminino(e.target.value)}/><p>Fem.</p>
+                                                    <input type="checkbox" onChange={(e) => setMasculino(e.target.value)}/><p>Masc.</p>
+                                                    <input type="checkbox" onChange={(e) => setDesconhecio(e.target.value)}/><p>Desconhecido</p>
+                                                </div>
+                                            </div>
+
                                         </div>
 
                                 </div>
@@ -161,8 +196,8 @@ export const CadastrarPokemons = () =>{
                                         <div className="main-cadastrar-pokemons-container-formulario-container-status-direita">
 
                                             <div className="main-cadastrar-pokemons-container-formulario-container-status-direita-defesa">
-                                                <p>Categoria</p>
-                                                <input type="text" onChange={(e) => setCategoria(e.target.value)}/>
+                                                <p>Defesa</p>
+                                                <input type="text" onChange={(e) => setDefesa(e.target.value)}/>
                                             </div>
 
                                             <div className="main-cadastrar-pokemons-container-formulario-container-status-direita-ataque-especial">
@@ -184,7 +219,21 @@ export const CadastrarPokemons = () =>{
                                                 <input type="text" onChange={(e) => setTotal(e.target.value)}/>
                                             </div>
 
+                                            <div className="main-cadastrar-pokemons-container-formulario-container-status-final-peso">
+                                                <p>Peso</p>
+                                                <input type="text" onChange={(e) => setPeso(e.target.value)}/>
+                                            </div>
+
+
+                                            <div className="main-cadastrar-pokemons-container-formulario-container-status-final-altura">
+                                                <p>Altura</p>
+                                                <input type="text" onChange={(e) => setAltura(e.target.value)}/>
+                                            </div>
+
+
                                         </div>
+
+                                        
 
                                     </div>
 

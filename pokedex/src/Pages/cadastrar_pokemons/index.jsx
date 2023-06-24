@@ -51,6 +51,9 @@ export const CadastrarPokemons = () =>{
         }
 
         try {
+            Array(fraqueza)
+            Array(habilidade)
+            Array(tipagem)
             const data = {
                 nome,
                 descricao,

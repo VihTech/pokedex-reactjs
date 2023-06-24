@@ -1,0 +1,313 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
+
+.main-inicio{
+    height: 90vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: auto;
+    position: relative;
+    font-family: 'Inter', sans-serif;
+    flex-direction: column;
+
+}
+
+.main-inicio::-webkit-scrollbar {
+    width: 10px;               /* width of the entire scrollbar */
+}
+
+.main-inicio::-webkit-scrollbar-thumb {
+    background-color: #EC4434;    /* color of the scroll thumb */
+    border-radius: 20px;       /* roundness of the scroll thumb */
+    
+}
+
+
+.main-inicio-container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    position: absolute;
+    z-index: 0;
+}
+
+.main-inicio-logo{
+    width: 15%;
+    height: 35%;
+    background-image: url('../../Imagens/Logo-pokemon-design-element.png');
+    background-repeat: no-repeat;
+    background-size: 90%;
+    position: fixed;
+    background-position: center;
+    top: 10%;
+}
+
+.bolinhas-main{
+    width: 15%;
+    height: 25%;
+    background-image: url('../../Imagens/bolinhas.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 75%;
+    position: fixed;
+
+}
+
+.main-inicio-bolinhas1{
+    left: 0;
+    top: 9%;
+}
+
+.main-inicio-bolinhas2{
+    bottom: 0;
+}
+
+.triangulo{
+    width: 35%;
+    height: 63%;
+    background-image: url('../../Imagens/Design-element.png');
+    background-repeat: no-repeat;
+    background-size: 90%;
+    background-position: center;
+    position: fixed;
+    left: -11%;
+    opacity: 0.5;
+
+}
+
+.main-inicio-triangulo1{
+    top: 0;
+}
+
+.main-inicio-triangulo2{
+    bottom: -15%;
+}
+
+.main-inicio-titulo{
+    width: 100%;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-inicio-titulo-container{
+    width: 85%;
+    height: 48%;
+    position: absolute;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+
+}
+
+.main-inicio-titulo-container-preto{
+    font-size: 11rem;
+    Letter-spacing: 35px;
+    font-weight: 900;
+}
+
+.main-inicio-titulo-container-transparente{
+    font-size: 11rem;
+    Letter-spacing: 35px;
+    position: absolute;
+    bottom: 0;
+    color: #ffffff00;
+    -webkit-text-stroke: 1px #00000081;
+    right: 0;
+    font-weight: 900;
+
+}
+
+.main-inicio-mensagem{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+}
+
+.main-inicio-mensagem-titulo-logo{
+    width: 100%;
+    height: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.main-inicio-mensagem-titulo-logo-titulo{
+    width: 30%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.main-inicio-mensagem-titulo-logo-titulo > h1{
+    font-size: 4rem;
+    font-weight: 700;
+    Letter-spacing: 20px;
+    line-height: 1.5;
+}
+
+.main-inicio-mensagem-titulo-logo-logo{
+    width: 65%;
+    height: 100%;
+    background-image: url('../../Imagens/pokebola.png');
+    background-repeat: no-repeat;
+    background-size: 40%;
+    background-position: center;
+    
+}
+
+.main-inicio-mensagem-texto{
+    width: 100%;
+    height: 50%;
+}
+
+.main-inicio-mensagem-texto-paragrafo{
+    width: 50%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-inicio-mensagem-texto-paragrafo .paragrafo{
+    width: 90%;
+    height: 90%;
+    font-size: 1.2rem;
+    color: #747474;
+}
+
+.main-inicio-mensagem-texto-paragrafo .paragrafo > a{
+    color: #80DBD6;
+}
+
+.main-inicio-colaboradores{
+    width: 100%;
+    height: 300vh;
+    background-color: #EC4434;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.main-inicio-colaboradores-contato{
+    width: 100%;
+    height: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.main-inicio-colaboradores-contato-titulo{
+    width: 90%;
+    height: 10%;
+    color: #fff;
+    display: flex;
+    align-items: end;
+}
+
+.main-inicio-colaboradores-contato-container{
+    width: 100%;
+    height: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.main-inicio-colaboradores-contato-container-divisao{
+    min-width: 30%;
+    height: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: #fff;
+}
+
+.main-inicio-colaboradores-contato-container-divisao-foto{
+    width: 60%;
+    height: 55%;
+    border-radius: 60%;
+    background-image: url('../../Imagens/andersonLucas.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+    
+}
+
+.main-inicio-colaboradores-contato-container-divisao > h1{
+    width: 80%;
+    height: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-weight: 600;
+}
+
+.main-inicio-colaboradores-contato-container-divisao > p{
+    font-size: 1.2rem;
+}
+
+.main-inicio-colaboradores-contato-container-divisao-logo{
+    width: 80%;
+    height: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-inicio-colaboradores-contato-container-divisao-logo  > svg{
+    width: 90%;
+    height: 90%;
+    cursor: pointer;
+}
+
+.main-inicio-colaboradores-rodape{
+    width: 100%;
+    height: 30%;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+}
+
+.main-inicio-colaboradores-rodape-container{
+    width: 80%;
+    height: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-top: 2px solid #fff;
+    color: #fff;
+}
+
+.main-inicio-colaboradores-rodape-container-logo{
+    width: 100%;
+    height: 85%;
+    background-image: url('../../Imagens/pokemon-logo-rodape.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 40%;
+}
+
+.main-inicio-colaboradores-rodape-container > p{
+    width: 100%;
+    height: 15%;
+    
+}

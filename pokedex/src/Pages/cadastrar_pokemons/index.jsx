@@ -24,7 +24,31 @@ export const CadastrarPokemons = () =>{
     const [habilidade, setHabilidade] = useState('')
     const [feminino, setFeminino] = useState('')
     const [masculino, setMasculino] = useState('')
-    const [desconhecido, setDesconhecio] = useState('')
+    const [desconhecido, setDesconhecido] = useState('')
+
+    const selecionarFeminino = () => {
+        if (feminino === 'on'){
+            setFeminino('')
+        }else{
+            setFeminino('on')
+        }
+    }
+
+    const selecionarMasculino = () => {
+        if (masculino === 'on'){
+            setMasculino('')
+        }else{
+            setMasculino('on')
+        }
+    }
+
+    const selecionarDesconhecido = () => {
+        if (desconhecido === 'on'){
+            setDesconhecido('')
+        }else{
+            setDesconhecido('on')
+        }
+    }
 
     const cadastrarPokemon = async () => {
         if (feminino === 'on' && masculino === '' && desconhecido === ''){
@@ -51,9 +75,8 @@ export const CadastrarPokemons = () =>{
         }
 
         try {
-            Array(fraqueza)
-            Array(habilidade)
-            Array(tipagem)
+            
+            
             const data = {
                 nome,
                 descricao,
@@ -70,10 +93,12 @@ export const CadastrarPokemons = () =>{
                 velocidade,
                 imagem,
                 numero_pokemon,
-                fraqueza,
-                habilidade,
-                tipagem
+                fraqueza: fraqueza.split(),
+                habilidade: habilidade.split(),
+                tipagem: tipagem.split()
             }
+            
+            console.log(data)
 
             const res = await api.post('/cadastrar/pokemon', data)
             console.log(res.data)
@@ -161,9 +186,9 @@ export const CadastrarPokemons = () =>{
                                             <div className="main-cadastrar-pokemons-container-formulario-container-informacoes-final-genero">
                                                 <p>Gênero</p>
                                                 <div className="checkbox">
-                                                    <input type="checkbox" onChange={(e) => setFeminino(e.target.value)}/><p>Fem.</p>
-                                                    <input type="checkbox" onChange={(e) => setMasculino(e.target.value)}/><p>Masc.</p>
-                                                    <input type="checkbox" onChange={(e) => setDesconhecio(e.target.value)}/><p>Desconhecido</p>
+                                                    <input type="checkbox" onClick={selecionarFeminino}/><p>Fem.</p>
+                                                    <input type="checkbox" onClick={selecionarMasculino}/><p>Masc.</p>
+                                                    <input type="checkbox" onClick={selecionarDesconhecido}/><p>Desconhecido</p>
                                                 </div>
                                             </div>
 

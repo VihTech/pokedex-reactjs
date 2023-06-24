@@ -72,7 +72,7 @@ export const CadastrarPokemons = () =>{
                 tipagem
             }
 
-            const res = await api.post('/cadastrar', data)
+            const res = await api.post('/cadastrar/pokemon', data)
             console.log(res.data)
 
         } catch (error) {

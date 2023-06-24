@@ -16,7 +16,7 @@ export const Pokedex = (props) => {
     const pegarPokemons = async () => {
 
         try {
-            const res = await api.get('/mostrar')
+            const res = await api.get('/mostrar/pokemon')
             console.log(res.data)
             setPokemon(res.data)
             setCarregando(true)

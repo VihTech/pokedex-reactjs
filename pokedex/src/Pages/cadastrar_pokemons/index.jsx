@@ -96,9 +96,9 @@ export const CadastrarPokemons = () =>{
                 velocidade,
                 imagem,
                 numero_pokemon,
-                fraqueza: fraqueza.split(','),
-                habilidade: habilidade.split(','),
-                tipagem: tipagem.split(',')
+                fraqueza: fraqueza.replace(/\s/g, '').split(','),
+                habilidade: habilidade.replace(/\s/g, '').split(','),
+                tipagem: tipagem.replace(/\s/g, '').split(',')
             }
             
             console.log(data)

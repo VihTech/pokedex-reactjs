@@ -1,6 +1,6 @@
 import Header from '../../Components/Header'
 import './style.css'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { api } from '../../Services/API'
 
 export const CadastrarPokemons = () =>{
@@ -50,7 +50,7 @@ export const CadastrarPokemons = () =>{
         }
     }
 
-    const cadastrarPokemon = async () => {
+    const qualGenero = () => {
         if (feminino === 'on' && masculino === '' && desconhecido === ''){
             setGenero('Feminino')
         }
@@ -73,6 +73,9 @@ export const CadastrarPokemons = () =>{
         if (feminino === 'on' && masculino === 'on' && desconhecido === 'on'){
             setGenero('Inválido')
         }
+    }
+
+    const cadastrarPokemon = async () => {
 
         try {
             
@@ -107,6 +110,10 @@ export const CadastrarPokemons = () =>{
             console.log(error)
         }
     }
+
+    useEffect (() => {
+        qualGenero()
+    }, [feminino, masculino, desconhecido])
 
     return(
         <>  
@@ -187,7 +194,7 @@ export const CadastrarPokemons = () =>{
                                                 <p>Gênero</p>
                                                 <div className="checkbox">
                                                     <input type="checkbox" onClick={selecionarFeminino}/><p>Fem.</p>
-                                                    <input type="checkbox" onClick={selecionarMasculino}/><p>Masc.</p>
+                                                    <input type="checkbox" onClick={selecionarMasculino}/><p>Mas.</p>
                                                     <input type="checkbox" onClick={selecionarDesconhecido}/><p>Desconhecido</p>
                                                 </div>
                                             </div>

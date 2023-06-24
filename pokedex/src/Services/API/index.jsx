@@ -1,5 +1,5 @@
 import axios from "axios"
 
 export const api = axios.create({
-    baseURL: "https://pokedex-api-nodejs-7ccijo88u-vihtech.vercel.app/" 
+    baseURL: "https://pokedex-api-nodejs-nnqu0dga2-vihtech.vercel.app/" 
 })

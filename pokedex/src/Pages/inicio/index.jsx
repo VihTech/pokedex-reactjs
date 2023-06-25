@@ -57,35 +57,35 @@ const Inicio = () => {
                                     <div className="main-inicio-colaboradores-contato-container-divisao-foto"></div>
                                     <h1>Anderson Lucas</h1>
                                     <p>Back-end</p>
-                                    <div className='main-inicio-colaboradores-contato-container-divisao-logo'><AiFillGithub/></div>
+                                    <a href='https://github.com/AndersonLucasdev'className='main-inicio-colaboradores-contato-container-divisao-logo'><AiFillGithub/></a>
                                 </div>
 
                                 <div className="main-inicio-colaboradores-contato-container-divisao">
                                     <div className="main-inicio-colaboradores-contato-container-divisao-foto"></div>
                                     <h1>Vitória Maria</h1>
                                     <p>Front-end</p>
-                                    <div className='main-inicio-colaboradores-contato-container-divisao-logo'><AiFillGithub/></div>
+                                    <a href='https://github.com/VitoriaMariadev' className='main-inicio-colaboradores-contato-container-divisao-logo'><AiFillGithub/></a>
                                 </div>
 
                                 <div className="main-inicio-colaboradores-contato-container-divisao">
                                     <div className="main-inicio-colaboradores-contato-container-divisao-foto"></div>
                                     <h1>Vitor Manoel</h1>
                                     <p>Banco de Dados & Desing</p>
-                                    <div className='main-inicio-colaboradores-contato-container-divisao-logo'><AiFillGithub/></div>
+                                    <a href='https://github.com/Vitor4654' className='main-inicio-colaboradores-contato-container-divisao-logo'><AiFillGithub/></a>
                                 </div>
 
                                 <div className="main-inicio-colaboradores-contato-container-divisao">
                                     <div className="main-inicio-colaboradores-contato-container-divisao-foto"></div>
                                     <h1>Thiago Andrade</h1>
                                     <p>Desing</p>
-                                    <div className='main-inicio-colaboradores-contato-container-divisao-logo'><AiFillGithub/></div>
+                                    <a href='https://github.com/Tsar006' className='main-inicio-colaboradores-contato-container-divisao-logo'><AiFillGithub/></a>
                                 </div>
 
                                 <div className="main-inicio-colaboradores-contato-container-divisao">
                                     <div className="main-inicio-colaboradores-contato-container-divisao-foto"></div>
                                     <h1>Carlos Eduardo</h1>
                                     <p>Banco de Dados & Desing</p>
-                                    <div className='main-inicio-colaboradores-contato-container-divisao-logo'><AiFillGithub/></div>
+                                    <a href='https://github.com/yedulima' className='main-inicio-colaboradores-contato-container-divisao-logo'><AiFillGithub/></a>
                                 </div>
                             </div>
                         </div>  

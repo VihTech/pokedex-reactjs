@@ -270,14 +270,19 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    
 }
 
 .main-inicio-colaboradores-contato-container-divisao-logo  > svg{
     width: 90%;
     height: 90%;
     cursor: pointer;
+
 }
 
+.main-inicio-colaboradores-contato-container-divisao-logo  > svg > path{
+    color: #fff;
+}
 .main-inicio-colaboradores-rodape{
     width: 100%;
     height: 30%;

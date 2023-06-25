@@ -3,8 +3,8 @@ import {BsPersonCircle} from 'react-icons/bs'
 import { TbSearch } from 'react-icons/tb'
 import { NavLink } from 'react-router-dom'
 
-
 const Header = () => {
+
     return(
         <header className='container'>
             <div className="container-logo">
@@ -14,7 +14,7 @@ const Header = () => {
                 <NavLink to="/">Inicio</NavLink>
                 <NavLink to="/Pokedex">Pokedex</NavLink>
                 <NavLink to="/Cadastrar_pokemons">Cadastrar</NavLink>
-                <NavLink to="#">Colaboradores</NavLink>
+                <NavLink to="/Colaboradores">Colaboradores</NavLink>
             </div>
             <div className="container-pesquisa-logar">
 

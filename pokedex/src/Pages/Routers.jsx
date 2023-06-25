@@ -11,6 +11,7 @@ const RotasExistente = props => (
     <main>
         <Routes>
             <Route  exact path="/" element={<Inicio/>}></Route>
+            <Route  exact path="/Colaboradores" element={<Inicio/>}></Route>
             <Route  exact path="/Pokedex" element={<Pokedex/>}></Route>
             <Route  exact path="/Cadastrar_usuario" element={<LogarUsuario/>}></Route>
             <Route  exact path="/Informacoes_pokemon/:id" element={<InformacoesPokemons/>}></Route>

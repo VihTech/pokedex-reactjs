@@ -8,6 +8,7 @@ export const Pokedex = (props) => {
 
     const [carregando, setCarregando] = useState(false)
     const [pokemon, setPokemon] = useState('')
+    const [nome, setNome] = useState('')
 
     const verPokemonPeloId = (pokemon_id) => {
         window.location.href ='/Informacoes_pokemon/' + pokemon_id
@@ -27,8 +28,24 @@ export const Pokedex = (props) => {
             
         }
         
-
     }
+
+    const pesquisarPeloNome = async () => {
+        try {
+          const res = await api.post('/mostrar/nome', {nome});
+          console.log(res);
+      
+          if (res.data.mensagem === 'Pokemon(s) não encontrado(s)') {
+            console.log('Nenhum Pokémon encontrado');
+          } else {
+            console.log('Pokémon encontrado:', res.data);
+          }
+        } catch (erro) {
+          console.log(erro);
+        }
+      };
+      
+      
 
     useEffect(() => {
         pegarPokemons()
@@ -45,14 +62,15 @@ export const Pokedex = (props) => {
 
                 <div className="main-pokedex-titulo">
                     <h1>POKEMON</h1>
+                    <h1>{nome}</h1>
                 </div>
 
                 <div className="main-pokedex-pesquisa">
                     <div className="main-pokedex-pesquisa-container">
                         <p>Procurar Pokemon</p>
                         <div className="main-pokedex-pesquisa-container-input">
-                            <input type="text" />
-                            <div className="main-pokedex-container-img"><FiSearch></FiSearch></div>
+                            <input type="text" onChange={(e) => setNome(e.target.value)}/>
+                            <div className="main-pokedex-container-img" onClick={pesquisarPeloNome}><FiSearch></FiSearch></div>
                         </div>
                     </div>
                     <div className="main-pokedex-pesquisa-linha"></div>

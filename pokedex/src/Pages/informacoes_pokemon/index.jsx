@@ -151,7 +151,7 @@ export const InformacoesPokemons = (props) => {
 
                                                                 <ul>
                                                                     <il>Altura: {pokemon.altura}m</il>
-                                                                    <il>Peso: {pokemon.peso}g</il>
+                                                                    <il>Peso: {pokemon.peso}kg</il>
                                                                     <il>Especial Defesa: {pokemon.especial_defesa}</il>
                                                                     <il>Especial Ataque: {pokemon.especial_ataque}</il>
                                                                     <il>Categoria: {pokemon.categoria}</il>

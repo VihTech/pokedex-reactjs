@@ -39,6 +39,7 @@ export const Pokedex = (props) => {
             console.log('Nenhum Pokémon encontrado');
           } else {
             console.log('Pokémon encontrado:', res.data);
+            setPokemon(res.data)
           }
         } catch (erro) {
           console.log(erro);
@@ -62,7 +63,6 @@ export const Pokedex = (props) => {
 
                 <div className="main-pokedex-titulo">
                     <h1>POKEMON</h1>
-                    <h1>{nome}</h1>
                 </div>
 
                 <div className="main-pokedex-pesquisa">

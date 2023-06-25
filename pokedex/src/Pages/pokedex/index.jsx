@@ -2,6 +2,7 @@ import './style.css'
 import Header from '../../Components/Header'
 import { api } from '../../Services/API'
 import { useState, useEffect } from 'react'
+import {FiSearch} from 'react-icons/fi'
 
 export const Pokedex = (props) => {
 
@@ -41,6 +42,22 @@ export const Pokedex = (props) => {
                 <div className="main-informacoes-pokemons-bolinhas1 bolinhas"></div>
                 <div className="main-informacoes-pokemons-bolinhas2 bolinhas"></div>
                 <div className="main-pokedex-container">
+
+                <div className="main-pokedex-titulo">
+                    <h1>POKEMON</h1>
+                </div>
+
+                <div className="main-pokedex-pesquisa">
+                    <div className="main-pokedex-pesquisa-container">
+                        <p>Procurar Pokemon</p>
+                        <div className="main-pokedex-pesquisa-container-input">
+                            <input type="text" />
+                            <div className="main-pokedex-container-img"><FiSearch></FiSearch></div>
+                        </div>
+                    </div>
+                    <div className="main-pokedex-pesquisa-linha"></div>
+
+                </div>
 
                     {carregando?(
 

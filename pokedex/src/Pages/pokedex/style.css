@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
+
+
 .main-pokedex{
     height: 90vh;
     width: 100%;
@@ -6,7 +9,93 @@
     justify-content: center;
     overflow: auto;
     position: relative;
+    flex-direction: column;
 
+}
+
+.main-pokedex-titulo{
+    width: 100%;
+    height: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-pokedex-pesquisa{
+    width: 85%;
+    height: 15%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 2%;
+
+}
+
+.main-pokedex-pesquisa-container{
+    width: 100%;
+    height: 80%;
+
+}
+
+.main-pokedex-pesquisa-container > p{
+    height: 40%;
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    font-size: 1.1rem;
+    
+}
+
+.main-pokedex-pesquisa-container-input{
+    width: 35%;
+    height: 45%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #C0BEBE;
+    border-radius: 20px;
+}
+
+.main-pokedex-pesquisa-container-input > input{
+    width: 87%;
+    height: 100%;
+    border: none;
+    outline: none;
+    font-size: 0.9rem;
+    background: none;
+}
+
+.main-pokedex-container-img{
+    height: 100%;
+    width: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+}
+
+.main-pokedex-container-img  > svg{
+    width: 70%;
+    height: 70%;
+}
+
+.main-pokedex-pesquisa-linha{
+    height: 15%;
+    width: 80%;
+    border-bottom:2px solid #7575757c;
+}
+
+.main-pokedex-titulo > h1{
+    width: 100%;
+    height: 100%;
+    font-weight: 900;
+    font-family: 'Inter', sans-serif;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4.3rem;
+    Letter-spacing: 10px;
 }
 
 .main-pokedex::-webkit-scrollbar {
@@ -50,6 +139,12 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
+}
+
+.main-pokedex-container-card-preto:hover{
+    width: 89%;
+    height: 94%;
+    transition: 0.2s ease;
 }
 
 .main-pokedex-container-card-preto-vermelho{

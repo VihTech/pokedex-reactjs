@@ -3,13 +3,14 @@ import Header from '../../Components/Header'
 import { api } from '../../Services/API'
 import { useState, useEffect } from 'react'
 import {FiSearch} from 'react-icons/fi'
+import { TbPolaroid } from 'react-icons/tb'
 
 export const Pokedex = (props) => {
 
     const [carregando, setCarregando] = useState(false)
     const [pokemon, setPokemon] = useState('')
     const [nome, setNome] = useState('')
-
+    
     const verPokemonPeloId = (pokemon_id) => {
         window.location.href ='/Informacoes_pokemon/' + pokemon_id
  
@@ -33,7 +34,6 @@ export const Pokedex = (props) => {
     const pesquisarPeloNome = async () => {
         try {
           const res = await api.post('/mostrar/nome', {nome});
-          console.log(res);
       
           if (res.data.mensagem === 'Pokemon(s) não encontrado(s)') {
             console.log('Nenhum Pokémon encontrado');
@@ -51,6 +51,20 @@ export const Pokedex = (props) => {
     useEffect(() => {
         pegarPokemons()
     }, [])
+
+    useEffect(() => {
+        document.addEventListener('keydown', detectKeyDown, true)
+   
+    }, [nome])
+    const detectKeyDown = (e) => {
+        if (e.key === 'Enter'){
+            pesquisarPeloNome()
+        }
+    }
+
+    useEffect(() => {
+        pesquisarPeloNome()
+    },[nome])
 
     return(
         <div>

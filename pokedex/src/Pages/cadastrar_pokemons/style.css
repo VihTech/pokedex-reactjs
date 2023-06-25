@@ -130,7 +130,7 @@
 
 .main-cadastrar-pokemons-container-formulario-container-informacoes-divisao{
     width: 100%;
-    height: 100%;
+    height: 80%;
     display: flex;
     justify-content: center;
 }
@@ -311,7 +311,7 @@
 
 .main-cadastrar-pokemons-container-formulario-container-informacoes-final-descricao{
     width: 100%;
-    height: 60%;
+    height: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -320,13 +320,13 @@
 
 .main-cadastrar-pokemons-container-formulario-container-informacoes-final-descricao> p{
     width: 70%;
-    height: 15%;
+    height: 20%;
     font-weight: bold;
 }
 
 .main-cadastrar-pokemons-container-formulario-container-informacoes-final-descricao> textarea{
     width: 70%;
-    height: 60%;
+    height: 55%;
     border: none;
     outline: none;
     background-color: #D9D9D9;
@@ -334,7 +334,7 @@
 
 .main-cadastrar-pokemons-container-formulario-container-informacoes-final-numero-pokemon{
     width: 100%;
-    height: 30%;
+    height: 35%;
     display: flex;
     align-items: center;
     justify-content: center;

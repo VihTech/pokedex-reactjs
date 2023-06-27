@@ -281,3 +281,29 @@
     font-size: 0.8rem;
     text-align: center;
 }
+
+@media screen and (max-width: 393px) {
+    .main-pokedex{
+        overflow-x: hidden;
+
+        }
+
+    .main-pokedex-titulo > h1 {
+        font-size: 3.5rem;
+    }
+
+    .main-pokedex-pesquisa-linha{
+        width: 90vw;
+        margin-left: 15%;
+    }
+
+    .main-pokedex-pesquisa-container-input{
+        width: 80%;
+    }
+
+    .main-pokedex-container-card{
+        width: 100vw;
+        height: 50vh;
+    }
+
+}

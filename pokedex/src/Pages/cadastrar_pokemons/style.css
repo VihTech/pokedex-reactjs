@@ -306,11 +306,11 @@
 }
 
 .main-cadastrar-pokemons-container-formulario-campos-direita-container-peso > p{
-    width: 85%;
+    width: 82%;
     height: 25%;
     font-weight: 600;
     letter-spacing: 2px;
-    text-align: center;
+    text-align: end;
 }
 
 .main-cadastrar-pokemons-container-formulario-campos-direita-container-peso > p > span{
@@ -390,6 +390,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 }
 
 .main-cadastrar-pokemons-container-formulario-campos-direita-container-genero .checkbox .feminino > svg{
@@ -406,6 +407,10 @@
     
 }
 
+.main-cadastrar-pokemons-container-formulario-campos-direita-container-genero .checkbox .desconhecido{
+    cursor: pointer;
+}
+
 .main-cadastrar-pokemons-container-formulario-campos-direita-container-genero .checkbox .texto-desconhecido{
     width: 80%;
     text-align: center;
@@ -419,6 +424,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 }
 
 .main-cadastrar-pokemons-container-formulario-campos-direita-container-genero .checkbox .masculino > svg{
@@ -452,6 +458,9 @@
 .main-cadastrar-pokemons-container-formulario-msg{
     width: 100%;
     height: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .main-cadastrar-pokemons-container-formulario-btn{

@@ -4,8 +4,11 @@ import { useState, useEffect, version } from 'react'
 import { api } from '../../Services/API'
 import {AiOutlineCheck} from 'react-icons/ai'
 import { TbClick, TbPackage } from 'react-icons/tb'
+import { Mensagem } from '../../Components/Mensagem'
 
 export const CadastrarPokemons = () =>{
+    const [mensagemAviso, setMensagemAviso] = useState('')
+    const [tipo,setTipomsg] = useState('')
     const [nome, setNome] = useState('')
     const [tipagem, setTipo] = useState('none')
     const [descricao, setDescricao] = useState('')
@@ -13,7 +16,7 @@ export const CadastrarPokemons = () =>{
     const [peso, setPeso] = useState('')
     const [categoria, setCategoria] = useState('')
     const [genero, setGenero] = useState('')
-    const [total, setTotal] = useState(0)
+    const [total, setTotal] = useState('')
     const [hp, setHp] = useState(0)
     const [ataque, setAtaque] = useState(0)
     const [defesa, setDefesa] = useState(0)
@@ -141,38 +144,74 @@ export const CadastrarPokemons = () =>{
     }
 
     const cadastrarPokemon = async () => {
+        const data = {
+            nome,
+            descricao,
+            altura,
+            peso,
+            categoria,
+            genero,
+            total,
+            hp,
+            ataque,
+            defesa,
+            especial_ataque,
+            especial_defesa,
+            velocidade,
+            imagem,
+            numero_pokemon,
+            fraqueza: listaFraquezas,
+            habilidade: listaHabilidades,
+            tipagem: listaTipo
+        }
 
         try {
-            
-            
-            const data = {
-                nome,
-                descricao,
-                altura,
-                peso,
-                categoria,
-                genero,
-                total,
-                hp,
-                ataque,
-                defesa,
-                especial_ataque,
-                especial_defesa,
-                velocidade,
-                imagem,
-                numero_pokemon,
-                fraqueza: listaFraquezas,
-                habilidade: listaHabilidades,
-                tipagem: listaTipo
+
+            if(mensagemAviso){
+                setTipomsg('')
+                setMensagemAviso('')
             }
             
             const res = await api.post('/cadastrar/pokemon', data)
-            console.log(res.data)
+            if(res.data.Mensagem === 400){
+                setTipo('erro')
+                setMensagemAviso(res.data.Mensagem)
+            }else{
+                setTipomsg('sucesso')
+                setMensagemAviso(res.data.Mensagem)
+                setNome('')
+                setDescricao('')
+                setAltura('')
+                setPeso('')
+                setCategoria('')
+                setGenero('')
+                setFeminino('')
+                setConfereFeminino('')
+                setMasculino('')
+                setConfereMasculino('')
+                setDesconhecido('')
+                setConfereDesconhecido('')
+                setTotal('')
+                setHp(0)
+                setAtaque(0)
+                setDefesa(0)
+                setEspecial_ataque(0)
+                setEspecial_defesa(0)
+                setVelocidade(0)
+                setImagem('')
+                setNumero_pokemon('')
+                setFraqueza('none')
+                setListaFraquezas([])
+                setHabilidade('none')
+                setListaHabilidades([])
+                setTipo('none')
+                setListaTipo([])
+            }
+
 
         } catch (error) {
             console.log(error)
-        }
-    }
+    }}
 
     const pegarCategorias = async () => {
         try {
@@ -330,23 +369,23 @@ export const CadastrarPokemons = () =>{
                                     <div className="main-cadastrar-pokemons-container-formulario-campos-esquerda">
                                         <div className="main-cadastrar-pokemons-container-formulario-campos-esquerda-nome">
                                             <p>NOME</p>
-                                            <input type="text" onChange={(e) => setNome(e.target.value)}/>
+                                            <input type="text" onChange={(e) => setNome(e.target.value)} value={nome}/>
                                         </div>
 
                                         <div className="main-cadastrar-pokemons-container-formulario-campos-esquerda-descricao">
                                             <p>DESCRIÇÃO</p>
-                                            <textarea type="text" onChange={(e) => setDescricao(e.target.value)}/>
+                                            <textarea type="text" onChange={(e) => setDescricao(e.target.value)} value={descricao}/>
                                         </div>
 
                                         <div className="main-cadastrar-pokemons-container-formulario-campos-esquerda-imagem">
                                             <p>IMAGEM <span>(Insira o endereço da imagem)</span></p>
-                                            <input type="text" onChange={(e) => setImagem(e.target.value)}/>
+                                            <input type="text" onChange={(e) => setImagem(e.target.value)} value={imagem}/>
                                         </div>
                                     </div>
                                     <div className="main-cadastrar-pokemons-container-formulario-campos-direita">
                                         <div className="main-cadastrar-pokemons-container-formulario-campos-direita-categoria">
                                             <p>CATEGORIA</p>
-                                            <select onChange={e => setCategoria(e.target.value)}>
+                                            <select onChange={e => setCategoria(e.target.value)} value={categoria}>
                                                 <option value="none"></option>
                                                 {carregandoCategoria?(
                                                     mostrarCategorias.map((item) => (
@@ -362,17 +401,17 @@ export const CadastrarPokemons = () =>{
                                         <div className="main-cadastrar-pokemons-container-formulario-campos-direita-container">
                                             <div className="main-cadastrar-pokemons-container-formulario-campos-direita-container-altura">
                                                 <p>ALTURA <span>(Em Metros)</span></p>
-                                                <input type="text" onChange={(e) => setAltura(e.target.value)}/>
+                                                <input type="text" onChange={(e) => setAltura(e.target.value)} value={altura}/>
                                             </div>
 
                                             <div className="main-cadastrar-pokemons-container-formulario-campos-direita-container-peso">
                                                 <p>PESO <span>(Em gramas)</span></p>
-                                                <input type="text" onChange={(e) => setPeso(e.target.value)}/>
+                                                <input type="text" onChange={(e) => setPeso(e.target.value)} value={peso}/>
                                             </div>
 
                                             <div className="main-cadastrar-pokemons-container-formulario-campos-direita-container-numero">
                                                 <p>N° POKEMON</p>
-                                                <input type="text" onChange={(e) => setNumero_pokemon(e.target.value)}/>
+                                                <input type="text" onChange={(e) => setNumero_pokemon(e.target.value)} value={numero_pokemon}/>
                                             </div>
 
                                             <div className="main-cadastrar-pokemons-container-formulario-campos-direita-container-genero">
@@ -468,17 +507,17 @@ export const CadastrarPokemons = () =>{
                                         <div className="main-cadastrar-pokemons-container-formulario-status-meio-esquerda">
                                             <div className="main-cadastrar-pokemons-container-formulario-status-meio-esquerda-hp">
                                                     <p>HP</p>
-                                                    <input type="text" onChange={(e) => setHp(e.target.value)}/>
+                                                    <input type="text" onChange={(e) => setHp(e.target.value)} value={hp}/>
                                             </div>
 
                                             <div className="main-cadastrar-pokemons-container-formulario-status-meio-esquerda-defesa">
                                                     <p>DEFESA</p>
-                                                    <input type="text" onChange={(e) => setDefesa(e.target.value)}/>
+                                                    <input type="text" onChange={(e) => setDefesa(e.target.value)} value={defesa}/>
                                             </div>
 
                                             <div className="main-cadastrar-pokemons-container-formulario-status-meio-esquerda-ataque">
                                                     <p>ATAQUE</p>
-                                                    <input type="text" onChange={(e) => setAtaque(e.target.value)}/>
+                                                    <input type="text" onChange={(e) => setAtaque(e.target.value)} value={ataque}/>
                                             </div>
                                         </div>
 
@@ -486,17 +525,17 @@ export const CadastrarPokemons = () =>{
                                         <div className="main-cadastrar-pokemons-container-formulario-status-meio-direita">
                                             <div className="main-cadastrar-pokemons-container-formulario-status-meio-direita-atq-especial">
                                                     <p>ATQ. ESPECIAL</p>
-                                                    <input type="text" onChange={(e) => setEspecial_ataque(e.target.value)}/>
+                                                    <input type="text" onChange={(e) => setEspecial_ataque(e.target.value)} value={especial_ataque}/>
                                             </div>
 
                                             <div className="main-cadastrar-pokemons-container-formulario-status-meio-direita-defesa-especial">
                                                     <p>DF. ESPECIAL</p>
-                                                    <input type="text" onChange={(e) => setEspecial_defesa(e.target.value)}/>
+                                                    <input type="text" onChange={(e) => setEspecial_defesa(e.target.value)} value={especial_defesa}/>
                                             </div>
 
                                             <div className="main-cadastrar-pokemons-container-formulario-status-meio-direita-velocidade">
                                                     <p>VELOCIDADE</p>
-                                                    <input type="text" onChange={(e) => setVelocidade(e.target.value)}/>
+                                                    <input type="text" onChange={(e) => setVelocidade(e.target.value)} value={velocidade}/>
                                             </div>
                                         </div>
                                     </div>
@@ -544,7 +583,12 @@ export const CadastrarPokemons = () =>{
                         )}
 
                         
-                        <div className="main-cadastrar-pokemons-container-formulario-msg"></div>
+                        <div className="main-cadastrar-pokemons-container-formulario-msg">
+                                {mensagemAviso&&
+                                    <Mensagem tipo={tipo} msg={mensagemAviso}/>
+                                }
+
+                        </div>
                         <div className="main-cadastrar-pokemons-container-formulario-btn">
                             <button onClick={cadastrarPokemon}>CADASTRAR</button>
                         </div>

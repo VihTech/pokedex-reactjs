@@ -8,6 +8,8 @@
     position: relative;
 }
 
+/* teste */
+
 .main-informacoes-pokemons-triangulo{
     width: 15%;
     height: 35%;
@@ -231,7 +233,6 @@
 
 .main-informacoes-pokemons-informacoes-container-vermelho-container-informacoes-container-pontos > ul > il:hover{
     color: #bdbdbd;
-    cursor: pointer;
 }
 
 .main-informacoes-pokemons-informacoes-container-vermelho-container-informacoes-container-grafico{

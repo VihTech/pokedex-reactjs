@@ -70,9 +70,6 @@ export const Pokedex = (props) => {
         <div>
             <Header/>
             <main className="main-pokedex">
-                <div className="main-informacoes-pokemons-logo"></div>
-                <div className="main-informacoes-pokemons-bolinhas1 bolinhas"></div>
-                <div className="main-informacoes-pokemons-bolinhas2 bolinhas"></div>
                 <div className="main-pokedex-container">
 
                 <div className="main-pokedex-titulo">
@@ -100,7 +97,7 @@ export const Pokedex = (props) => {
                                 <>
 
                                     <div className="main-pokedex-container-card" key={index}>
-                                        <div className="main-pokedex-container-card-branco">
+                                        <div className="main-pokedex-container-card-branco" onClick={() =>  verPokemonPeloId(item.pokemon_info_id)}>
                                             <div className="main-pokedex-container-card-branco-enfeite">
                                                 <div className="main-pokedex-container-card-branco-enfeite-traco-maior"></div>
                                                 <div className="main-pokedex-container-card-branco-enfeite-logo"></div>

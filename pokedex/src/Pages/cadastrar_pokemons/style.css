@@ -767,10 +767,11 @@
 }
 
 .main-cadastrar-pokemons-container-formulario-status-meio-direita-atq-especial > p{
-    width: 85%;
+    width: 100%;
     height: 25%;
     font-weight: 600;
     letter-spacing: 2px;
+    text-align: center;
 }
 
 .main-cadastrar-pokemons-container-formulario-status-meio-direita-atq-especial > input{
@@ -793,10 +794,11 @@
 }
 
 .main-cadastrar-pokemons-container-formulario-status-meio-direita-defesa-especial > p{
-    width: 85%;
+    width: 100%;
     height: 25%;
     font-weight: 600;
     letter-spacing: 2px;
+    text-align: center;
 }
 
 .main-cadastrar-pokemons-container-formulario-status-meio-direita-defesa-especial > input{

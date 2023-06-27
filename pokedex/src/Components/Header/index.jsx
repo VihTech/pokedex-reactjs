@@ -8,12 +8,12 @@ import { useState } from 'react'
 const Header = () => {
 
     const [menu, setMenu] = useState(false)
-    const [aberto, setAberto] = useState('container-menu-hamburguer-lista ativo')
+    const [aberto, setAberto] = useState('container-menu-hamburguer-lista ativoMenu')
 
     const abrirMenu = () => {
         if(menu){
             setMenu(false)
-            setAberto('container-menu-hamburguer-lista ativo')
+            setAberto('container-menu-hamburguer-lista ativoMenu')
         }else{
             setMenu(true)
             setAberto('container-menu-hamburguer-lista')
@@ -25,7 +25,7 @@ const Header = () => {
             <div className={aberto}>
                 <NavLink to="/">Inicio</NavLink>
                 <NavLink to="/Pokedex">Pokedex</NavLink>
-                <NavLink to="/Cadastrar_pokemons">Cadastrar</NavLink>
+                <NavLink to="/Configurar_pokemons">Configurar</NavLink>
                 <NavLink to="/Colaboradores">Colaboradores</NavLink>
                 <div className='container-logar-hamburguer'>
                     <NavLink to="/Cadastrar_usuario"><BsPersonCircle className='icon-logar-hamburguer'/></NavLink>
@@ -38,7 +38,7 @@ const Header = () => {
             <div className="container-lista">
                 <NavLink to="/">Inicio</NavLink>
                 <NavLink to="/Pokedex">Pokedex</NavLink>
-                <NavLink to="/Cadastrar_pokemons">Cadastrar</NavLink>
+                <NavLink to="/Configurar_pokemons">Cadastrar</NavLink>
                 <NavLink to="/Colaboradores">Colaboradores</NavLink>
             </div>
 

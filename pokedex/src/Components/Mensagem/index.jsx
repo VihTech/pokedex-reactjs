@@ -13,7 +13,7 @@ export const Mensagem = ({tipo, msg}) =>{
 
         const tempo = setTimeout(() =>{
             setVisivel(false)
-        },4000)
+        },3000)
 
         return () => clearTimeout(tempo)
 

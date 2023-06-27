@@ -100,26 +100,27 @@ export const Pokedex = (props) => {
                                 <>
 
                                     <div className="main-pokedex-container-card" key={index}>
-                                        <div className="main-pokedex-container-card-preto" onClick={() =>  verPokemonPeloId(item.pokemon_info_id)} >
-                                            
-                                            <div className="main-pokedex-container-card-preto-vermelho" >
-                                                <div className="main-pokedex-container-card-preto-vermelho-branco" >
+                                        <div className="main-pokedex-container-card-branco">
+                                            <div className="main-pokedex-container-card-branco-enfeite">
+                                                <div className="main-pokedex-container-card-branco-enfeite-traco-maior"></div>
+                                                <div className="main-pokedex-container-card-branco-enfeite-logo"></div>
+                                                <div className="main-pokedex-container-card-branco-enfeite-traco1"></div>
+                                                <div className="main-pokedex-container-card-branco-enfeite-traco2"></div>
+                                            </div>
+
+                                            <div className="main-pokedex-container-card-branco-logo">
+                                                <div className="main-pokedex-container-card-branco-logo-img">
                                                     <img src={item.imagem} alt="" />
-                                                </div> 
-                                                <div className="main-pokedex-container-card-preto-vermelho-informacoes" >
-                                                    <div className="main-pokedex-container-card-preto-vermelho-informacoes-poder">
-                                                        <p>{item.tipo}</p>
-                                                    </div>
-                                                    <div className="main-pokedex-container-card-preto-vermelho-informacoes-nome">
-                                                        <div className="main-pokedex-container-card-preto-vermelho-informacoes-nome-branco">      
-                                                        </div>
-                                                        <div className="main-pokedex-container-card-preto-vermelho-informacoes-nome-preto">
-                                                            <p>{item.nome}</p>
-                                                        </div>
-                                                    </div>
-                                                    <div className="main-pokedex-container-card-preto-vermelho-informacoes-numero">
-                                                        <p>#{item.numero_pokemon}</p>
-                                                    </div>   
+                                                </div>
+                                                <div className="main-pokedex-container-card-branco-logo-nome">
+                                                    <h3>{item.nome}</h3>
+                                                    <p>#{item.numero_pokemon}</p>
+                                                </div>
+                                                <div className="main-pokedex-container-card-branco-logo-tipos">
+                                                    <ul>
+                                                        <li>Tipo1</li>
+                                                        <li>Tipo2</li>
+                                                    </ul>
                                                 </div>
                                             </div>
                                         </div>

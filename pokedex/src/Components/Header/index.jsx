@@ -19,7 +19,7 @@ const Header = () => {
             <div className="container-pesquisa-logar">
 
                 <div className="container-pesquisa-logar-divisao">
-                    <div className="container-pesquisar"><TbSearch/></div>
+                    <NavLink to='/Pokedex' className="container-pesquisar"><TbSearch/></NavLink>
                     <div className='container-logar'>
                         <NavLink to="/Cadastrar_usuario"><BsPersonCircle className='icon-logar'/></NavLink>
                     </div>

@@ -15,7 +15,7 @@
 
 .container-logo{
     height: 100%;
-    width: 15%;
+    width: 20%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -25,9 +25,9 @@
 .container-logo-img{
     width: 60%;
     height: 80%;
-    background-image: url('../../Imagens/pokemon.png');
+    background-image: url('../../Imagens/pokemon-logo-rodape.png');
     background-repeat: no-repeat;
-    background-size: 80%;
+    background-size: 90%;
     background-position: center;
 }
 
@@ -82,7 +82,7 @@
 .container-pesquisar{
     width: 20%;
     height: 61%;
-    background-color: #d9d9d97e;
+    background-color: #ffffff;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -94,7 +94,7 @@
 .container-pesquisar > svg{
     width: 60%;
     height: 60%;
-    color: #ffffff;
+    color: #000000;
     display: flex;
     align-items: center;
     justify-content: center;

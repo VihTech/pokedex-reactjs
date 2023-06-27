@@ -1,52 +1,117 @@
 import Header from '../../Components/Header'
 import './style.css'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, version } from 'react'
 import { api } from '../../Services/API'
+import {AiOutlineCheck} from 'react-icons/ai'
+import { TbClick, TbPackage } from 'react-icons/tb'
 
 export const CadastrarPokemons = () =>{
     const [nome, setNome] = useState('')
-    const [tipagem, setTipo] = useState('')
+    const [tipagem, setTipo] = useState('none')
     const [descricao, setDescricao] = useState('')
     const [altura, setAltura] = useState('')
     const [peso, setPeso] = useState('')
     const [categoria, setCategoria] = useState('')
     const [genero, setGenero] = useState('')
-    const [total, setTotal] = useState('')
-    const [hp, setHp] = useState('')
-    const [ataque, setAtaque] = useState('')
-    const [defesa, setDefesa] = useState('')
-    const [especial_ataque, setEspecial_ataquel] = useState('')
-    const [especial_defesa, setEspecial_defesa] = useState('')
-    const [velocidade, setVelocidade] = useState('')
+    const [total, setTotal] = useState(0)
+    const [hp, setHp] = useState(0)
+    const [ataque, setAtaque] = useState(0)
+    const [defesa, setDefesa] = useState(0)
+    const [especial_ataque, setEspecial_ataque] = useState(0)
+    const [especial_defesa, setEspecial_defesa] = useState(0)
+    const [velocidade, setVelocidade] = useState(0)
     const [imagem, setImagem] = useState('')
     const [numero_pokemon, setNumero_pokemon] = useState('')
-    const [fraqueza, setFraqueza] = useState('')
-    const [habilidade, setHabilidade] = useState('')
+    const [fraqueza, setFraqueza] = useState('none')
+    const [habilidade, setHabilidade] = useState('none')
     const [feminino, setFeminino] = useState('')
     const [masculino, setMasculino] = useState('')
     const [desconhecido, setDesconhecido] = useState('')
+    const [mostrarCategorias, setMostrarCategorias] = useState('')
+    const [mostrarHabilidades, setMostrarHabilidades] = useState('')
+    const [mostrarFraquezas, setMostrarFraquezas] = useState('')
+    const [mostrarTipagem, setMostrarTipagem] = useState('')
+    const [modelInformacoes, setModelInformacoes] = useState(true)
+    const [modelStatus, setModelStatus] = useState(false)
+    const [informacoesAtivo, setInformacoesAtivo] = useState('ativo')
+    const [statusAtivo, setStatusAtivo] = useState('')
+    const [confereFeminino, setConfereFeminino] = useState('')
+    const [confereMasculino, setConfereMasculino] = useState('')
+    const [confereDesconhecido, setConfereDesconhecido] = useState('')
+    const [carregandoCategoria, setCarregandoCategoria] = useState(false)
+    const [carregandoHabilidades, setCarregandoHabilidades] = useState(false)
+    const [carregandoFraquezas, setCarregandoFraquezas] = useState(false)
+    const [carregandoTipagem, setCarregandTipagem] = useState(false)
+    const [listaTipo, setListaTipo] = useState([])
+    const [listaHabilidades, setListaHabilidades] = useState([])
+    const [listaFraquezas, setListaFraquezas] = useState([])
+
+    const totalCalculo = () => {
+        let total_calc = 0
+        total_calc = (parseFloat(hp) + parseFloat(ataque) + parseFloat(defesa) + parseFloat(especial_ataque) + parseFloat(especial_defesa) + parseFloat(velocidade))
+        setTotal(total_calc)
+
+    }
+
+    const abrirModelInformacoes = () => {
+        if (modelInformacoes){
+            setModelInformacoes(false)
+            setModelStatus(true)
+            setInformacoesAtivo('')
+            setStatusAtivo('ativo')
+        }
+        else{
+            setModelInformacoes(true)
+            setModelStatus(false)
+            setInformacoesAtivo('ativo')
+            setStatusAtivo('')
+        }
+    }
+
+    const abrirModelStatus = () => {
+        if (modelStatus) {
+            setModelStatus(false)
+            setModelInformacoes(true)
+            setInformacoesAtivo('ativo')
+            setStatusAtivo('')
+            
+        }
+        else{
+            setModelStatus(true)
+            setModelInformacoes(false)
+            setInformacoesAtivo('')
+            setStatusAtivo('ativo')
+
+        }
+    }
 
     const selecionarFeminino = () => {
         if (feminino === 'on'){
             setFeminino('')
+            setConfereFeminino('')
         }else{
             setFeminino('on')
+            setConfereFeminino(<AiOutlineCheck/>)
         }
     }
 
     const selecionarMasculino = () => {
         if (masculino === 'on'){
             setMasculino('')
+            setConfereMasculino('')
         }else{
             setMasculino('on')
+            setConfereMasculino(<AiOutlineCheck/>)
         }
     }
 
     const selecionarDesconhecido = () => {
         if (desconhecido === 'on'){
             setDesconhecido('')
+            setConfereDesconhecido('')
         }else{
             setDesconhecido('on')
+            setConfereDesconhecido(<AiOutlineCheck/>)
         }
     }
 
@@ -96,13 +161,11 @@ export const CadastrarPokemons = () =>{
                 velocidade,
                 imagem,
                 numero_pokemon,
-                fraqueza: fraqueza.replace(/\s/g, '').split(','),
-                habilidade: habilidade.replace(/\s/g, '').split(','),
-                tipagem: tipagem.replace(/\s/g, '').split(',')
+                fraqueza: listaFraquezas,
+                habilidade: listaHabilidades,
+                tipagem: listaTipo
             }
             
-            console.log(data)
-
             const res = await api.post('/cadastrar/pokemon', data)
             console.log(res.data)
 
@@ -111,9 +174,126 @@ export const CadastrarPokemons = () =>{
         }
     }
 
+    const pegarCategorias = async () => {
+        try {
+            const res = await api.get('/mostrar/categoria')
+            setMostrarCategorias(res.data)
+            setCarregandoCategoria(true)
+        } catch (error) {
+            console.log(error)
+        }
+
+    }
+
+    const pegarHabilidades = async () => {
+        try {
+            const res = await api.get('/mostrar/habilidades')
+            setMostrarHabilidades(res.data)
+            setCarregandoHabilidades(true)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const pegarFraquezas = async () => {
+        try {
+            const res = await api.get('/mostrar/fraquezas')
+            setMostrarFraquezas(res.data)
+            setCarregandoFraquezas(true)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const pegarTipagem = async () => {
+        try {
+            const res = await api.get('/mostrar/tipagem')
+            setMostrarTipagem(res.data)
+            setCarregandTipagem(true)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const adicionandoTipagem = () => {
+        if (tipagem !== 'none' && !listaTipo.includes(tipagem)){
+            const novaTipagem = tipagem
+            const novaListaTipagem = [...listaTipo, novaTipagem];
+            setListaTipo(novaListaTipagem);
+        }
+    }
+
+    const adicionandoHabilidades = () => {
+        if (habilidade !== 'none' && !listaHabilidades.includes(habilidade)){
+            const novaHabilidade = habilidade
+            const novaListaHabilidade = [...listaHabilidades, novaHabilidade];
+            setListaHabilidades(novaListaHabilidade);
+        }
+
+    }
+
+    const adicionandoFraquezas= () => {
+        if (fraqueza !== 'none' && !listaFraquezas.includes(fraqueza)){
+            const novaFraqueza = fraqueza
+            const novaListaFraqueza = [...listaFraquezas, novaFraqueza];
+            setListaFraquezas(novaListaFraqueza);
+        }
+    }
+
+    const apagarDaListaTipo = (valor) => {
+        const novaListaTipo = [...listaTipo]; // Cria uma cópia da lista original
+        novaListaTipo.splice(valor, 1); // Remove o elemento da nova lista
+        setListaTipo(novaListaTipo); // Atualiza o estado com a nova lista
+    }
+
+    const apagarDaListaHabilidades = (valor) => {
+        const novaListaHabilidades = [...listaHabilidades]; // Cria uma cópia da lista original
+        novaListaHabilidades.splice(valor, 1); // Remove o elemento da nova lista
+        setListaHabilidades(novaListaHabilidades); // Atualiza o estado com a nova lista
+    }
+
+    const apagarDaListaFraquezas = (valor) => {
+        const novaListaFraquezas = [...listaFraquezas]; // Cria uma cópia da lista original
+        novaListaFraquezas.splice(valor, 1); // Remove o elemento da nova lista
+        setListaFraquezas(novaListaFraquezas); // Atualiza o estado com a nova lista
+    }
+
     useEffect (() => {
         qualGenero()
     }, [feminino, masculino, desconhecido])
+
+    useEffect (() => {
+        pegarCategorias()
+    }, [])
+
+    useEffect (() => {
+        pegarHabilidades()
+    }, [])
+
+    useEffect (() => {
+        pegarFraquezas()
+    }, [])
+
+    useEffect (() => {
+        pegarTipagem()
+    }, [])
+
+    useEffect (() => {
+        adicionandoTipagem()
+    }, [tipagem])
+
+    useEffect (() => {
+        adicionandoHabilidades()
+    }, [habilidade])
+
+    useEffect (() => {
+        adicionandoFraquezas()
+        
+    }, [fraqueza])
+
+    useEffect(() => {
+        totalCalculo()
+    }, [hp, ataque, defesa, especial_ataque, especial_defesa, velocidade])
 
     return(
         <>  
@@ -125,157 +305,250 @@ export const CadastrarPokemons = () =>{
                 <div className="main-informacoes-pokemons-bolinhas2 bolinhas"></div>
                 
                 <div className="main-cadastrar-pokemons-container">
+                    <div className="main-cadastrar-pokemons-container-enfeite">
+                        <div className="main-cadastrar-pokemons-container-enfeite-logo"></div>
+                        <div className="main-cadastrar-pokemons-container-enfeite-traco1"></div>
+                        <div className="main-cadastrar-pokemons-container-enfeite-traco2"></div>
 
-                    <div className="main-cadastrar-pokemons-container-vermelho">
-                        <div className="main-cadastrar-pokemons-container-vermelho-logo"></div>
-                        <h3>Insira as informações do pokemon que deseja cadastrar</h3>
-                        <button onClick={cadastrarPokemon}>Cadastrar</button>
+                        <div className="main-cadastrar-pokemons-container-enfeite-linha-maior"></div>
+                        <div className="main-cadastrar-pokemons-container-enfeite-titulo">
+                            <h2>CADASTRAR POKEMON</h2>
+                        </div>
                     </div>
+
                     <div className="main-cadastrar-pokemons-container-formulario">
-                        <div className="main-cadastrar-pokemons-container-formulario-titulo">
-                            <h2>Cadastrar Pokemon</h2>
+                        <div className="main-cadastrar-pokemons-container-formulario-navbar">
+                            <ul>
+                                <il className={informacoesAtivo} onClick={abrirModelInformacoes}>INFORMAÇÕES</il>
+                                <il className={statusAtivo} onClick={abrirModelStatus}>STATUS</il>
+                            </ul>
                         </div>
 
-                        <div className="main-cadastrar-pokemons-container-formulario-container">
-                            <div className="main-cadastrar-pokemons-container-formulario-container-informacoes">
-                                <div className="main-cadastrar-pokemons-container-formulario-container-informacoes-titulo">
-                                    <h2>Informações</h2>
-                                </div>
-
-                                <div className="main-cadastrar-pokemons-container-formulario-container-informacoes-divisao">
-
-                                    <div className="main-cadastrar-pokemons-container-formulario-container-informacoes-esquerda">
-                                        <div className="main-cadastrar-pokemons-container-formulario-container-informacoes-esquerda-nome">
-                                            <p>Nome</p>
+                        {modelInformacoes&& (
+                            <>
+                                <div className="main-cadastrar-pokemons-container-formulario-campos">
+                                    <div className="main-cadastrar-pokemons-container-formulario-campos-esquerda">
+                                        <div className="main-cadastrar-pokemons-container-formulario-campos-esquerda-nome">
+                                            <p>NOME</p>
                                             <input type="text" onChange={(e) => setNome(e.target.value)}/>
                                         </div>
 
-                                        <div className="main-cadastrar-pokemons-container-formulario-container-informacoes-esquerda-tipagens">
-                                            <p>Tipagens</p>
-                                            <input type="text" onChange={(e) => setTipo(e.target.value)}/>
+                                        <div className="main-cadastrar-pokemons-container-formulario-campos-esquerda-descricao">
+                                            <p>DESCRIÇÃO</p>
+                                            <textarea type="text" onChange={(e) => setDescricao(e.target.value)}/>
                                         </div>
 
-                                        <div className="main-cadastrar-pokemons-container-formulario-container-informacoes-esquerda-fraquezas">
-                                            <p>Fraquezas</p>
-                                            <input type="text" onChange={(e) => setFraqueza(e.target.value)}/>
-                                        </div>
-                                    </div>
-                                    <div className="main-cadastrar-pokemons-container-formulario-container-informacoes-direita">
-
-                                        <div className="main-cadastrar-pokemons-container-formulario-container-informacoes-direita-categoria">
-                                            <p>Categoria</p>
-                                            <input type="text" onChange={(e) => setCategoria(e.target.value)}/>
-                                        </div>
-
-                                        <div className="main-cadastrar-pokemons-container-formulario-container-informacoes-direita-habilidades">
-                                            <p>Habilidades</p>
-                                            <input type="text" onChange={(e) => setHabilidade(e.target.value)}/>
-                                        </div>
-
-                                        <div className="main-cadastrar-pokemons-container-formulario-container-informacoes-direita-imagem">
-                                            <p>Imagem</p>
+                                        <div className="main-cadastrar-pokemons-container-formulario-campos-esquerda-imagem">
+                                            <p>IMAGEM <span>(Insira o endereço da imagem)</span></p>
                                             <input type="text" onChange={(e) => setImagem(e.target.value)}/>
                                         </div>
-
                                     </div>
-
-                                    <div className="main-cadastrar-pokemons-container-formulario-container-informacoes-final">
-                                            <div className="main-cadastrar-pokemons-container-formulario-container-informacoes-final-descricao">
-                                                <p>Descricao</p>
-                                                <textarea name="" id="" cols="30" rows="10" onChange={(e) => setDescricao(e.target.value)}></textarea>
-                                            </div>
-
-                                            <div className="main-cadastrar-pokemons-container-formulario-container-informacoes-final-numero-pokemon">
-                                                <p>Número Pokemon</p>
-                                                <input type="text" onChange={(e) => setNumero_pokemon(e.target.value)}/>
-                                            </div>
-
-                                            <div className="main-cadastrar-pokemons-container-formulario-container-informacoes-final-genero">
-                                                <p>Gênero</p>
-                                                <div className="checkbox">
-                                                    <input type="checkbox" onClick={selecionarFeminino}/><p>Fem.</p>
-                                                    <input type="checkbox" onClick={selecionarMasculino}/><p>Mas.</p>
-                                                    <input type="checkbox" onClick={selecionarDesconhecido}/><p>Desconhecido</p>
-                                                </div>
-                                            </div>
+                                    <div className="main-cadastrar-pokemons-container-formulario-campos-direita">
+                                        <div className="main-cadastrar-pokemons-container-formulario-campos-direita-categoria">
+                                            <p>CATEGORIA</p>
+                                            <select onChange={e => setCategoria(e.target.value)}>
+                                                <option value="none"></option>
+                                                {carregandoCategoria?(
+                                                    mostrarCategorias.map((item) => (
+                                                        <option value={item.categoria}>{item.categoria}</option>
+                                                    ))
+                                                ):(
+                                                    <p>Carregando</p>
+                                                )}
+                                            </select>
 
                                         </div>
 
-                                </div>
-                            </div>
-
-                            <div className="main-cadastrar-pokemons-container-formulario-container-status">
-
-                                    <div className="main-cadastrar-pokemons-container-formulario-container-status-titulo">
-                                        <h2>Status</h2>
-                                    </div>
-
-                                    <div className="main-cadastrar-pokemons-container-formulario-container-status-divisao">
-
-                                        <div className="main-cadastrar-pokemons-container-formulario-container-status-esquerda">
-                                            <div className="main-cadastrar-pokemons-container-formulario-container-status-esquerda-vida">
-                                                <p>Vida</p>
-                                                <input type="text" onChange={(e) => setHp(e.target.value)}/>
-                                            </div>
-
-                                            <div className="main-cadastrar-pokemons-container-formulario-container-status-esquerda-ataque">
-                                                <p>Ataque</p>
-                                                <input type="text" onChange={(e) => setAtaque(e.target.value)}/>
-                                            </div>
-
-                                            <div className="main-cadastrar-pokemons-container-formulario-container-status-esquerda-defesa-especial">
-                                                <p>Defesa Especial</p>
-                                                <input type="text" onChange={(e) => setEspecial_defesa(e.target.value)}/>
-                                            </div>
-                                        </div>
-                                        <div className="main-cadastrar-pokemons-container-formulario-container-status-direita">
-
-                                            <div className="main-cadastrar-pokemons-container-formulario-container-status-direita-defesa">
-                                                <p>Defesa</p>
-                                                <input type="text" onChange={(e) => setDefesa(e.target.value)}/>
-                                            </div>
-
-                                            <div className="main-cadastrar-pokemons-container-formulario-container-status-direita-ataque-especial">
-                                                <p>Ataque Especial</p>
-                                                <input type="text" onChange={(e) => setEspecial_ataquel(e.target.value)} />
-                                            </div>
-
-                                            <div className="main-cadastrar-pokemons-container-formulario-container-status-direita-velocidade">
-                                                <p>Velocidade</p>
-                                                <input type="text" onChange={(e) => setVelocidade(e.target.value)}/>
-                                            </div>
-
-                                        </div>
-
-                                        <div className="main-cadastrar-pokemons-container-formulario-container-status-final">
-
-                                            <div className="main-cadastrar-pokemons-container-formulario-container-status-final-total">
-                                                <p>Total</p>
-                                                <input type="text" onChange={(e) => setTotal(e.target.value)}/>
-                                            </div>
-
-                                            <div className="main-cadastrar-pokemons-container-formulario-container-status-final-peso">
-                                                <p>Peso</p>
-                                                <input type="text" onChange={(e) => setPeso(e.target.value)}/>
-                                            </div>
-
-
-                                            <div className="main-cadastrar-pokemons-container-formulario-container-status-final-altura">
-                                                <p>Altura</p>
+                                        <div className="main-cadastrar-pokemons-container-formulario-campos-direita-container">
+                                            <div className="main-cadastrar-pokemons-container-formulario-campos-direita-container-altura">
+                                                <p>ALTURA <span>(Em Metros)</span></p>
                                                 <input type="text" onChange={(e) => setAltura(e.target.value)}/>
                                             </div>
 
+                                            <div className="main-cadastrar-pokemons-container-formulario-campos-direita-container-peso">
+                                                <p>PESO <span>(Em gramas)</span></p>
+                                                <input type="text" onChange={(e) => setPeso(e.target.value)}/>
+                                            </div>
 
+                                            <div className="main-cadastrar-pokemons-container-formulario-campos-direita-container-numero">
+                                                <p>N° POKEMON</p>
+                                                <input type="text" onChange={(e) => setNumero_pokemon(e.target.value)}/>
+                                            </div>
+
+                                            <div className="main-cadastrar-pokemons-container-formulario-campos-direita-container-genero">
+                                                <p>GENERO</p>
+                                                <div className='checkbox'>
+                                                    <div className='feminino' onClick={selecionarFeminino}>
+                                                        {confereFeminino}
+                                                    </div>
+                                                    <p>Fem.</p>
+                                                    <div className='masculino' onClick={selecionarMasculino}>
+                                                        {confereMasculino}
+                                                    </div>
+                                                    <p>Masc</p>
+                                                    <div className='desconhecido' onClick={selecionarDesconhecido}>
+                                                        {confereDesconhecido}
+                                                    </div>
+                                                    <p className='texto-desconhecido'>Desconhecido</p>
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </>
+                        )}
+
+                        {modelStatus&&(
+                            <>
+
+                                <div className="main-cadastrar-pokemons-container-formulario-status">
+                                    <div className="main-cadastrar-pokemons-container-formulario-status-comeco">
+                                        <div className="main-cadastrar-pokemons-container-formulario-status-comeco-tipagens">
+                                            <p>TIPAGENS</p>
+                                            <select onChange={(e) => setTipo(e.target.value)}>
+                                                <option value="none"></option>
+                                                {carregandoTipagem?(
+                                                    mostrarTipagem.map((item) => (
+                                                        <option value={item.tipo}>{item.tipo}</option>
+                                                    ))
+                                                ):(
+                                                    <p>Carregando</p>
+                                                )}
+                                            </select>
+                                            <ul>
+                                            {listaTipo.map((item, index) => (
+                                                <li key={index} onClick={() => apagarDaListaTipo(index)}>
+                                                    {item}
+                                                </li>
+                                                ))}
+
+                                            </ul>
                                         </div>
 
-                                        
+                                        <div className="main-cadastrar-pokemons-container-formulario-status-comeco-habilidades">
+                                            <p>HABILIDADES</p>
+                                            <select onChange={(e) => setHabilidade(e.target.value)}>
+                                                <option value="none"></option>
+                                                {carregandoHabilidades?(
+                                                    mostrarHabilidades.map((item) => (
+                                                        <option value={item.habilidade}>{item.habilidade}</option>
+                                                    ))
+                                                ):(
+                                                    <p>Carregando</p>
+                                                )}
+                                            </select>
+                                            <ul>
+                                                {listaHabilidades.map((item, index) => (
+                                                    <li key={index} onClick={() => apagarDaListaHabilidades(index)}>{item}</li>
+                                                ))}
+                                            </ul>
+                                        </div>
 
+                                        <div className="main-cadastrar-pokemons-container-formulario-status-comeco-fraquezas">
+                                            <p>FRAQUEZAS</p>
+                                            <select onChange={(e) => setFraqueza(e.target.value)}>
+                                                <option value="none"></option>
+                                                {carregandoFraquezas?(
+                                                    mostrarFraquezas.map((item) => (
+                                                        <option value={item.fraqueza}>{item.fraqueza}</option>
+                                                    ))
+                                                ):(
+                                                    <p>Carregando</p>
+                                                )}
+                                            </select>
+                                            <ul>
+                                                {listaFraquezas.map((item, index) => (
+                                                        <li key={index} onClick={() => apagarDaListaFraquezas(index)}>{item}</li>
+                                                    ))}
+                                            </ul>
+                                        </div>
                                     </div>
+                                    <div className="main-cadastrar-pokemons-container-formulario-status-meio">
+                                        <div className="main-cadastrar-pokemons-container-formulario-status-meio-esquerda">
+                                            <div className="main-cadastrar-pokemons-container-formulario-status-meio-esquerda-hp">
+                                                    <p>HP</p>
+                                                    <input type="text" onChange={(e) => setHp(e.target.value)}/>
+                                            </div>
 
-                            </div>
+                                            <div className="main-cadastrar-pokemons-container-formulario-status-meio-esquerda-defesa">
+                                                    <p>DEFESA</p>
+                                                    <input type="text" onChange={(e) => setDefesa(e.target.value)}/>
+                                            </div>
+
+                                            <div className="main-cadastrar-pokemons-container-formulario-status-meio-esquerda-ataque">
+                                                    <p>ATAQUE</p>
+                                                    <input type="text" onChange={(e) => setAtaque(e.target.value)}/>
+                                            </div>
+                                        </div>
+
+                                    
+                                        <div className="main-cadastrar-pokemons-container-formulario-status-meio-direita">
+                                            <div className="main-cadastrar-pokemons-container-formulario-status-meio-direita-atq-especial">
+                                                    <p>ATQ. ESPECIAL</p>
+                                                    <input type="text" onChange={(e) => setEspecial_ataque(e.target.value)}/>
+                                            </div>
+
+                                            <div className="main-cadastrar-pokemons-container-formulario-status-meio-direita-defesa-especial">
+                                                    <p>DF. ESPECIAL</p>
+                                                    <input type="text" onChange={(e) => setEspecial_defesa(e.target.value)}/>
+                                            </div>
+
+                                            <div className="main-cadastrar-pokemons-container-formulario-status-meio-direita-velocidade">
+                                                    <p>VELOCIDADE</p>
+                                                    <input type="text" onChange={(e) => setVelocidade(e.target.value)}/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="main-cadastrar-pokemons-container-formulario-status-fim">
+                                        <p>PRÉVIA</p>
+                                        <div className="main-cadastrar-pokemons-container-formulario-status-fim-grafico">
+                                            <div className="main-cadastrar-pokemons-container-formulario-status-fim-grafico-hp" style={{height: `${hp}%`}}>
+                                                <p>{hp}</p>
+                                            </div>
+                                            <div className="main-cadastrar-pokemons-container-formulario-status-fim-grafico-ataque" style={{height: `${ataque}%`}}>
+                                                <p>{ataque}</p>
+                                            </div>
+                                            <div className="main-cadastrar-pokemons-container-formulario-status-fim-grafico-defesa" style={{height: `${defesa}%`}}>
+                                                <p>{defesa}</p>
+                                            </div>
+                                            <div className="main-cadastrar-pokemons-container-formulario-status-fim-grafico-especial-ataque" style={{height: `${especial_ataque}%`}}>
+                                                <p>{especial_ataque}</p>
+                                            </div>
+                                            <div className="main-cadastrar-pokemons-container-formulario-status-fim-grafico-especial-defesa" style={{height: `${especial_defesa}%`}}>
+                                                <p>{especial_defesa}</p>
+                                            </div>
+                                            <div className="main-cadastrar-pokemons-container-formulario-status-fim-grafico-velocidade" style={{height: `${velocidade}%`}}>
+                                                <p>{velocidade}</p>
+                                            </div>
+                                            <div className="main-cadastrar-pokemons-container-formulario-status-fim-grafico-total" style={{height: `${total}%`}}>
+                                                <p>{total}</p>
+                                            </div>
+       
+                                        </div>
+                                            <div className="main-cadastrar-pokemons-container-formulario-status-fim-nomes">
+                                                    <ul>
+                                                        <il>HP</il>
+                                                        <il>ATK</il>
+                                                        <il>DF</il>
+                                                        <il>SATK</il>
+                                                        <il>SDF</il>
+                                                        <il>SP</il>
+                                                        <il>TOTAL</il>
+                                                    </ul>
+                                            </div>
+                                    </div>
+                                </div>
+                            
+                            </>
+                        )}
+
+                        
+                        <div className="main-cadastrar-pokemons-container-formulario-msg"></div>
+                        <div className="main-cadastrar-pokemons-container-formulario-btn">
+                            <button onClick={cadastrarPokemon}>CADASTRAR</button>
                         </div>
                     </div>
-
                 </div>
 
             </main>

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
+
 .main-cadastrar-pokemons{
     width: 100%;
     height: 90vh;
@@ -5,659 +7,1048 @@
     align-items: center;
     justify-content: center;
     position: relative;
+    font-family: 'Inter', sans-serif;
 }
 
 .main-cadastrar-pokemons-container{
-    width: 90%;
-    height: 95%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    z-index: 0;
+    width: 80%;
+    height: 85%;
+    background-color: #fff;
+    position: relative;
     border-radius: 20px;
     overflow: hidden;
-    box-shadow: 4px 4px 7px rgba(0, 0, 0, 0.25);
-}
-
-.main-cadastrar-pokemons-container-vermelho{
-    width: 25%;
-    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #EC4434;
     flex-direction: column;
-    color: #fff;
+    box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
-.main-cadastrar-pokemons-container-vermelho-logo{
-    width: 40%;
-    height: 30%;
-    background-image: url(../../Imagens/logo_cadastro.png);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 80%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.main-cadastrar-pokemons-container-vermelho > h3{
-    width: 80%;
+.main-cadastrar-pokemons-container-enfeite{
+    width: 100%;
     height: 20%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: bold;
-    text-align: center;
+    flex-direction: column;
+    position: relative;
+}
+
+.main-cadastrar-pokemons-container-enfeite-logo{
+    width: 17%;
+    height: 100%;
+    background-color: #EC4434;
+    position: absolute;
+    left: 0;
+    border-radius: 0px 0px 20px 0px;
+    background-image: url('../../Imagens/logo_cadastro.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 40%;
 
 }
 
-.main-cadastrar-pokemons-container-vermelho > button{
-    width: 40%;
-    height: 7%;
-    border: none;
-    border-radius: 20px;
-    color: #000;
-    font-size: 1rem;
-    background-color: #fff;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.25);
+.main-cadastrar-pokemons-container-enfeite-linha-maior{
+    width: 100%;
+    height: 20%;
+    background-color: #EC4434;
+}
+
+.main-cadastrar-pokemons-container-enfeite-titulo{
+    width: 100%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.main-cadastrar-pokemons-container-enfeite-titulo > h2 {
+    width: 50%;
+    text-align: center;
+    border-bottom: 3px solid #EC4434;
+    font-weight: 700;
+    Letter-spacing: 5px;
+    font-size: 1.7rem;
 }
 
 .main-cadastrar-pokemons-container-formulario{
-    width: 75%;
-    height: 100%;
-    background-color: #fff;
+    width: 100%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
-.main-cadastrar-pokemons-container-formulario-titulo{
+.main-cadastrar-pokemons-container-formulario-navbar{
+    width: 100%;
+    height: 8%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-cadastrar-pokemons-container-formulario-navbar > ul {
+    width: 60%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.main-cadastrar-pokemons-container-formulario-navbar > ul > il {
+    width: 40%;
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.1rem;
+    Letter-spacing: 2px;
+    cursor: pointer;
+}
+
+.main-cadastrar-pokemons-container-formulario-navbar > ul .ativo{
+    border-bottom: 3px solid #EC4434;
+}
+
+.main-cadastrar-pokemons-container-formulario-campos{
+    width: 100%;
+    height: 77%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-cadastrar-pokemons-container-formulario-campos-esquerda{
+    width: 40%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.main-cadastrar-pokemons-container-formulario-campos-esquerda-nome{
+    width: 100%;
+    height: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.main-cadastrar-pokemons-container-formulario-campos-esquerda-nome > p{
+    width: 80%;
+    height: 25%;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.main-cadastrar-pokemons-container-formulario-campos-esquerda-nome > input{
+    width: 80%;
+    height: 20%;
+    border: none;
+    border-radius: 20px;
+    padding-left: 7px;
+    outline: none;
+    background-color: #D9D9D9;
+}
+
+.main-cadastrar-pokemons-container-formulario-campos-esquerda-descricao{
+    width: 100%;
+    height: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.main-cadastrar-pokemons-container-formulario-campos-esquerda-descricao > p{
+    width: 80%;
+    height: 25%;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.main-cadastrar-pokemons-container-formulario-campos-esquerda-descricao > textarea{
+    width: 80%;
+    height: 70%;
+    max-width: 80%;
+    max-height: 70%;
+    min-width: 80%;
+    min-height: 80%;
+    border: none;
+    border-radius: 20px;
+    padding-left: 7px;
+    outline: none;
+    background-color: #D9D9D9;
+    resize: none;
+}
+
+.main-cadastrar-pokemons-container-formulario-campos-esquerda-imagem{
+    width: 100%;
+    height: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+}
+
+.main-cadastrar-pokemons-container-formulario-campos-esquerda-imagem > p{
+    width: 80%;
+    height: 25%;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.main-cadastrar-pokemons-container-formulario-campos-esquerda-imagem > p > span{
+    color: #8A8A8A;
+    font-weight: 100;
+    font-size: 0.8rem;
+}
+
+.main-cadastrar-pokemons-container-formulario-campos-esquerda-imagem > input{
+    width: 80%;
+    height: 20%;
+    border: none;
+    border-radius: 20px;
+    padding-left: 7px;
+    outline: none;
+    background-color: #D9D9D9;
+}
+
+
+.main-cadastrar-pokemons-container-formulario-campos-direita{
+    width: 40%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.main-cadastrar-pokemons-container-formulario-campos-direita-categoria{
+    width: 100%;
+    height: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.main-cadastrar-pokemons-container-formulario-campos-direita-categoria > p{
+    width: 80%;
+    height: 25%;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.main-cadastrar-pokemons-container-formulario-campos-direita-categoria > select{
+    width: 80%;
+    height: 23%;
+    border: none;
+    border-radius: 20px;
+    padding-left: 7px;
+    outline: none;
+    background-color: #D9D9D9;
+}
+
+.main-cadastrar-pokemons-container-formulario-campos-direita-container{
+    width: 100%;
+    height: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.main-cadastrar-pokemons-container-formulario-campos-direita-container-altura{
+    width: 50%;
+    height: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.main-cadastrar-pokemons-container-formulario-campos-direita-container-altura > p{
+    width: 102%;
+    height: 25%;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-align: end;
+}
+
+.main-cadastrar-pokemons-container-formulario-campos-direita-container-altura > p > span{
+    color: #8A8A8A;
+    font-weight: 100;
+    font-size: 0.8rem;
+    
+}
+
+.main-cadastrar-pokemons-container-formulario-campos-direita-container-altura > input{
+    width: 55%;
+    height: 20%;
+    border: none;
+    border-radius: 20px;
+    padding-left: 7px;
+    outline: none;
+    background-color: #D9D9D9;
+}
+
+.main-cadastrar-pokemons-container-formulario-campos-direita-container-peso{
+    width: 50%;
+    height: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.main-cadastrar-pokemons-container-formulario-campos-direita-container-peso > p{
+    width: 85%;
+    height: 25%;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+.main-cadastrar-pokemons-container-formulario-campos-direita-container-peso > p > span{
+    color: #8A8A8A;
+    font-weight: 100;
+    font-size: 0.8rem;
+}
+
+.main-cadastrar-pokemons-container-formulario-campos-direita-container-peso > input{
+    width: 55%;
+    height: 20%;
+    border: none;
+    border-radius: 20px;
+    padding-left: 7px;
+    outline: none;
+    background-color: #D9D9D9;
+}
+
+.main-cadastrar-pokemons-container-formulario-campos-direita-container-numero{
+    width: 50%;
+    height: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.main-cadastrar-pokemons-container-formulario-campos-direita-container-numero > p{
+    width: 85%;
+    height: 25%;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+.main-cadastrar-pokemons-container-formulario-campos-direita-container-numero > input{
+    width: 55%;
+    height: 20%;
+    border: none;
+    border-radius: 20px;
+    padding-left: 7px;
+    outline: none;
+    background-color: #D9D9D9;
+}
+
+.main-cadastrar-pokemons-container-formulario-campos-direita-container-genero{
+    width: 50%;
+    height: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.main-cadastrar-pokemons-container-formulario-campos-direita-container-genero > p{
+    width: 85%;
+    height: 25%;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+.main-cadastrar-pokemons-container-formulario-campos-direita-container-genero .checkbox{
+    width: 65%;
+    height: 75%;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+}
+
+.main-cadastrar-pokemons-container-formulario-campos-direita-container-genero .checkbox .feminino{
+    width: 15%;
+    height: 32%;
+    background-color: #D9D9D9;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-cadastrar-pokemons-container-formulario-campos-direita-container-genero .checkbox .feminino > svg{
+    width: 80%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-cadastrar-pokemons-container-formulario-campos-direita-container-genero .checkbox> p{
+    width: 30%;
+    text-align: center;
+    
+}
+
+.main-cadastrar-pokemons-container-formulario-campos-direita-container-genero .checkbox .texto-desconhecido{
+    width: 80%;
+    text-align: center;
+}
+
+.main-cadastrar-pokemons-container-formulario-campos-direita-container-genero .checkbox .masculino{
+    width: 15%;
+    height: 32%;
+    background-color: #D9D9D9;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-cadastrar-pokemons-container-formulario-campos-direita-container-genero .checkbox .masculino > svg{
+    width: 80%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.main-cadastrar-pokemons-container-formulario-campos-direita-container-genero .checkbox .desconhecido{
+    width: 15%;
+    height: 32%;
+    background-color: #D9D9D9;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-cadastrar-pokemons-container-formulario-campos-direita-container-genero .checkbox .desconhecido > svg{
+    width: 80%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.main-cadastrar-pokemons-container-formulario-msg{
+    width: 100%;
+    height: 5%;
+}
+
+.main-cadastrar-pokemons-container-formulario-btn{
     width: 100%;
     height: 10%;
     display: flex;
     align-items: center;
     justify-content: center;
-
 }
 
-.main-cadastrar-pokemons-container-formulario-titulo > h2{
-    width: 100%;
-    height: 100%;
-    font-weight: bold;
-    text-align: center;
+.main-cadastrar-pokemons-container-formulario-btn > button{
+    width: 25%;
+    height: 70%;
+    border: none;
+    background-color: #EC4434;
+    color: #fff;
+    border-radius: 20px;
+    box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.25);
+    font-size: 1.1rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-bottom: 3px solid #EC4434;
+    font-weight: bold;
+    letter-spacing: 3px;
+    cursor: pointer;
+    outline: none;
 }
 
-.main-cadastrar-pokemons-container-formulario-container{
+.main-cadastrar-pokemons-container-formulario-status{
     width: 100%;
+    height: 77%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.main-cadastrar-pokemons-container-formulario-status-comeco{
+    width: 30%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.main-cadastrar-pokemons-container-formulario-status-comeco-tipagens{
+    width: 100%;
+    height: 33%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.main-cadastrar-pokemons-container-formulario-status-comeco-tipagens > p{
+    width: 85%;
+    height: 25%;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.main-cadastrar-pokemons-container-formulario-status-comeco-tipagens > select{
+    width: 90%;
+    height: 23%;
+    border: none;
+    border-radius: 20px;
+    padding-left: 7px;
+    outline: none;
+    background-color: #D9D9D9;
+}
+
+.main-cadastrar-pokemons-container-formulario-status-comeco-tipagens > ul {
+    width: 85%;
+    height: 30%;
+    display: flex;
+    align-items: center;
+    list-style: none;
+    color: #fff;
+    flex-wrap: wrap;
+}
+
+.main-cadastrar-pokemons-container-formulario-status-comeco-tipagens > ul > li {
+    min-width: 30%;
+    height: 65%;
+    background-color: #EC4434;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 10px;
+    margin: 1%;
+    cursor: pointer;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+.main-cadastrar-pokemons-container-formulario-status-comeco-habilidades{
+    width: 100%;
+    height: 33%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.main-cadastrar-pokemons-container-formulario-status-comeco-habilidades > p{
+    width: 85%;
+    height: 25%;
+    font-weight: 600;
+    letter-spacing: 2px;
+
+}
+
+.main-cadastrar-pokemons-container-formulario-status-comeco-habilidades > select{
+    width: 90%;
+    height: 23%;
+    border: none;
+    border-radius: 20px;
+    padding-left: 7px;
+    outline: none;
+    background-color: #D9D9D9;
+}
+
+.main-cadastrar-pokemons-container-formulario-status-comeco-habilidades > ul {
+    width: 85%;
+    height: 30%;
+    display: flex;
+    align-items: center;
+    list-style: none;
+    color: #fff;
+    flex-wrap: wrap;
+}
+
+.main-cadastrar-pokemons-container-formulario-status-comeco-habilidades > ul > li {
+    min-width: 30%;
+    height: 65%;
+    background-color: #EC4434;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 1%;
+    padding-left: 4px;
+    padding-right: 4px;
+
+}
+
+.main-cadastrar-pokemons-container-formulario-status-comeco-fraquezas{
+    width: 100%;
+    height: 33%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.main-cadastrar-pokemons-container-formulario-status-comeco-fraquezas > p{
+    width: 85%;
+    height: 25%;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.main-cadastrar-pokemons-container-formulario-status-comeco-fraquezas > select{
+    width: 90%;
+    height: 23%;
+    border: none;
+    border-radius: 20px;
+    padding-left: 7px;
+    outline: none;
+    background-color: #D9D9D9;
+}
+
+.main-cadastrar-pokemons-container-formulario-status-comeco-fraquezas > ul {
+    width: 85%;
+    height: 30%;
+    display: flex;
+    align-items: center;
+    list-style: none;
+    color: #fff;
+    flex-wrap: wrap;
+}
+
+.main-cadastrar-pokemons-container-formulario-status-comeco-fraquezas > ul > li {
+    min-width: 30%;
+    height: 65%;
+    background-color: #EC4434;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 1%;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+.main-cadastrar-pokemons-container-formulario-status-meio{
+    width: 30%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-cadastrar-pokemons-container-formulario-status-meio-esquerda{
+    width: 50%;
     height: 90%;
     display: flex;
     align-items: center;
-    justify-content: center;
     flex-direction: column;
-
 }
 
-.main-cadastrar-pokemons-container-formulario-container-informacoes{
+.main-cadastrar-pokemons-container-formulario-status-meio-esquerda-hp{
     width: 100%;
-    height: 50%;
+    height: 33%;
+    display: flex;
+    align-items: center;
+
+    flex-direction: column;
+}
+
+.main-cadastrar-pokemons-container-formulario-status-meio-esquerda-hp > p{
+    width: 85%;
+    height: 25%;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.main-cadastrar-pokemons-container-formulario-status-meio-esquerda-hp > input{
+    width: 90%;
+    height: 23%;
+    border: none;
+    border-radius: 20px;
+    padding-left: 7px;
+    outline: none;
+    background-color: #D9D9D9;
+}
+
+.main-cadastrar-pokemons-container-formulario-status-meio-esquerda-defesa{
+    width: 100%;
+    height: 33%;
+    display: flex;
+    align-items: center;
+
+    flex-direction: column;
+}
+
+.main-cadastrar-pokemons-container-formulario-status-meio-esquerda-defesa > p{
+    width: 85%;
+    height: 25%;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.main-cadastrar-pokemons-container-formulario-status-meio-esquerda-defesa > input{
+    width: 90%;
+    height: 23%;
+    border: none;
+    border-radius: 20px;
+    padding-left: 7px;
+    outline: none;
+    background-color: #D9D9D9;
+}
+
+.main-cadastrar-pokemons-container-formulario-status-meio-esquerda-ataque{
+    width: 100%;
+    height: 33%;
+    display: flex;
+    align-items: center;
+
+    flex-direction: column;
+}
+
+.main-cadastrar-pokemons-container-formulario-status-meio-esquerda-ataque > p{
+    width: 85%;
+    height: 25%;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.main-cadastrar-pokemons-container-formulario-status-meio-esquerda-ataque > input{
+    width: 90%;
+    height: 23%;
+    border: none;
+    border-radius: 20px;
+    padding-left: 7px;
+    outline: none;
+    background-color: #D9D9D9;
+}
+
+.main-cadastrar-pokemons-container-formulario-status-meio-direita{
+    width: 50%;
+    height: 90%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.main-cadastrar-pokemons-container-formulario-status-meio-direita-atq-especial{
+    width: 100%;
+    height: 33%;
+    display: flex;
+    align-items: center;
+
+    flex-direction: column;
+}
+
+.main-cadastrar-pokemons-container-formulario-status-meio-direita-atq-especial > p{
+    width: 85%;
+    height: 25%;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.main-cadastrar-pokemons-container-formulario-status-meio-direita-atq-especial > input{
+    width: 90%;
+    height: 23%;
+    border: none;
+    border-radius: 20px;
+    padding-left: 7px;
+    outline: none;
+    background-color: #D9D9D9;
+}
+
+.main-cadastrar-pokemons-container-formulario-status-meio-direita-defesa-especial{
+    width: 100%;
+    height: 33%;
+    display: flex;
+    align-items: center;
+
+    flex-direction: column;
+}
+
+.main-cadastrar-pokemons-container-formulario-status-meio-direita-defesa-especial > p{
+    width: 85%;
+    height: 25%;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.main-cadastrar-pokemons-container-formulario-status-meio-direita-defesa-especial > input{
+    width: 90%;
+    height: 23%;
+    border: none;
+    border-radius: 20px;
+    padding-left: 7px;
+    outline: none;
+    background-color: #D9D9D9;
+}
+
+.main-cadastrar-pokemons-container-formulario-status-meio-direita-velocidade{
+    width: 100%;
+    height: 33%;
+    display: flex;
+    align-items: center;
+
+    flex-direction: column;
+}
+
+.main-cadastrar-pokemons-container-formulario-status-meio-direita-velocidade > p{
+    width: 85%;
+    height: 25%;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.main-cadastrar-pokemons-container-formulario-status-meio-direita-velocidade > input{
+    width: 90%;
+    height: 23%;
+    border: none;
+    border-radius: 20px;
+    padding-left: 7px;
+    outline: none;
+    background-color: #D9D9D9;
+}
+
+.main-cadastrar-pokemons-container-formulario-status-fim{
+    width: 30%;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
 }
 
-.main-cadastrar-pokemons-container-formulario-container-informacoes-titulo{
+.main-cadastrar-pokemons-container-formulario-status-fim > p{
     width: 100%;
-    height: 20%;
+    height: 10%;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #B7B6B6;
+    font-weight: 600;
+    letter-spacing: 2px;
     text-align: center;
 }
 
-.main-cadastrar-pokemons-container-formulario-container-informacoes-titulo > h2{
-    height: 70%;
-    width: 30%;
-    border-bottom: 2px solid #B7B6B6;
-}
-
-.main-cadastrar-pokemons-container-formulario-container-informacoes-divisao{
-    width: 100%;
-    height: 80%;
+.main-cadastrar-pokemons-container-formulario-status-fim-grafico{
+    width: 95%;
+    height: 85%;
     display: flex;
-    justify-content: center;
+    align-items: end;
+    justify-content: space-between;
 }
 
-.main-cadastrar-pokemons-container-formulario-container-informacoes-esquerda{
-    width: 50%;
+.main-cadastrar-pokemons-container-formulario-status-fim-grafico-hp{
+    width: 10%;
+    height: 1%;
+    max-height: 100%;
+    background-color: #D30300;
+    color: #ffffff00;
+}
+
+.main-cadastrar-pokemons-container-formulario-status-fim-grafico-hp > p {
+    width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
-    flex-direction: column;
-}
-
-.main-cadastrar-pokemons-container-formulario-container-informacoes-esquerda-nome{
-    width: 100%;
-    height: 30%;
-    display: flex;
-    align-items: center;
     justify-content: center;
-    flex-direction: column;
 }
 
-.main-cadastrar-pokemons-container-formulario-container-informacoes-esquerda-nome> p{
-    width: 70%;
-    height: 35%;
-    font-weight: bold;
+.main-cadastrar-pokemons-container-formulario-status-fim-grafico-hp:hover {
+    color: #ffffff;
+    transition: 0.5s ease;
 }
 
-.main-cadastrar-pokemons-container-formulario-container-informacoes-esquerda-nome> input{
-    width: 70%;
-    height: 50%;
-    border: none;
-    outline: none;
-    background-color: #D9D9D9;
+
+.main-cadastrar-pokemons-container-formulario-status-fim-grafico-ataque{
+    width: 10%;
+    height: 1%;
+    background-color: #D30300;
+    max-height: 100%;
+    color: #ffffff00;
 }
 
-.main-cadastrar-pokemons-container-formulario-container-informacoes-esquerda-tipagens{
+.main-cadastrar-pokemons-container-formulario-status-fim-grafico-ataque > p {
     width: 100%;
-    height: 30%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-
-}
-
-.main-cadastrar-pokemons-container-formulario-container-informacoes-esquerda-tipagens> p{
-    width: 70%;
-    height: 35%;
-    font-weight: bold;
-}
-
-.main-cadastrar-pokemons-container-formulario-container-informacoes-esquerda-tipagens> input{
-    width: 70%;
-    height: 50%;
-    border: none;
-    outline: none;
-    background-color: #D9D9D9;
-}
-
-.main-cadastrar-pokemons-container-formulario-container-informacoes-esquerda-fraquezas{
-    width: 100%;
-    height: 30%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-
-}
-
-.main-cadastrar-pokemons-container-formulario-container-informacoes-esquerda-fraquezas> p{
-    width: 70%;
-    height: 35%;
-    font-weight: bold;
-}
-
-.main-cadastrar-pokemons-container-formulario-container-informacoes-esquerda-fraquezas> input{
-    width: 70%;
-    height: 50%;
-    border: none;
-    outline: none;
-    background-color: #D9D9D9;
-}
-
-
-
-.main-cadastrar-pokemons-container-formulario-container-informacoes-direita{
-    width: 50%;
     height: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
-    flex-direction: column;
-
-}
-
-.main-cadastrar-pokemons-container-formulario-container-informacoes-direita-categoria{
-    width: 100%;
-    height: 30%;
-    display: flex;
-    align-items: center;
     justify-content: center;
-    flex-direction: column;
 }
 
-.main-cadastrar-pokemons-container-formulario-container-informacoes-direita-categoria> p{
-    width: 70%;
-    height: 35%;
-    font-weight: bold;
+.main-cadastrar-pokemons-container-formulario-status-fim-grafico-ataque:hover {
+    color: #ffffff;
+    transition: 0.5s ease;
 }
 
-.main-cadastrar-pokemons-container-formulario-container-informacoes-direita-categoria> input{
-    width: 70%;
-    height: 50%;
-    border: none;
-    outline: none;
-    background-color: #D9D9D9;
+.main-cadastrar-pokemons-container-formulario-status-fim-grafico-defesa{
+    width: 10%;
+    height: 1%;
+    background-color: #D30300;
+    max-height: 100%;
+    color: #ffffff00;
 }
 
-.main-cadastrar-pokemons-container-formulario-container-informacoes-direita-habilidades{
+.main-cadastrar-pokemons-container-formulario-status-fim-grafico-defesa > p {
     width: 100%;
-    height: 30%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-
-}
-
-.main-cadastrar-pokemons-container-formulario-container-informacoes-direita-habilidades> p{
-    width: 70%;
-    height: 35%;
-    font-weight: bold;
-}
-
-.main-cadastrar-pokemons-container-formulario-container-informacoes-direita-habilidades> input{
-    width: 70%;
-    height: 50%;
-    border: none;
-    outline: none;
-    background-color: #D9D9D9;
-}
-
-.main-cadastrar-pokemons-container-formulario-container-informacoes-direita-imagem{
-    width: 100%;
-    height: 30%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-
-}
-
-.main-cadastrar-pokemons-container-formulario-container-informacoes-direita-imagem> p{
-    width: 70%;
-    height: 35%;
-    font-weight: bold;
-}
-
-.main-cadastrar-pokemons-container-formulario-container-informacoes-direita-imagem> input{
-    width: 70%;
-    height: 50%;
-    border: none;
-    outline: none;
-    background-color: #D9D9D9;
-}
-
-
-.main-cadastrar-pokemons-container-formulario-container-informacoes-final{
-    width: 50%;
     height: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
-    flex-direction: column;
-
+    justify-content: center;
 }
 
-.main-cadastrar-pokemons-container-formulario-container-informacoes-final-descricao{
+.main-cadastrar-pokemons-container-formulario-status-fim-grafico-defesa:hover {
+    color: #ffffff;
+    transition: 0.5s ease;
+}
+
+
+.main-cadastrar-pokemons-container-formulario-status-fim-grafico-especial-defesa > p {
     width: 100%;
-    height: 50%;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
 }
 
-.main-cadastrar-pokemons-container-formulario-container-informacoes-final-descricao> p{
-    width: 70%;
-    height: 20%;
-    font-weight: bold;
+.main-cadastrar-pokemons-container-formulario-status-fim-grafico-especial-defesa:hover {
+    color: #ffffff;
+    transition: 0.5s ease;
 }
 
-.main-cadastrar-pokemons-container-formulario-container-informacoes-final-descricao> textarea{
-    width: 70%;
-    height: 55%;
-    border: none;
-    outline: none;
-    background-color: #D9D9D9;
+.main-cadastrar-pokemons-container-formulario-status-fim-grafico-especial-ataque{
+    width: 10%;
+    height: 1%;
+    background-color: #D30300;
+    max-height: 100%;
+    color: #ffffff00;
 }
 
-.main-cadastrar-pokemons-container-formulario-container-informacoes-final-numero-pokemon{
+.main-cadastrar-pokemons-container-formulario-status-fim-grafico-especial-ataque > p {
     width: 100%;
-    height: 35%;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
-
 }
 
-.main-cadastrar-pokemons-container-formulario-container-informacoes-final-numero-pokemon> p{
-    width: 70%;
-    height: 35%;
-    font-weight: bold;
+.main-cadastrar-pokemons-container-formulario-status-fim-grafico-especial-ataque:hover {
+    color: #ffffff;
+    transition: 0.5s ease;
 }
 
-.main-cadastrar-pokemons-container-formulario-container-informacoes-final-numero-pokemon> input{
-    width: 70%;
-    height: 50%;
-    border: none;
-    outline: none;
-    background-color: #D9D9D9;
+.main-cadastrar-pokemons-container-formulario-status-fim-grafico-especial-defesa{
+    width: 10%;
+    height: 1%;
+    background-color: #D30300;
+    max-height: 100%;
+    color: #ffffff00;
 }
 
-.main-cadastrar-pokemons-container-formulario-container-informacoes-final-genero{
+.main-cadastrar-pokemons-container-formulario-status-fim-grafico-especial-defesa > p {
     width: 100%;
-    height: 30%;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
-
 }
 
-.main-cadastrar-pokemons-container-formulario-container-informacoes-final-genero> p{
-    width: 70%;
-    height: 35%;
-    font-weight: bold;
+.main-cadastrar-pokemons-container-formulario-status-fim-grafico-especial-defesa:hover {
+    color: #ffffff;
+    transition: 0.5s ease;
 }
 
-.main-cadastrar-pokemons-container-formulario-container-informacoes-final-genero .checkbox{
-    width: 60%;
+
+.main-cadastrar-pokemons-container-formulario-status-fim-grafico-velocidade{
+    width: 10%;
+    height: 1%;
+    background-color: #D30300;
+    max-height: 100%;
+    color: #ffffff00;
+}
+
+.main-cadastrar-pokemons-container-formulario-status-fim-grafico-velocidade > p {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-cadastrar-pokemons-container-formulario-status-fim-grafico-velocidade:hover {
+    color: #ffffff;
+    transition: 0.5s ease;
+}
+
+
+.main-cadastrar-pokemons-container-formulario-status-fim-grafico-total{
+    width: 10%;
+    height: 1%;
+    background-color: #D30300;
+    max-height: 100%;
+    color: #ffffff00;
+}
+
+.main-cadastrar-pokemons-container-formulario-status-fim-grafico-total > p {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-cadastrar-pokemons-container-formulario-status-fim-grafico-total:hover {
+    color: #ffffff;
+    transition: 0.5s ease;
+}
+
+.main-cadastrar-pokemons-container-formulario-status-fim-nomes{
+    width: 100%;
+    height: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-cadastrar-pokemons-container-formulario-status-fim-nomes > ul {
+    width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-
+    font-size: 0.8rem;
 }
 
-.main-cadastrar-pokemons-container-formulario-container-informacoes-final-genero .checkbox> input{ 
-    width: 100%;
-    height: 100%;
-    border: none;
-    outline: none;
-}
-
-
-.main-cadastrar-pokemons-container-formulario-container-status{
-    width: 100%;
-    height: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-
-.main-cadastrar-pokemons-container-formulario-container-status-titulo{
-    width: 100%;
-    height: 20%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #B7B6B6;
-    text-align: center;
-}
-
-.main-cadastrar-pokemons-container-formulario-container-status-titulo > h2{
-    height: 70%;
-    width: 30%;
-    border-bottom: 2px solid #B7B6B6;
-}
-
-.main-cadastrar-pokemons-container-formulario-container-status-divisao{
+.main-cadastrar-pokemons-container-formulario-status-fim-nomes > ul > il {
     width: 100%;
     height: 100%;
     display: flex;
-    justify-content: center;
-}
-
-.main-cadastrar-pokemons-container-formulario-container-status-esquerda{
-    width: 50%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    flex-direction: column;
-}
-
-.main-cadastrar-pokemons-container-formulario-container-status-esquerda-vida{
-    width: 100%;
-    height: 30%;
-    display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
-}
 
-.main-cadastrar-pokemons-container-formulario-container-status-esquerda-vida> p{
-    width: 70%;
-    height: 35%;
-    font-weight: bold;
-}
-
-.main-cadastrar-pokemons-container-formulario-container-status-esquerda-vida> input{
-    width: 70%;
-    height: 50%;
-    border: none;
-    outline: none;
-    background-color: #D9D9D9;
-}
-
-.main-cadastrar-pokemons-container-formulario-container-status-esquerda-ataque{
-    width: 100%;
-    height: 30%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-
-}
-
-.main-cadastrar-pokemons-container-formulario-container-status-esquerda-ataque> p{
-    width: 70%;
-    height: 35%;
-    font-weight: bold;
-}
-
-.main-cadastrar-pokemons-container-formulario-container-status-esquerda-ataque> input{
-    width: 70%;
-    height: 50%;
-    border: none;
-    outline: none;
-    background-color: #D9D9D9;
-}
-
-.main-cadastrar-pokemons-container-formulario-container-status-esquerda-defesa-especial{
-    width: 100%;
-    height: 30%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-
-}
-
-.main-cadastrar-pokemons-container-formulario-container-status-esquerda-defesa-especial> p{
-    width: 70%;
-    height: 35%;
-    font-weight: bold;
-}
-
-.main-cadastrar-pokemons-container-formulario-container-status-esquerda-defesa-especial> input{
-    width: 70%;
-    height: 50%;
-    border: none;
-    outline: none;
-    background-color: #D9D9D9;
-}
-
-
-
-.main-cadastrar-pokemons-container-formulario-container-status-direita{
-    width: 50%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    flex-direction: column;
-
-}
-
-.main-cadastrar-pokemons-container-formulario-container-status-direita-defesa{
-    width: 100%;
-    height: 30%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-
-.main-cadastrar-pokemons-container-formulario-container-status-direita-defesa> p{
-    width: 70%;
-    height: 35%;
-    font-weight: bold;
-}
-
-.main-cadastrar-pokemons-container-formulario-container-status-direita-defesa> input{
-    width: 70%;
-    height: 50%;
-    border: none;
-    outline: none;
-    background-color: #D9D9D9;
-}
-
-.main-cadastrar-pokemons-container-formulario-container-status-direita-ataque-especial{
-    width: 100%;
-    height: 30%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-
-}
-
-.main-cadastrar-pokemons-container-formulario-container-status-direita-ataque-especial> p{
-    width: 70%;
-    height: 35%;
-    font-weight: bold;
-}
-
-.main-cadastrar-pokemons-container-formulario-container-status-direita-ataque-especial> input{
-    width: 70%;
-    height: 50%;
-    border: none;
-    outline: none;
-    background-color: #D9D9D9;
-}
-
-.main-cadastrar-pokemons-container-formulario-container-status-direita-velocidade{
-    width: 100%;
-    height: 30%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-
-}
-
-.main-cadastrar-pokemons-container-formulario-container-status-direita-velocidade> p{
-    width: 70%;
-    height: 35%;
-    font-weight: bold;
-}
-
-.main-cadastrar-pokemons-container-formulario-container-status-direita-velocidade> input{
-    width: 70%;
-    height: 50%;
-    border: none;
-    outline: none;
-    background-color: #D9D9D9;
-}
-
-.main-cadastrar-pokemons-container-formulario-container-status-final{
-    width: 50%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    flex-direction: column;
-
-}
-
-.main-cadastrar-pokemons-container-formulario-container-status-final-total{
-    width: 100%;
-    height: 30%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-
-.main-cadastrar-pokemons-container-formulario-container-status-final-total> p{
-    width: 70%;
-    height: 35%;
-    font-weight: bold;
-}
-
-.main-cadastrar-pokemons-container-formulario-container-status-final-total> input{
-    width: 70%;
-    height: 50%;
-    border: none;
-    outline: none;
-    background-color: #D9D9D9;
-}
-
-.main-cadastrar-pokemons-container-formulario-container-status-final-peso{
-    width: 100%;
-    height: 30%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-
-.main-cadastrar-pokemons-container-formulario-container-status-final-peso> p{
-    width: 70%;
-    height: 35%;
-    font-weight: bold;
-}
-
-.main-cadastrar-pokemons-container-formulario-container-status-final-peso> input{
-    width: 70%;
-    height: 50%;
-    border: none;
-    outline: none;
-    background-color: #D9D9D9;
-}
-
-.main-cadastrar-pokemons-container-formulario-container-status-final-altura{
-    width: 100%;
-    height: 30%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-
-.main-cadastrar-pokemons-container-formulario-container-status-final-altura> p{
-    width: 70%;
-    height: 35%;
-    font-weight: bold;
-}
-
-.main-cadastrar-pokemons-container-formulario-container-status-final-altura> input{
-    width: 70%;
-    height: 50%;
-    border: none;
-    outline: none;
-    background-color: #D9D9D9;
 }

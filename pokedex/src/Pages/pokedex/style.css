@@ -141,6 +141,7 @@
     cursor: pointer;
     flex-direction: column;
     overflow: hidden;
+    animation: aparecer 0.3s  ease-in-out;
 }
 
 .main-pokedex-container-card-branco:hover{
@@ -329,3 +330,27 @@
     font-family: 'Inter', sans-serif;
     letter-spacing: 2px;
 }
+
+.carregando{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 65%;
+}
+
+@keyframes aparecer {
+    0%{ 
+        width: 30%;
+        height: 30%;
+
+    }
+
+    100%{
+        width: 90%;
+        height: 95%;
+    }
+}
+
+

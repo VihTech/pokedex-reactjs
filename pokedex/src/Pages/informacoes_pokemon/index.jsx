@@ -12,12 +12,12 @@ export const InformacoesPokemons = (props) => {
     const pokemon_info_id = useParams()
     const [carregando, setCarregando] = useState(false)
     const [pokemon, setPokemon] = useState('')
-    const [modelSobre, setModelSobre] = useState(true)
-    const [modelHabilidades, setModelHabilidades] = useState(false)
-    const [modelFraquezas, setModelFraquezas] = useState(false)
-    const [sobreAtivo, setSobreAtivo] = useState('ativo')
-    const [habilidadesAtivo, setHabillidadesAtivo] = useState('')
-    const [fraquezasAtivo, setFraquezasAtivo] = useState('')
+    const [modelInformacoes, setModelInformacoes] = useState(true)
+    const [modelStatus, setModelStatus] = useState(false)
+    const [modelCompetencias, setModelCompetencias] = useState(false)
+    const [informacoesAtivo, setInformacoesAtivo] = useState('ativo')
+    const [statusAtivo, setHabillidadesAtivo] = useState('')
+    const [competenciasAtivo, setCompetenciasAtivo] = useState('')
     const [generoAtual, setGenero] = useState('')
 
     const pegarTodasInformacoes = async () => {
@@ -44,48 +44,48 @@ export const InformacoesPokemons = (props) => {
         }
     }
 
-    const abrindoModelSobre = () => {
-        if(modelSobre){
-            setModelSobre(false)
-            setSobreAtivo('')
+    const abrindoModelInformacoes = () => {
+        if(modelInformacoes){
+            setModelInformacoes(false)
+            setInformacoesAtivo('')
         }
         else{
-            setModelSobre(true)
-            setModelFraquezas(false)
-            setModelHabilidades(false)
-            setSobreAtivo('ativo')
+            setModelInformacoes(true)
+            setModelCompetencias(false)
+            setModelStatus(false)
+            setInformacoesAtivo('ativo')
             setHabillidadesAtivo('')
-            setFraquezasAtivo('')
+            setCompetenciasAtivo('')
         }
     }
 
-    const abrindoModelHabilidades = () => {
-        if(modelHabilidades){
-            setModelHabilidades(false)
+    const abrindoModelStatus = () => {
+        if(modelStatus){
+            setModelStatus(false)
             setHabillidadesAtivo('')
         }
         else{
-            setModelHabilidades(true)
-            setModelFraquezas(false)
-            setModelSobre(false)
-            setSobreAtivo('')
+            setModelStatus(true)
+            setModelCompetencias(false)
+            setModelInformacoes(false)
+            setInformacoesAtivo('')
             setHabillidadesAtivo('ativo')
-            setFraquezasAtivo('')
+            setCompetenciasAtivo('')
         }
     }
 
-    const abrindoModelFraquezas = () => {
-        if(modelFraquezas){
-            setModelFraquezas(false)
-            setFraquezasAtivo('')
+    const abrindoModelCompetencias = () => {
+        if(modelCompetencias){
+            setModelCompetencias(false)
+            setCompetenciasAtivo('')
         }
         else{
-            setModelFraquezas(true)
-            setModelHabilidades(false)
-            setModelSobre(false)
-            setSobreAtivo('')
+            setModelCompetencias(true)
+            setModelStatus(false)
+            setModelInformacoes(false)
+            setInformacoesAtivo('')
             setHabillidadesAtivo('')
-            setFraquezasAtivo('ativo')
+            setCompetenciasAtivo('ativo')
         }
     }
 
@@ -120,107 +120,112 @@ export const InformacoesPokemons = (props) => {
                         <div className="main-informacoes-pokemons-informacoes">
 
                             <div className="main-informacoes-pokemons-informacoes-container">
-
-                                <div className="main-informacoes-pokemons-informacoes-container-vermelho">
-
-                                    <div className="main-informacoes-pokemons-informacoes-container-vermelho-container">
-
-                                        <div className="main-informacoes-pokemons-informacoes-container-vermelho-container-navbar">
-
-                                            <ul>
-                                                <il className={sobreAtivo} onClick={abrindoModelSobre}>Sobre</il>
-                                                <il className={habilidadesAtivo} onClick={abrindoModelHabilidades}>Habilidades</il>
-                                                <il className={fraquezasAtivo} onClick={abrindoModelFraquezas}>Fraquezas</il>
-                                            </ul>
-
-                                        </div>
-
-                                            <div className="main-informacoes-pokemons-informacoes-container-vermelho-container-informacoes">
-                                                
-                                                {modelSobre&&(
-                                                    <>
-                                                    
-                                                        <div className="main-informacoes-pokemons-informacoes-container-vermelho-container-informacoes-sobre">
-                                                            <h2>{pokemon.nome}</h2>
-                                                            <p>{pokemon.descricao}</p>
-                                                        </div>
-
-                                                        <div className="main-informacoes-pokemons-informacoes-container-vermelho-container-informacoes-container">
-
-                                                            <div className="main-informacoes-pokemons-informacoes-container-vermelho-container-informacoes-container-pontos">
-
-                                                                <ul>
-                                                                    <il>Altura: {pokemon.altura}m</il>
-                                                                    <il>Peso: {pokemon.peso}kg</il>
-                                                                    <il>Especial Defesa: {pokemon.especial_defesa}</il>
-                                                                    <il>Especial Ataque: {pokemon.especial_ataque}</il>
-                                                                    <il>Categoria: {pokemon.categoria}</il>
-                                                                    <il className="genero">Gênero: <img src={generoAtual} alt="" /></il>
-                                                                </ul>
-
-                                                            </div>
-
-                                                            <div className="main-informacoes-pokemons-informacoes-container-vermelho-container-informacoes-container-grafico">
-
-                                                                <div className="main-informacoes-pokemons-informacoes-container-vermelho-container-informacoes-container-grafico-titulo">
-                                                                        <h3>STATUS</h3>
-                                                                </div>
-
-                                                                <div className="main-informacoes-pokemons-informacoes-container-vermelho-container-informacoes-container-grafico-container">
-                                                                    <div className="main-informacoes-pokemons-informacoes-container-vermelho-container-informacoes-container-grafico-container-pontos">
-                                                                        <div className="main-informacoes-pokemons-informacoes-container-vermelho-container-informacoes-container-grafico-container-pontos-coluna1 valores" style={{height: `${pokemon.hp}%`}}>
-                                                                            <p className="valor">{pokemon.hp}</p>
-                                                                        </div>
-
-                                                                        <div className="main-informacoes-pokemons-informacoes-container-vermelho-container-informacoes-container-grafico-container-pontos-coluna2 valores" style={{height: `${pokemon.ataque}%`}}>
-                                                                            <p className="valor">{pokemon.ataque}</p>
-                                                                        </div>
-                                                                        
-                                                                        <div className="main-informacoes-pokemons-informacoes-container-vermelho-container-informacoes-container-grafico-container-pontos-coluna3 valores" style={{height: `${pokemon.defesa}%`}}>
-                                                                            <p className="valor">{pokemon.defesa}</p>
-                                                                        </div>
-
-                                                                        <div className="main-informacoes-pokemons-informacoes-container-vermelho-container-informacoes-container-grafico-container-pontos-coluna4 valores" style={{height: `${pokemon.especial_ataque}%`}}>
-                                                                            <p className="valor">{pokemon.especial_ataque}</p>
-                                                                        </div>
-
-                                                                        <div className="main-informacoes-pokemons-informacoes-container-vermelho-container-informacoes-container-grafico-container-pontos-coluna5 valores" style={{height: `${pokemon.especial_defesa}%`}}>
-                                                                            <p className="valor">{pokemon.especial_defesa}</p>
-                                                                        </div>
-
-                                                                        <div className="main-informacoes-pokemons-informacoes-container-vermelho-container-informacoes-container-grafico-container-pontos-coluna6 valores" style={{height: `${pokemon.velocidade}%`}}>
-                                                                            <p className="valor">{pokemon.velocidade}</p>
-                                                                        </div>
-
-                                                                    </div>
-                                                                </div>
-
-                                                                <div className="main-informacoes-pokemons-informacoes-container-vermelho-container-informacoes-container-grafico-nomes">
-                                                                    <ul>
-                                                                        <il>HP</il>
-                                                                        <il>ATK</il>
-                                                                        <il>DF</il>
-                                                                        <il>SATK</il>
-                                                                        <il>SDF</il>
-                                                                        <il>SP</il>
-                                                                    </ul>
-                                                                </div>
-
-                                                            </div>
-
-                                                        </div>
-                                                    </>
-                                                )}
-
-                                            </div>
+                                <div className="main-informacoes-pokemons-informacoes-container-enfeite">
+                                    <div className="main-informacoes-pokemons-informacoes-container-enfeite-traco-maior"></div>
+                                    <div className="main-informacoes-pokemons-informacoes-container-enfeite-logo"></div>
+                                    <div className="main-informacoes-pokemons-informacoes-container-enfeite-traco1"></div>
+                                    <div className="main-informacoes-pokemons-informacoes-container-enfeite-traco2"></div>
+                                    <div className="main-informacoes-pokemons-informacoes-container-enfeite-titulo">
+                                        <h2>{pokemon.nome}</h2>
                                     </div>
-
-
-
                                 </div>
 
-                                <div className="main-informacoes-pokemons-informacoes-container-escuro"></div>
+                                <div className="main-informacoes-pokemons-informacoes-container-navbar">
+                                    <ul>
+                                        <li onClick={abrindoModelInformacoes} className={informacoesAtivo}>INFORMAÇÕES</li>
+                                        <li onClick={abrindoModelStatus} className={statusAtivo}>STATUS</li>
+                                        <li onClick={abrindoModelCompetencias} className={competenciasAtivo}>COMPETÊNCIAS</li>
+                                    </ul>
+                                </div>
 
+                                {modelInformacoes&&(
+                                    <div className="main-informacoes-pokemons-informacoes-container-informacoes">
+                                        <div className="main-informacoes-pokemons-informacoes-container-informacoes-descricao">
+                                            <h3>DESCRIÇÃO</h3>
+                                            <p>{pokemon.descricao}</p>
+                                        </div>
+
+                                        <div className="main-informacoes-pokemons-informacoes-container-informacoes-categoria-tipagem">
+                                            <div className="main-informacoes-pokemons-informacoes-container-informacoes-categoria-tipagem-categoria">
+                                                <h3>CATEGORIA</h3>
+                                                <p>{pokemon.categoria}</p>
+                                            </div>
+
+                                            <div className="main-informacoes-pokemons-informacoes-container-informacoes-categoria-tipagem-tipagem">
+                                                <h3>TIPAGENS</h3>
+                                                <ul>
+                                                    {pokemon.tipos.split(',').map((tipo) => (
+                                                        <li>{tipo}</li>
+                                                    ))}
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                        <div className="main-informacoes-pokemons-informacoes-container-informacoes-altura-peso-genero">
+                                            <div className="main-informacoes-pokemons-informacoes-container-informacoes-altura-peso-genero-altura">
+                                                <h3>ALTURA</h3>
+                                                <p>{pokemon.altura}m</p>
+                                            </div>
+                                            <div className="main-informacoes-pokemons-informacoes-container-informacoes-altura-peso-genero-peso">
+                                                <h3>PESO</h3>
+                                                <p>{pokemon.peso}Kg</p>
+                                            </div>
+                                            <div className="main-informacoes-pokemons-informacoes-container-informacoes-altura-peso-genero-genero">
+                                                <h3>GENERO</h3>
+                                                <img src={generoAtual} alt="" />
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                )}
+
+                                {modelStatus&&(
+                                    <div className="main-informacoes-pokemons-informacoes-container-status">
+                                        <div className="main-informacoes-pokemons-informacoes-container-status-titulo">
+                                            <h3>STATUS</h3>
+                                            <div className="main-informacoes-pokemons-informacoes-container-status-titulo-linha1"></div>
+                                            <div className="main-informacoes-pokemons-informacoes-container-status-titulo-linha2"></div>
+                                        </div>
+
+                                        <div className="main-informacoes-pokemons-informacoes-container-status-container">
+                                            <div className="main-informacoes-pokemons-informacoes-container-status-container-grafico">
+
+                                                <div className="main-informacoes-pokemons-informacoes-container-status-container-grafico-container">
+                                                    <div className="main-informacoes-pokemons-informacoes-container-status-container-grafico-coluna hp" style={{height: `${pokemon.hp}%`}}>
+                                                        <p>{pokemon.hp}</p>
+                                                    </div>
+                                                    <div className="main-informacoes-pokemons-informacoes-container-status-container-grafico-coluna  ataque" style={{height: `${pokemon.ataque}%`}}>
+                                                        <p>{pokemon.ataque}</p>
+                                                    </div>
+                                                    <div className="main-informacoes-pokemons-informacoes-container-status-container-grafico-coluna  defesa" style={{height: `${pokemon.defesa}%`}}>
+                                                        <p>{pokemon.defesa}</p>
+                                                    </div>
+                                                    <div className="main-informacoes-pokemons-informacoes-container-status-container-grafico-coluna  especial-ataque" style={{height: `${pokemon.especial_ataque}%`}}>
+                                                        <p>{pokemon.especial_ataque}</p>
+                                                    </div>
+                                                    <div className="main-informacoes-pokemons-informacoes-container-status-container-grafico-coluna  especial-defesa" style={{height: `${pokemon.especial_defesa}%`}}>
+                                                        <p>{pokemon.especial_defesa}</p></div> 
+                                                    <div className="main-informacoes-pokemons-informacoes-container-status-container-grafico-coluna  velocidade" style={{height: `${pokemon.velocidade}%`}}>
+                                                        <p>{pokemon.velocidade}</p>
+                                                    </div>
+                                                    <div className="main-informacoes-pokemons-informacoes-container-status-container-grafico-coluna  total" style={{height: `${pokemon.total}%`}}>
+                                                        <p>{pokemon.total}</p>
+                                                    </div>
+                                                </div>
+                                                <ul>
+                                                    <li>HP</li>
+                                                    <li>ATK</li>
+                                                    <li>DF</li>
+                                                    <li>SATK</li>
+                                                    <li>SDF</li>
+                                                    <li>SP</li>
+                                                    <li>TOTAL</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                )}
                             </div>
 
                         </div>

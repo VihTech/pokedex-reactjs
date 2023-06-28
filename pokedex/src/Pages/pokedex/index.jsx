@@ -140,7 +140,7 @@ export const Pokedex = (props) => {
                             
                             </>
                         ):(
-                            <h1>Carregando...</h1>
+                            <h1 className='carregando'>Carregando...</h1>
                         )}
                         </>
                         )}

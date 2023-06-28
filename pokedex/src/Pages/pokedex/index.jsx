@@ -10,7 +10,7 @@ export const Pokedex = (props) => {
     const [carregando, setCarregando] = useState(false)
     const [pokemon, setPokemon] = useState('')
     const [nome, setNome] = useState('')
-    const [listaTipos, setListaTipo] = useState('')
+    const [mensagem, setMensagem] = useState(false)
     
     const verPokemonPeloId = (pokemon_id) => {
         window.location.href ='/Informacoes_pokemon/' + pokemon_id
@@ -38,9 +38,11 @@ export const Pokedex = (props) => {
       
           if (res.data.mensagem === 'Pokemon(s) não encontrado(s)') {
             console.log('Nenhum Pokémon encontrado');
+            setMensagem(true)
           } else {
             console.log('Pokémon encontrado:', res.data);
             setPokemon(res.data)
+            setMensagem(false)
           }
         } catch (erro) {
           console.log(erro);
@@ -65,7 +67,7 @@ export const Pokedex = (props) => {
 
     useEffect(() => {
         pesquisarPeloNome()
-    },[nome])
+    },[nome, mensagem])
 
     return(
         <div>
@@ -88,52 +90,61 @@ export const Pokedex = (props) => {
                     <div className="main-pokedex-pesquisa-linha"></div>
 
                 </div>
-
-                    {carregando?(
-
+                    {mensagem?(
+                        <div className="mensagem-erro-na-pesquisa">
+                            <h1>POKÉMON NÃO ENCONTRADO</h1>
+                        </div>
+                    ):(
                         <>
-                        {
-                            pokemon.map((item, index) => (
 
-                                <>
-
-                                    <div className="main-pokedex-container-card" key={index}>
-                                        <div className="main-pokedex-container-card-branco" onClick={() =>  verPokemonPeloId(item.pokemon_info_id)}>
-                                            <div className="main-pokedex-container-card-branco-enfeite">
-                                                <div className="main-pokedex-container-card-branco-enfeite-traco-maior"></div>
-                                                <div className="main-pokedex-container-card-branco-enfeite-logo"></div>
-                                                <div className="main-pokedex-container-card-branco-enfeite-traco1"></div>
-                                                <div className="main-pokedex-container-card-branco-enfeite-traco2"></div>
-                                            </div>
-
-                                            <div className="main-pokedex-container-card-branco-logo">
-                                                <div className="main-pokedex-container-card-branco-logo-img">
-                                                    <img src={item.imagem} alt="" />
+                        {carregando?(
+    
+                            <>
+                            {
+                                pokemon.map((item, index) => (
+    
+                                    <>
+    
+                                        <div className="main-pokedex-container-card" key={index}>
+                                            <div className="main-pokedex-container-card-branco" onClick={() =>  verPokemonPeloId(item.pokemon_info_id)}>
+                                                <div className="main-pokedex-container-card-branco-enfeite">
+                                                    <div className="main-pokedex-container-card-branco-enfeite-traco-maior"></div>
+                                                    <div className="main-pokedex-container-card-branco-enfeite-logo"></div>
+                                                    <div className="main-pokedex-container-card-branco-enfeite-traco1"></div>
+                                                    <div className="main-pokedex-container-card-branco-enfeite-traco2"></div>
                                                 </div>
-                                                <div className="main-pokedex-container-card-branco-logo-nome">
-                                                    <h3>{item.nome}</h3>
-                                                    <p>#{item.numero_pokemon}</p>
-                                                </div>
-                                                <div className="main-pokedex-container-card-branco-logo-tipos">
-                                                    <ul>
-                                                        {item.tipos.split(',').map((tipo) => (
-                                                            <li>{tipo}</li>
-                                                        ))}
-                                                        
-                                                    </ul>
+    
+                                                <div className="main-pokedex-container-card-branco-logo">
+                                                    <div className="main-pokedex-container-card-branco-logo-img">
+                                                        <img src={item.imagem} alt="" />
+                                                    </div>
+                                                    <div className="main-pokedex-container-card-branco-logo-nome">
+                                                        <h3>{item.nome}</h3>
+                                                        <p>#{item.numero_pokemon}</p>
+                                                    </div>
+                                                    <div className="main-pokedex-container-card-branco-logo-tipos">
+                                                        <ul>
+                                                            {item.tipos.split(',').map((tipo) => (
+                                                                <li>{tipo}</li>
+                                                            ))}
+                                                            
+                                                        </ul>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </>
-
-                            ))
-                        }
-                        
+                                    </>
+    
+                                ))
+                            }
+                            
+                            </>
+                        ):(
+                            <h1>Carregando...</h1>
+                        )}
                         </>
-                    ):(
-                        <h1>Carregando...</h1>
-                    )}
+                        )}
+
 
                 </div>
 

@@ -10,6 +10,7 @@ export const Pokedex = (props) => {
     const [carregando, setCarregando] = useState(false)
     const [pokemon, setPokemon] = useState('')
     const [nome, setNome] = useState('')
+    const [listaTipos, setListaTipo] = useState('')
     
     const verPokemonPeloId = (pokemon_id) => {
         window.location.href ='/Informacoes_pokemon/' + pokemon_id
@@ -115,8 +116,10 @@ export const Pokedex = (props) => {
                                                 </div>
                                                 <div className="main-pokedex-container-card-branco-logo-tipos">
                                                     <ul>
-                                                        <li>Tipo1</li>
-                                                        <li>Tipo2</li>
+                                                        {item.tipos.split(',').map((tipo) => (
+                                                            <li>{tipo}</li>
+                                                        ))}
+                                                        
                                                     </ul>
                                                 </div>
                                             </div>

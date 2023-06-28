@@ -198,6 +198,10 @@ export const CadastrarInformacoes = () => {
         <> 
             <Header/>
             <main className="main-cadastrar-informacoes">
+                <div className="main-informacoes-pokemons-triangulo"></div>
+                <div className="main-informacoes-pokemons-logo"></div>
+                <div className="main-informacoes-pokemons-bolinhas1 bolinhas"></div>
+                <div className="main-informacoes-pokemons-bolinhas2 bolinhas"></div>
 
                 <div className={foco}>
                         <div className="main-cadastrar-informacoes-container-enfeite">

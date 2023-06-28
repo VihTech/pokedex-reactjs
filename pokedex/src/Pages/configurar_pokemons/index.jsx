@@ -7,6 +7,10 @@ export const ConfigurarPokemons = () => {
         <>
             <Header/>
             <main className="main-configurar-pokemons">
+                <div className="main-informacoes-pokemons-triangulo"></div>
+                <div className="main-informacoes-pokemons-logo"></div>
+                <div className="main-informacoes-pokemons-bolinhas1 bolinhas"></div>
+                <div className="main-informacoes-pokemons-bolinhas2 bolinhas"></div>
                 <div className="main-configurar-pokemons-container">
                     <div className="main-configurar-pokemons-container-enfeite">
                         <div className="main-configurar-pokemons-container-enfeite-traco-maior"></div>

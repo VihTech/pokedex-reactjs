@@ -49,6 +49,15 @@ export const Pokedex = (props) => {
         }
       };
       
+
+    const ordemAleatoria = async () => {
+        try {
+            const res = await api.get('/mostrar_aleatorio')
+            setPokemon(res.data)
+        } catch (error) {
+            console.log(error)
+        }
+    }
       
 
     useEffect(() => {
@@ -86,6 +95,7 @@ export const Pokedex = (props) => {
                             <input type="text" onChange={(e) => setNome(e.target.value)}/>
                             <div className="main-pokedex-container-img" onClick={pesquisarPeloNome}><FiSearch></FiSearch></div>
                         </div>
+                        <button onClick={ordemAleatoria}>ALEATORIO</button>
                     </div>
                     <div className="main-pokedex-pesquisa-linha"></div>
 

@@ -39,7 +39,7 @@ const Inicio = () => {
                                 <p className='paragrafo'>
                                 Embarque nessa aventura de conseguir todos os pokemons!
                                 Aqui você poderá identificar com mais detalhes o pokemon assim
-                                adquirido. Aperte aqui para fazer seu <NavLink to="#">login</NavLink>. Caso ainda não
+                                adquirido. Aperte aqui para fazer seu <NavLink to="/Logar_usuario">login</NavLink>. Caso ainda não
                                 possua uma conta, aperte aqui para fazer parte da nossa jornada
                                 fazendo seu <NavLink to="/Cadastrar_usuario">cadastro</NavLink>.
                                 </p>

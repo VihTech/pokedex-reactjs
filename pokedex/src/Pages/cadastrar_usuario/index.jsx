@@ -1,8 +1,9 @@
+import { NavLink } from "react-router-dom"
 import Header from "../../Components/Header"
 import "./style.css"
 import {BsPersonCircle, BsFillPersonFill, BsEyeFill, BsEyeSlashFill} from 'react-icons/bs'
 
-export const LogarUsuario = () =>{
+export const CadastrarUsuario = () =>{
     return(
         <div>
             <Header/>
@@ -21,7 +22,7 @@ export const LogarUsuario = () =>{
                             <p>Já possui uma conta?</p>
                             </div>
                             <div className="main-cadastrar-usuario-conteiner-vermelho-butao">
-                                <button>Logar</button>
+                                <NavLink to="/Logar_usuario">Logar</NavLink>
                             </div>
                         </div>
                     </div>

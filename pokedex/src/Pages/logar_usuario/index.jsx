@@ -3,11 +3,33 @@ import './style.css'
 import { NavLink } from 'react-router-dom'
 import {BsPersonCircle, BsFillPersonFill, BsEyeFill, BsEyeSlashFill} from 'react-icons/bs'
 import { useState } from 'react'
+import { api } from '../../Services/API'
+import { loginToken, setarIdUsuario, setarNomeUsuario, setarTipoUsuario } from "../../Services/localstorage"
 
 export const LogarUsuario = () => {
     const [mostrar, setMostrar] = useState(false)
     const [mostrarSenha, setMostrarSenha] = useState(<BsEyeSlashFill/>)
     const [tipoSenha, setTipoSenha] = useState('password')
+    const [nome, setNome] = useState('')
+    const [senha, setSenha] = useState('')
+
+    const logarUsuario = async () => {
+        const data = {
+            nome,
+            senha
+        }
+
+        try {
+            const res = await api.post("/login", data)
+            console.log(res.data)
+            setarIdUsuario(res.data.usuarioId)
+            setarNomeUsuario(res.data.novoUsuario)
+            loginToken(res.data.token)
+            
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     const verASenha = () => {
         if (mostrar){
@@ -63,7 +85,7 @@ export const LogarUsuario = () => {
 
                                             <div className="main-logar-usuario-container-informacoes-container-formulario-nome-titulo-container">
                                                 <div className="main-logar-usuario-container-informacoes-container-formulario-nome-titulo-container-svg"><BsFillPersonFill/></div>
-                                                <input type="text" />
+                                                <input type="text" onChange={(e) => setNome(e.target.value)}/>
                                             </div>
 
                                         </div>
@@ -77,7 +99,7 @@ export const LogarUsuario = () => {
                                             <div className="main-logar-usuario-container-informacoes-container-formulario-senha-titulo-container">
 
                                                 <div className="main-logar-usuario-container-informacoes-container-formulario-senha-titulo-container-svg" onClick={verASenha}>{mostrarSenha}</div>
-                                                <input type={tipoSenha} />
+                                                <input type={tipoSenha} onChange={(e) => setSenha(e.target.value)} />
 
                                             </div>
 
@@ -89,7 +111,7 @@ export const LogarUsuario = () => {
                                 </div>
                                 <div className="main-logar-usuario-container-informacoes-container-bnt">
 
-                                    <button>Logar</button>
+                                    <button onClick={logarUsuario}>Logar</button>
 
                                 </div>
                             </div>

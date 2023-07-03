@@ -79,6 +79,7 @@
     z-index: 1000;
     flex-direction: column;
     color: #fff;
+    animation: aparecer 0.3s  ease-in-out;
 }
 
 .main-informacoes-pokemons-imagens-container > img{
@@ -87,6 +88,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.main-informacoes-pokemons-imagens-container:hover{
+    width: 78%;
+    height: 88%;
 }
 
 .main-informacoes-pokemons-imagens-container > p{
@@ -556,4 +562,17 @@
 
 .espacovazio{
     height: 65%;
+}
+
+@keyframes aparecer {
+    0%{ 
+        width: 0%;
+        height: 0%;
+
+    }
+
+    100%{
+        width: 75%;
+        height: 85%;
+    }
 }

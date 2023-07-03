@@ -2,8 +2,55 @@ import { NavLink } from "react-router-dom"
 import Header from "../../Components/Header"
 import "./style.css"
 import {BsPersonCircle, BsFillPersonFill, BsEyeFill, BsEyeSlashFill} from 'react-icons/bs'
+import { useState } from "react"
+import { api } from "../../Services/API"
 
 export const CadastrarUsuario = () =>{
+    const [mostrarSenha, setMostrarSenha] = useState(<BsEyeSlashFill/>)
+    const [mostrarConfirmarSenha, setMostrarConfirmarSenha] = useState(<BsEyeSlashFill/>)
+    const [tipoSenha, setTipoSenha] = useState('password')
+    const [tipoConfirmarSenha, setTipoConfirmarSenha] = useState('password')
+    const [nome, setNome] = useState('')
+    const [senha, setSenha] = useState('')
+    const [confirmSenha, setConfirmSenha] = useState('')
+
+    const cadastrarUsuario = async () => {
+        const data = {
+            nome,
+            senha,
+            confirmSenha
+        }
+
+        try {
+            const res = await api.post("/cadastro/usuario", data)
+            console.log(res.data)
+            
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const verSenha = () => {
+        if (tipoSenha === 'password'){
+            setMostrarSenha(<BsEyeFill/>)
+            setTipoSenha('text')
+        }else{
+            setMostrarSenha(<BsEyeSlashFill/>)
+            setTipoSenha('password')
+        }
+    }
+
+    const verConfirmarSenha = () => {
+        if (tipoConfirmarSenha === 'password'){
+            setMostrarConfirmarSenha(<BsEyeFill/>)
+            setTipoConfirmarSenha('text')
+        }else{
+            setMostrarConfirmarSenha(<BsEyeSlashFill/>)
+            setTipoConfirmarSenha('password')
+        }
+    }
+
+
     return(
         <div>
             <Header/>
@@ -44,7 +91,7 @@ export const CadastrarUsuario = () =>{
 
                                             <div className="main-cadastrar-usuario-conteiner-informacoes-container-formulario-nome-titulo-container">
                                                 <div className="main-cadastrar-usuario-conteiner-informacoes-container-formulario-nome-titulo-container-svg"><BsFillPersonFill/></div>
-                                                <input type="text" />
+                                                <input type="text" onChange={(e) => setNome(e.target.value)}/>
                                             </div>
 
                                         </div>
@@ -57,8 +104,8 @@ export const CadastrarUsuario = () =>{
 
                                             <div className="main-cadastrar-usuario-conteiner-informacoes-container-formulario-senha-titulo-container">
 
-                                                <div className="main-cadastrar-usuario-conteiner-informacoes-container-formulario-senha-titulo-container-svg"><BsEyeSlashFill/></div>
-                                                <input type="password" />
+                                                <div className="main-cadastrar-usuario-conteiner-informacoes-container-formulario-senha-titulo-container-svg" onClick={verSenha}>{mostrarSenha}</div>
+                                                <input type={tipoSenha} onChange={(e) => setSenha(e.target.value)}/>
 
                                             </div>
 
@@ -74,8 +121,8 @@ export const CadastrarUsuario = () =>{
 
                                             <div className="main-cadastrar-usuario-conteiner-informacoes-container-formulario-confirmasenha-titulo-container">
 
-                                                <div className="main-cadastrar-usuario-conteiner-informacoes-container-formulario-confirmasenha-titulo-container-svg"><BsEyeSlashFill/></div>
-                                                <input type="password" />
+                                                <div className="main-cadastrar-usuario-conteiner-informacoes-container-formulario-confirmasenha-titulo-container-svg" onClick={verConfirmarSenha}>{mostrarConfirmarSenha}</div>
+                                                <input type={tipoConfirmarSenha} onChange={(e) => setConfirmSenha(e.target.value)}/>
 
                                             </div>
 
@@ -85,7 +132,7 @@ export const CadastrarUsuario = () =>{
                                 </div>
                                 <div className="main-cadastrar-usuario-conteiner-informacoes-container-bnt">
 
-                                    <button>Cadastrar</button>
+                                    <button onClick={cadastrarUsuario}>Cadastrar</button>
 
                                 </div>
                             </div>

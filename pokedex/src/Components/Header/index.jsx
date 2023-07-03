@@ -3,12 +3,23 @@ import {BsPersonCircle} from 'react-icons/bs'
 import { TbSearch } from 'react-icons/tb'
 import {GiHamburgerMenu} from 'react-icons/gi'
 import { NavLink } from 'react-router-dom'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { pegarNomeUsuario } from '../../Services/localstorage';
 
 const Header = () => {
 
     const [menu, setMenu] = useState(false)
     const [aberto, setAberto] = useState('container-menu-hamburguer-lista ativoMenu')
+
+    const [usuario, setUsuario] = useState('');
+
+    useEffect(() => {
+        const nomeUsuario = pegarNomeUsuario();
+        setUsuario(nomeUsuario);
+      }, [usuario]);
+      
+      
+    
 
     const abrirMenu = () => {
         if(menu){
@@ -36,18 +47,25 @@ const Header = () => {
                 <div className="container-logo-img"></div>
             </div>
             <div className="container-lista">
-                <NavLink to="/">Inicio</NavLink>
-                <NavLink to="/Pokedex">Pokedex</NavLink>
-                <NavLink to="/Configurar_pokemons">Cadastrar</NavLink>
-                <NavLink to="/Colaboradores">Colaboradores</NavLink>
+                {usuario !== null?(
+                    <>
+                        <NavLink to="/">Inicio</NavLink>
+                        <NavLink to="/Pokedex">Pokedex</NavLink>
+                        <NavLink to="/Configurar_pokemons">Cadastrar</NavLink>
+                        <NavLink to="/Colaboradores">Colaboradores</NavLink>
+                    </>
+
+                ):(
+                    <>
+                        <NavLink to="/">Inicio</NavLink>
+                        <NavLink to="/Pokedex">Pokedex</NavLink>
+                        <NavLink to="/Colaboradores">Colaboradores</NavLink>
+                    </>
+                )}
             </div>
 
             <div className="container-menu-hamburguer">
                 <GiHamburgerMenu onClick={abrirMenu}/>
-                
-                {/* {menu &&(
-                    
-                )} */}
 
             </div>
             <div className="container-pesquisa-logar">

@@ -4,6 +4,7 @@ import "./style.css"
 import {BsPersonCircle, BsFillPersonFill, BsEyeFill, BsEyeSlashFill} from 'react-icons/bs'
 import { useState } from "react"
 import { api } from "../../Services/API"
+import { Mensagem } from '../../Components/Mensagem'
 
 export const CadastrarUsuario = () =>{
     const [mostrarSenha, setMostrarSenha] = useState(<BsEyeSlashFill/>)
@@ -13,6 +14,8 @@ export const CadastrarUsuario = () =>{
     const [nome, setNome] = useState('')
     const [senha, setSenha] = useState('')
     const [confirmSenha, setConfirmSenha] = useState('')
+    const [mensagemAviso, setMensagemAviso] = useState('')
+    const [tipo,setTipomsg] = useState('')
 
     const cadastrarUsuario = async () => {
         const data = {
@@ -22,8 +25,26 @@ export const CadastrarUsuario = () =>{
         }
 
         try {
+            if(mensagemAviso){
+                setTipomsg('')
+                setMensagemAviso('')
+            }
+
             const res = await api.post("/cadastro/usuario", data)
-            console.log(res.data)
+
+            if(res.data.Mensagem === 400){
+                setTipomsg('erro')
+                setMensagemAviso(res.data.Mensagem)
+            }else{
+
+                setTipomsg('sucesso')
+                setMensagemAviso(res.data.Mensagem)
+                setNome('')
+                setConfirmSenha('')
+                setSenha('')
+
+            }
+            
             
         } catch (error) {
             console.log(error)
@@ -91,7 +112,7 @@ export const CadastrarUsuario = () =>{
 
                                             <div className="main-cadastrar-usuario-conteiner-informacoes-container-formulario-nome-titulo-container">
                                                 <div className="main-cadastrar-usuario-conteiner-informacoes-container-formulario-nome-titulo-container-svg"><BsFillPersonFill/></div>
-                                                <input type="text" onChange={(e) => setNome(e.target.value)}/>
+                                                <input type="text" value={nome} onChange={(e) => setNome(e.target.value)}/>
                                             </div>
 
                                         </div>
@@ -105,7 +126,7 @@ export const CadastrarUsuario = () =>{
                                             <div className="main-cadastrar-usuario-conteiner-informacoes-container-formulario-senha-titulo-container">
 
                                                 <div className="main-cadastrar-usuario-conteiner-informacoes-container-formulario-senha-titulo-container-svg" onClick={verSenha}>{mostrarSenha}</div>
-                                                <input type={tipoSenha} onChange={(e) => setSenha(e.target.value)}/>
+                                                <input type={tipoSenha} value={senha} onChange={(e) => setSenha(e.target.value)}/>
 
                                             </div>
 
@@ -122,13 +143,19 @@ export const CadastrarUsuario = () =>{
                                             <div className="main-cadastrar-usuario-conteiner-informacoes-container-formulario-confirmasenha-titulo-container">
 
                                                 <div className="main-cadastrar-usuario-conteiner-informacoes-container-formulario-confirmasenha-titulo-container-svg" onClick={verConfirmarSenha}>{mostrarConfirmarSenha}</div>
-                                                <input type={tipoConfirmarSenha} onChange={(e) => setConfirmSenha(e.target.value)}/>
+                                                <input type={tipoConfirmarSenha} value={confirmSenha} onChange={(e) => setConfirmSenha(e.target.value)}/>
 
                                             </div>
 
                                         </div>
 
                                     </div>
+                                </div>
+
+                                <div className="main-cadastrar-usuario-conteiner-informacoes-container-msg">
+                                    {mensagemAviso&&
+                                        <Mensagem tipo={tipo} msg={mensagemAviso}/>
+                                    }
                                 </div>
                                 <div className="main-cadastrar-usuario-conteiner-informacoes-container-bnt">
 

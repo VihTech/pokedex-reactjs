@@ -71,10 +71,22 @@ const Header = () => {
             <div className="container-pesquisa-logar">
 
                 <div className="container-pesquisa-logar-divisao">
-                    <NavLink to='/Pokedex' className="container-pesquisar"><TbSearch/></NavLink>
-                    <div className='container-logar'>
-                        <NavLink to="/Cadastrar_usuario"><BsPersonCircle className='icon-logar'/></NavLink>
-                    </div>
+                    {usuario !== null?(
+                        <>
+                        <NavLink to='/Pokedex' className="container-pesquisar"><TbSearch/></NavLink>
+                        <div className='container-logar'>
+                            <NavLink to="/Cadastrar_usuario"><BsPersonCircle className='icon-logar'/></NavLink>
+                        </div>
+                        </>
+
+                    ):(
+                        <>
+                        <NavLink to='/Pokedex' className="container-pesquisar"><TbSearch/></NavLink>
+                        <div className='container-logar'>
+                            <NavLink to="/Logar_usuario"><BsPersonCircle className='icon-logar'/></NavLink>
+                        </div>
+                        </>
+                    )}
                 </div>
             </div>
         </header>

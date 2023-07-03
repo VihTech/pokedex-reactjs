@@ -1,0 +1,130 @@
+.main-cadastrar-evolucoes{
+    width: 100%;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    font-family: 'Inter', sans-serif;
+}
+
+.main-cadastrar-evolucoes-logo{
+    width: 15%;
+    height: 34%;
+    background-image: url('../../Imagens/Logo-pokemon-design-element.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 90%;
+    position: absolute;
+    top: 4%;
+    right: 52%;
+}
+
+.bolinhas{
+    width: 10%;
+    height:15%;
+    background-image: url('../../Imagens/bolinhas.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 90%;
+    position: absolute;
+
+}
+
+.main-cadastrar-evolucoes-bolinhas1{
+    top: 3%;
+    left: 1%;
+}
+
+.main-cadastrar-evolucoes-bolinhas2{
+    bottom: 3%;
+    left: 50%;
+}
+
+.main-cadastrar-evolucoes-container{
+    width: 80%;
+    height: 85%;
+    background-color: #fff;
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.main-cadastrar-evolucoes-container-enfeite{
+    width: 100%;
+    height: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+}
+
+.main-cadastrar-evolucoes-container-enfeite-traco1{
+    width: 20%;
+    height: 5%;
+    position: absolute;
+    background-color: #EC4434;
+    left: 15%;
+    top: 25%;
+}
+
+.main-cadastrar-evolucoes-container-enfeite-traco2{
+    width: 15%;
+    height: 5%;
+    position: absolute;
+    background-color: #EC4434;
+    left: 15%;
+    top: 35%;
+}
+
+.main-cadastrar-evolucoes-container-enfeite-logo{
+    width: 17%;
+    height: 100%;
+    background-color: #EC4434;
+    position: absolute;
+    left: 0;
+    border-radius: 0px 0px 20px 0px;
+    background-image: url('../../Imagens/logo_cadastro.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 40%;
+
+}
+
+.main-cadastrar-evolucoes-container-enfeite-traco-maior{
+    width: 100%;
+    height: 20%;
+    background-color: #EC4434;
+}
+
+.main-cadastrar-evolucoes-container-enfeite-titulo{
+    width: 100%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.main-cadastrar-evolucoes-container-enfeite-titulo > h2 {
+    width: 50%;
+    text-align: center;
+    border-bottom: 3px solid #EC4434;
+    font-weight: 700;
+    Letter-spacing: 5px;
+    font-size: 1.7rem;
+}
+
+.main-cadastrar-evolucoes-container-cadastro{
+    width: 100%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

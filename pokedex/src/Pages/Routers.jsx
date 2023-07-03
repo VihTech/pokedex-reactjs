@@ -9,6 +9,7 @@ import { CadastrarPokemons } from './cadastrar_pokemons'
 import { ConfigurarPokemons } from './configurar_pokemons'
 import { CadastrarInformacoes } from './cadastrar_informacoes'
 import { LogarUsuario } from './logar_usuario'
+import { CadastrarEvolucoes } from './cadastrar_evolucoes'
 
 const RotasExistente = props => (
     <main>
@@ -22,6 +23,7 @@ const RotasExistente = props => (
             <Route  exact path="/Configurar_pokemons" element={<ConfigurarPokemons/>}></Route>
             <Route  exact path="/Cadastrar_Informacoes" element={<CadastrarInformacoes/>}></Route>
             <Route  exact path="/Logar_usuario" element={<LogarUsuario/>}></Route>
+            <Route  exact path="/Cadastrar_evolucoes" element={<CadastrarEvolucoes/>}></Route>
         </Routes>
     </main>
 )

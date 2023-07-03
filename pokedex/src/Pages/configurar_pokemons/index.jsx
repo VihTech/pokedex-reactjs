@@ -27,6 +27,13 @@ export const ConfigurarPokemons = () => {
                             <h3>SELECIONE O QUE VOÊ DESEJA CADASTRAR</h3>
                         </div>
                         <div className="main-configurar-pokemons-container-cards-card">
+                        <div className="main-configurar-pokemons-container-cards-card-container">
+                                <NavLink to='/Cadastrar_evolucoes' className="main-configurar-pokemons-container-cards-card-container-img">
+                                    <p>EVOLUÇÕES</p>
+                                </NavLink>
+                                
+                            </div>
+
                             <div className="main-configurar-pokemons-container-cards-card-container">
                                 <NavLink to='/Cadastrar_pokemons' className="main-configurar-pokemons-container-cards-card-container-img">
                                     <p>POKEMON</p>
@@ -38,8 +45,9 @@ export const ConfigurarPokemons = () => {
                                 <NavLink to='/Cadastrar_informacoes' className="main-configurar-pokemons-container-cards-card-container-img">
                                     <p>INFORMAÇÕES</p>
                                 </NavLink>
-                                
+                            
                             </div>
+
                         </div>
                     </div>
 

@@ -2,9 +2,10 @@ import Header from '../../Components/Header'
 import './style.css'
 import { NavLink } from 'react-router-dom'
 import {BsPersonCircle, BsFillPersonFill, BsEyeFill, BsEyeSlashFill} from 'react-icons/bs'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { api } from '../../Services/API'
-import { loginToken, setarIdUsuario, setarNomeUsuario, setarTipoUsuario } from "../../Services/localstorage"
+import { loginToken, setarIdUsuario, setarNomeUsuario, setarTipoUsuario, pegarNomeUsuario } from "../../Services/localstorage"
+import { Mensagem } from '../../Components/Mensagem'
 
 export const LogarUsuario = () => {
     const [mostrar, setMostrar] = useState(false)
@@ -12,6 +13,13 @@ export const LogarUsuario = () => {
     const [tipoSenha, setTipoSenha] = useState('password')
     const [nome, setNome] = useState('')
     const [senha, setSenha] = useState('')
+    const [usuario, setUsuario] = useState('')
+    const [mensagemAviso, setMensagemAviso] = useState('')
+    const [tipo,setTipomsg] = useState('')
+
+    const pegarUsuario = () => {
+        setUsuario(pegarNomeUsuario())
+    }
 
     const logarUsuario = async () => {
         const data = {
@@ -20,11 +28,26 @@ export const LogarUsuario = () => {
         }
 
         try {
+            if(mensagemAviso){
+                setTipomsg('')
+                setMensagemAviso('')
+            }
             const res = await api.post("/login", data)
-            console.log(res.data)
-            setarIdUsuario(res.data.usuarioId)
-            setarNomeUsuario(res.data.novoUsuario)
-            loginToken(res.data.token)
+
+            if(res.data.status === 400){
+                setTipomsg('erro')
+                setMensagemAviso(res.data.Mensagem)
+                console.log(res.data.Mensagem)
+            
+            }else{
+                setTipomsg('sucesso')
+                setMensagemAviso('Logado com sucesso!')
+                setNome('')
+                setSenha('')
+                setarIdUsuario(res.data.usuarioId)
+                setarNomeUsuario(res.data.novoUsuario)
+                loginToken(res.data.token)
+            }
             
         } catch (error) {
             console.log(error)
@@ -43,6 +66,10 @@ export const LogarUsuario = () => {
             setTipoSenha('password')
         }
     }
+    
+    useEffect(() => {
+        pegarUsuario()
+    }, [usuario])
 
     return(
         <>
@@ -60,12 +87,29 @@ export const LogarUsuario = () => {
                             <div className="main-logar-usuario-container-vermelho-container-titulo">
                             <h3>Seja bem vindo(a) de volta!</h3>
                             </div>
-                            <div className="main-logar-usuario-container-vermelho-container-texto">
-                            <p>Não possui uma conta?</p>
-                            </div>
-                            <div className="main-logar-usuario-container-vermelho-butao">
-                                <NavLink to="/Cadastrar_usuario">Cadastrar</NavLink>
-                            </div>
+
+                            {usuario !== null?(
+                                <>           
+                                    <div className="main-logar-usuario-container-vermelho-container-texto">
+                                        
+                                        <p>Não possui uma conta?</p>
+                                    </div>
+                                    <div className="main-logar-usuario-container-vermelho-butao">
+                                        <NavLink to="/Cadastrar_usuario">Cadastrar</NavLink>
+                                    </div>
+                                </>
+                            ):(
+                                <>           
+                                    <div className="main-logar-usuario-container-vermelho-container-texto">
+                                        
+                                        <p>Não possui uma conta?</p>
+                                    </div>
+                                    <div className="main-logar-usuario-container-vermelho-butao">
+                                        <h5 to="/Cadastrar_usuario">Fale com um de nossos colaboradores</h5>
+
+                                    </div>
+                                </>
+                            )}
                         </div>
                     </div>
 
@@ -85,7 +129,7 @@ export const LogarUsuario = () => {
 
                                             <div className="main-logar-usuario-container-informacoes-container-formulario-nome-titulo-container">
                                                 <div className="main-logar-usuario-container-informacoes-container-formulario-nome-titulo-container-svg"><BsFillPersonFill/></div>
-                                                <input type="text" onChange={(e) => setNome(e.target.value)}/>
+                                                <input type="text" value={nome} onChange={(e) => setNome(e.target.value)}/>
                                             </div>
 
                                         </div>
@@ -99,7 +143,7 @@ export const LogarUsuario = () => {
                                             <div className="main-logar-usuario-container-informacoes-container-formulario-senha-titulo-container">
 
                                                 <div className="main-logar-usuario-container-informacoes-container-formulario-senha-titulo-container-svg" onClick={verASenha}>{mostrarSenha}</div>
-                                                <input type={tipoSenha} onChange={(e) => setSenha(e.target.value)} />
+                                                <input type={tipoSenha} value={senha} onChange={(e) => setSenha(e.target.value)} />
 
                                             </div>
 
@@ -109,10 +153,14 @@ export const LogarUsuario = () => {
                                     </div>
 
                                 </div>
+                                <div className="main-logar-usuario-container-informacoes-container-msg">
+                                    {mensagemAviso&&
+                                        <Mensagem tipo={tipo} msg={mensagemAviso}/>
+                                    }
+                                    
+                                </div>
                                 <div className="main-logar-usuario-container-informacoes-container-bnt">
-
                                     <button onClick={logarUsuario}>Logar</button>
-
                                 </div>
                             </div>
                         </div>

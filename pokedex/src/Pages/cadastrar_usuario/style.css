@@ -330,6 +330,13 @@
     border: none;
 }
 
+.main-cadastrar-usuario-conteiner-informacoes-container-msg{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .main-cadastrar-usuario-conteiner-informacoes-container-bnt{
     width: 100%;
     height: 15%;

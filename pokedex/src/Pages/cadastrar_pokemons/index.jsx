@@ -174,7 +174,7 @@ export const CadastrarPokemons = () =>{
             
             const res = await api.post('/cadastrar/pokemon', data)
             if(res.data.Mensagem === 400){
-                setTipo('erro')
+                setTipomsg('erro')
                 setMensagemAviso(res.data.Mensagem)
             }else{
                 setTipomsg('sucesso')

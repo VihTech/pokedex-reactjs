@@ -7,6 +7,7 @@ import { EvolicaoContainer } from "../../Components/Evolucao"
 
 export const CadastrarEvolucoes = () => {
     const [modelPesquisa, setModelPesquisa] = useState(false)
+    const [modelPesquisaFilho, setModelPesquisaFilho] = useState(false)
     const [divPosition, setDivPosition] = useState({ top: 0, left: 0 })
     const [pokemon, setPokemon] = useState('')
     const [nome, setNome] = useState('')
@@ -35,8 +36,19 @@ export const CadastrarEvolucoes = () => {
         }
     }
 
+    const abrirModelPesquisaFilho = (event) => {
+        setModelPesquisaFilho(true)
+        setModelPesquisa(false)
+        const posX = event.clientX;
+        const posY = event.clientY;
+
+        setDivPosition({ top: posY, left: posX });
+        console.log(divPosition)
+    }
+
     const abrirModelPesquisar = (event) => {
         setModelPesquisa(true)
+        setModelPesquisaFilho(false)
         const posX = event.clientX;
         const posY = event.clientY;
 
@@ -46,6 +58,10 @@ export const CadastrarEvolucoes = () => {
 
     const fecharModelPesquisar = () => {
         setModelPesquisa(false)
+    }
+
+    const fecharModelPesquisarFilho = () => {
+        setModelPesquisaFilho(false)
     }
 
 
@@ -118,6 +134,38 @@ export const CadastrarEvolucoes = () => {
 
                     </div>
                 )}
+
+                {modelPesquisaFilho&&(
+
+                    <div className="main-cadastrar-evolucoes-pesquisa"
+                    style={{
+                    top: (divPosition.top - 110),
+                    left: (divPosition.left +  20)}}>
+
+                        <div className="main-cadastrar-evolucoes-pesquisa-traco">
+                            <p onClick={fecharModelPesquisarFilho}>X</p>
+                        </div>
+
+                        <div className="main-cadastrar-evolucoes-pesquisa-barra">
+                            <p>Procurar Pokémon</p>
+                            <div className="main-cadastrar-evolucoes-pesquisa-barra-input">
+                                <input type="text" onChange={(e) => setNome(e.target.value)}/>
+                                <FiSearch/>
+                            </div>
+                        </div>
+
+                        <div className="main-cadastrar-evolucoes-pesquisa-linha"></div>
+
+                        <div className="main-cadastrar-evolucoes-pesquisa-lista">
+                            <ul>
+                                {pokemon.map((item, index) => (
+                                    <li onClick={() => pegarIdPokemon(item.pokemon_info_id)}>{item.nome} <span>#{item.numero_pokemon}</span></li>
+                                ))}
+                            </ul>
+                        </div>
+
+                    </div>
+                )}
                 <div className="main-cadastrar-evolucoes-logo"></div>
                 <div className="main-cadastrar-evolucoes-bolinhas1 bolinhas"></div>
                 <div className="main-cadastrar-evolucoes-bolinhas2 bolinhas"></div>
@@ -133,40 +181,37 @@ export const CadastrarEvolucoes = () => {
                         </div>
                     </div>
 
-                    <div className="main-cadastrar-evolucoes-container-cadastro">
-                        <EvolicaoContainer/>
+                    <div className="main-cadastrar-evolucoes-container-evolucoes">
+                        <EvolicaoContainer onClick={abrirModelPesquisar}/>
 
-                        <div className="main-cadastrar-evolucoes-container-cadastro-evolucoes">
-                            <div className="main-cadastrar-evolucoes-container-cadastro-evolucoes-lista">
-                                <EvolicaoContainer/>
-                                
-                                <div className="main-cadastrar-evolucoes-container-cadastro-evolucoes-lista-evolucoes">
-                                    <EvolicaoContainer/>
-                                    <EvolicaoContainer/>
-                                    <EvolicaoContainer/>
-
-                                    <div className="main-cadastrar-evolucoes-container-cadastro-evolucoes-lista-evolucoes-lista"></div>
-
-                                </div>
-
-                            </div>
-                            <div className="main-cadastrar-evolucoes-container-cadastro-evolucoes-lista">
-                                <EvolicaoContainer/>
-                                <div className="main-cadastrar-evolucoes-container-cadastro-evolucoes-lista-evolucoes">
-                                    <EvolicaoContainer/>
-
-                                </div>
-                                
-                            </div>
-                            <div className="main-cadastrar-evolucoes-container-cadastro-evolucoes-lista">
-                                <EvolicaoContainer/>
-                                <div className="main-cadastrar-evolucoes-container-cadastro-evolucoes-lista-evolucoes">
-
-                                </div>
-                        
-                            </div>
+                        <div className="tracos">
+                            <ul>
+                                <il className="impar"></il>
+                                <il></il>
+                                <il className="impar"></il>
+                                <il></il>
+                                <il className="impar"></il>
+                                <il></il>
+                                <il className="impar"></il>
+                                <il></il>
+                                <il className="impar"></il>
+                                <il></il>
+                                <il className="impar"></il>
+                                <il></il>
+                            </ul>
                         </div>
+
+                        <EvolicaoContainer onClick={abrirModelPesquisaFilho}/>
                     </div>
+
+                    <div className="main-cadastrar-evolucoes-container-msg">
+                        
+                    </div>
+
+                    <div className="main-cadastrar-evolucoes-container-btn">
+                        <button>CADASTRAR</button>
+                    </div>
+
                 </div>
             </main>
         

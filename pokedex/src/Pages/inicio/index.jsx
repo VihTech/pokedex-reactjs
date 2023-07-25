@@ -2,14 +2,15 @@ import Header from '../../Components/Header'
 import './style.css'
 import { NavLink } from 'react-router-dom'
 import { AiFillGithub } from 'react-icons/ai'
-const Inicio = () => {
-    const pokemon_info_id = window.location.href
-    console.log(pokemon_info_id[0])
+import {IoIosArrowDown} from 'react-icons/io'
+
+const Inicio = () => { 
 
     return(
         <div>
             <Header/>
             <main className='main-inicio'>
+                <IoIosArrowDown/>
                 <div className="main-inicio-logo"></div>
                 <div className="main-inicio-bolinhas1 bolinhas-main"></div>
                 <div className="main-inicio-bolinhas2 bolinhas-main"></div>

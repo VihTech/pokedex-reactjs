@@ -1,0 +1,58 @@
+.evolucao-container{
+    min-width: 12vw;
+    min-height: 26vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.evolucao-container-branco{
+    width: 10vw;
+    height: 21vh;
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background-color: #fff;
+    border: 3px solid #EC4434;
+}
+
+.evolucao-container-branco-vermelho{
+    width: 95%;
+    height: 95%;
+    background-color: #EC4434;
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.evolucao-container-branco-btn{
+    background-color: #fff;
+    width: 30%;
+    height: 30%;
+    border-radius: 30px;
+    position: absolute;
+    right: -15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #EC4434;
+}
+
+
+.evolucao-container-branco-btn > button{
+    width: 90%;
+    height: 90%;
+    background-color: #EC4434;
+    border: none;
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 2rem;
+    border-radius: 30px;
+    cursor: pointer;
+}

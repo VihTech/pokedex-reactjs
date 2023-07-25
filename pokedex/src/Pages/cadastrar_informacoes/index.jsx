@@ -13,17 +13,12 @@ export const CadastrarInformacoes = () => {
     const [modelTipagem, setModelTipagem] = useState(false)
     const [modelCategoria, setModelCategoria] = useState(false)
     const [categoria, setCategoria] = useState('')
-    const [imagem_categoria, setImagemCategoria] = useState('')
-    const [descricaoCategoria, setDescricaoCategoria] = useState('')
     const [fraqueza, setFraqueza] = useState('')
     const [imagem_fraqueza, setImagemFraqueza] = useState('')
-    const [descricaoFraqueza, setDescricaoFraqueza] = useState('')
     const [habilidade, setHabilidade] = useState('')
-    const [imagem_habilidade, setImagemHabilidade] = useState('')
     const [descricaoHabilidade, setDescricaoHabilidade] = useState('')
     const [tipagem, setTipagem] = useState('')
     const [imagem_tipagem, setImagemTipagem] = useState('')
-    const [descricaoTipagem, setDescricaoTipagem] = useState('')
 
     const abrirModelFraquezas = () => {
         setMensagemAviso(false)
@@ -73,8 +68,6 @@ export const CadastrarInformacoes = () => {
            
         const data = {
             categoria,
-            imagem_categoria,
-            descricao: descricaoCategoria
         }
         try {
             if(mensagemAviso){
@@ -92,8 +85,6 @@ export const CadastrarInformacoes = () => {
                 setTipomsg('sucesso')
                 setMensagemAviso(res.data.Mensagem)
                 setCategoria('')
-                setImagemCategoria('')
-                setDescricaoCategoria('')
             }
         } catch (error) {
             console.log(error)
@@ -103,7 +94,6 @@ export const CadastrarInformacoes = () => {
     const cadastrarHabilidade = async () => {
         const data = {
             habilidade,
-            imagem_habilidade,
             descricao: descricaoHabilidade
         }
         
@@ -123,7 +113,6 @@ export const CadastrarInformacoes = () => {
                 setTipomsg('sucesso')
                 setMensagemAviso(res.data.Mensagem)
                 setHabilidade('')
-                setImagemHabilidade('')
                 setDescricaoHabilidade('')
 
             }
@@ -136,7 +125,6 @@ export const CadastrarInformacoes = () => {
         const data = {
             fraqueza,
             imagem_fraqueza,
-            descricao: descricaoFraqueza
         }
         
         try {
@@ -155,7 +143,6 @@ export const CadastrarInformacoes = () => {
                 setMensagemAviso(res.data.Mensagem)
                 setFraqueza('')
                 setImagemFraqueza('')
-                setDescricaoFraqueza('')
 
             }
         } catch (error) {
@@ -166,8 +153,7 @@ export const CadastrarInformacoes = () => {
     const cadastrarTipagem = async () => {
         const data = {
             tipagem,
-            imagem_tipagem,
-            descricao: descricaoTipagem
+            imagem_tipagem
         }
         
         try {
@@ -186,7 +172,6 @@ export const CadastrarInformacoes = () => {
                 setMensagemAviso(res.data.Mensagem)
                 setTipagem('')
                 setImagemTipagem('')
-                setDescricaoTipagem('')
 
             }
         } catch (error) {
@@ -276,19 +261,7 @@ export const CadastrarInformacoes = () => {
                                         <div className="main-cadastrar-informacoes-editar-categoria-container-campos-esquerda-nome">
                                             <p>NOME DA CATEGORIA</p>
                                             <input type="text" onChange={(e) => setCategoria(e.target.value)} value={categoria}/>
-                                        </div>
-
-                                        <div className="main-cadastrar-informacoes-editar-categoria-container-campos-esquerda-imagem">
-                                            <p>IMAGEM</p>
-                                            <input type="text" onChange={(e) => setImagemCategoria(e.target.value)} value={imagem_categoria}/>
-                                        </div>
-
-                                    </div>
-                                    <div className="main-cadastrar-informacoes-editar-categoria-container-campos-direita">
-                                        <div className="main-cadastrar-informacoes-editar-categoria-container-campos-esquerda-descricao">
-                                                <p>DESCRIÇÃO</p>
-                                                <textarea type="text" onChange={(e) => setDescricaoCategoria(e.target.value)} value={descricaoCategoria}/>
-                                        </div>
+                                        </div>                           
                                     </div>
 
                                 </div>
@@ -341,12 +314,6 @@ export const CadastrarInformacoes = () => {
                                     </div>
 
                                 </div>
-                                <div className="main-cadastrar-informacoes-editar-categoria-container-campos-direita">
-                                    <div className="main-cadastrar-informacoes-editar-categoria-container-campos-esquerda-descricao">
-                                            <p>DESCRIÇÃO</p>
-                                            <textarea type="text" onChange={(e) => setDescricaoFraqueza(e.target.value)} value={descricaoFraqueza}/>
-                                    </div>
-                                </div>
 
                             </div>
 
@@ -391,11 +358,6 @@ export const CadastrarInformacoes = () => {
                                     <div className="main-cadastrar-informacoes-editar-categoria-container-campos-esquerda-nome">
                                         <p>NOME DA HABILIDADE</p>
                                         <input type="text" onChange={(e) => setHabilidade(e.target.value)} value={habilidade}/>
-                                    </div>
-
-                                    <div className="main-cadastrar-informacoes-editar-categoria-container-campos-esquerda-imagem">
-                                        <p>IMAGEM</p>
-                                        <input type="text" onChange={(e) => setImagemHabilidade(e.target.value)} value={imagem_habilidade}/>
                                     </div>
 
                                 </div>
@@ -458,13 +420,7 @@ export const CadastrarInformacoes = () => {
                                     </div>
 
                                 </div>
-                                <div className="main-cadastrar-informacoes-editar-categoria-container-campos-direita">
-                                    <div className="main-cadastrar-informacoes-editar-categoria-container-campos-esquerda-descricao">
-                                            <p>DESCRIÇÃO</p>
-                                            <textarea type="text" onChange={(e) => setDescricaoTipagem(e.target.value)} value={descricaoTipagem}/>
-                                    </div>
-                                </div>
-
+                              
                             </div>
 
                         </div>

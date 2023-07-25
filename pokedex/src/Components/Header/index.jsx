@@ -17,9 +17,6 @@ const Header = () => {
         const nomeUsuario = pegarNomeUsuario();
         setUsuario(nomeUsuario);
       }, [usuario]);
-      
-      
-    
 
     const abrirMenu = () => {
         if(menu){

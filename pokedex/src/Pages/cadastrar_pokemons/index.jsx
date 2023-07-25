@@ -151,7 +151,6 @@ export const CadastrarPokemons = () =>{
             peso,
             categoria,
             genero,
-            total,
             hp,
             ataque,
             defesa,

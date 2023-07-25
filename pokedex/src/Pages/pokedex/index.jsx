@@ -1,9 +1,12 @@
 import './style.css'
 import Header from '../../Components/Header'
 import { api } from '../../Services/API'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import {FiSearch} from 'react-icons/fi'
 import { TbPolaroid } from 'react-icons/tb'
+import {BsTrash3Fill} from 'react-icons/bs'
+import {BiEdit} from 'react-icons/bi'
+import { pegarNomeUsuario } from '../../Services/localstorage';
 
 export const Pokedex = (props) => {
 
@@ -11,6 +14,53 @@ export const Pokedex = (props) => {
     const [pokemon, setPokemon] = useState('')
     const [nome, setNome] = useState('')
     const [mensagem, setMensagem] = useState(false)
+    const [usuario, setUsuario] = useState('')
+    const [opcoes, setOpcoes] = useState(true)
+    const [idOpcoes, setIdOpcoes] = useState('')
+    const [confirmacao, setConfirmacao] = useState(false)
+    const [mainContainer, setMainContainer] = useState('main-pokedex')
+    const teste = useRef(null)
+
+    const abrirModuloConfirmacao = () => {
+        if (confirmacao){
+            setConfirmacao(false)
+            setMainContainer('main-pokedex')
+        }else{
+            setConfirmacao(true)
+            setMainContainer('main-pokedex opacidade')
+        }
+    }
+
+    const apagarPokemon = async () => {
+        try {
+            const res = await api.delete('/excluir/pokemon/' + idOpcoes)
+            console.log(res)
+            setConfirmacao(false)
+            setMainContainer('main-pokedex')
+
+        } catch (error) {
+            console.log(error)
+            console.log(idOpcoes)
+            setConfirmacao(false)
+            setMainContainer('main-pokedex')
+        }
+    }
+
+    const abrirModuloOpcoes = (id) => {
+        if (opcoes){
+            setOpcoes(false)
+            setIdOpcoes('')
+            
+        }else{
+            setOpcoes(true)
+            setIdOpcoes(id)
+            console.log(id)
+        }
+    }
+
+    const pegandoDiv = () => {
+        console.log(teste.current)
+    }
     
     const verPokemonPeloId = (pokemon_id) => {
         window.location.href ='/Informacoes_pokemon/' + pokemon_id
@@ -21,7 +71,6 @@ export const Pokedex = (props) => {
 
         try {
             const res = await api.get('/mostrar/pokemon')
-            console.log(res.data)
             setPokemon(res.data)
             setCarregando(true)
             
@@ -62,7 +111,7 @@ export const Pokedex = (props) => {
 
     useEffect(() => {
         pegarPokemons()
-    }, [])
+    }, [pokemon])
 
     useEffect(() => {
         document.addEventListener('keydown', detectKeyDown, true)
@@ -76,12 +125,44 @@ export const Pokedex = (props) => {
 
     useEffect(() => {
         pesquisarPeloNome()
+        setOpcoes(false)
     },[nome, mensagem])
+
+    useEffect(() => {
+        const nomeUsuario = pegarNomeUsuario();
+        setUsuario(nomeUsuario);
+        console.log(nomeUsuario)
+      }, [usuario]);
 
     return(
         <div>
             <Header/>
-            <main className="main-pokedex">
+
+            {confirmacao&&(
+                    <div className="main-pokedex-container-confirmacao">
+                        <div className="main-pokedex-container-confirmacao-enfeite">
+                            <div className="main-pokedex-container-confirmacao-enfeite-traco-maior"></div>                                               
+                            <div className="main-pokedex-container-confirmacao-enfeite-logo"></div>
+                            <div className="main-pokedex-container-confirmacao-enfeite-traco1"></div>
+                            <div className="main-pokedex-container-confirmacao-enfeite-traco2"></div>
+
+                            <div className="main-pokedex-container-confirmacao-enfeite-titulo">
+                                <h2>ATENÇÃO</h2>
+                            </div>
+                        </div>
+                        <div className="main-pokedex-container-confirmacao-texto">
+                            <h3>DESEJA APAGAR ESSE POKEMON?</h3>
+                        </div>
+                        <div className="main-pokedex-container-confirmacao-opcoes">
+                            
+                            <button className='btn-esquerdo' onClick={apagarPokemon}>CONFIRMAR</button>
+                            <button className='btn-direito' onClick={abrirModuloConfirmacao}>CANCELAR</button>
+                        </div>
+                    </div>
+                )}
+            <main className={mainContainer}>
+
+                
                 <div className="main-pokedex-container">
 
                 <div className="main-pokedex-titulo">
@@ -116,9 +197,41 @@ export const Pokedex = (props) => {
                                     <>
     
                                         <div className="main-pokedex-container-card" key={index}>
+                                            {item.pokemon_info_id === idOpcoes&&(
+                                                <>
+                                                    {opcoes&&(
+                                                        <>
+                                                            <div className="main-pokedex-container-card-opcoes">
+                                                                <div className="main-pokedex-container-card-opcoes-traco">
+                                                                    <p onClick={abrirModuloOpcoes}>X</p>
+                                                                </div>
+                                                                <div className="main-pokedex-container-card-opcoes-opcoes">
+                                                                        <div className="main-pokedex-container-card-opcoes-opcoes-apagar" onClick={abrirModuloConfirmacao}>
+                                                                            <p>Apagar</p>
+                                                                            <BsTrash3Fill/>
+                                                                        </div>
+                                                                        <div className="main-pokedex-container-card-opcoes-opcoes-editar">
+                                                                            <p>Editar</p>
+                                                                            <BiEdit/>
+                                                                        </div>
+                                                                </div>
+                                                            </div>
+                                                        </>
+                                                    )}
+                                                </>
+
+                                            )}
+
+                                            {usuario&&(
+                                                <div className="main-pokedex-container-card-branco-enfeite-traco-maior-opcoes" onClick={() =>  abrirModuloOpcoes(item.pokemon_info_id)}>
+                                                    <div className="main-pokedex-container-card-branco-enfeite-traco-maior-opcoes-ponto1 opcoes-ponto"></div>
+                                                    <div className="main-pokedex-container-card-branco-enfeite-traco-maior-opcoes-ponto2 opcoes-ponto"></div>
+                                                    <div className="main-pokedex-container-card-branco-enfeite-traco-maior-opcoes-ponto3 opcoes-ponto"></div>
+                                                </div>
+                                            )}
                                             <div className="main-pokedex-container-card-branco" onClick={() =>  verPokemonPeloId(item.pokemon_info_id)}>
                                                 <div className="main-pokedex-container-card-branco-enfeite">
-                                                    <div className="main-pokedex-container-card-branco-enfeite-traco-maior"></div>
+                                                    <div className="main-pokedex-container-card-branco-enfeite-traco-maior"></div>                                               
                                                     <div className="main-pokedex-container-card-branco-enfeite-logo"></div>
                                                     <div className="main-pokedex-container-card-branco-enfeite-traco1"></div>
                                                     <div className="main-pokedex-container-card-branco-enfeite-traco2"></div>

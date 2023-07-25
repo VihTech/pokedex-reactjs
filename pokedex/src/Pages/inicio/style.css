@@ -1,5 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
 
+@keyframes setinha {
+    0%{
+        bottom: 0;
+
+    }
+
+    50%{
+        bottom: 3%;
+
+    }
+
+    100%{
+        bottom: 0;
+        
+    }
+}
+
 .main-inicio{
     height: 90vh;
     width: 100%;
@@ -10,7 +27,15 @@
     position: relative;
     font-family: 'Inter', sans-serif;
     flex-direction: column;
+}
 
+.main-inicio > svg{
+    position: fixed;
+    width: 8%;
+    height: 8%;
+    bottom: 0;
+    z-index: 1;
+    animation: setinha 0.8s ease-out infinite;
 }
 
 .main-inicio::-webkit-scrollbar {

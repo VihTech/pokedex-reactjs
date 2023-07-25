@@ -97,7 +97,9 @@ const Header = () => {
                     {usuario !== null?(
                         <>
                         <NavLink to='/Pokedex' className="container-pesquisar"><TbSearch/></NavLink>
+                        <NavLink className="icon-logar-link" to="/Cadastrar_usuario"><BsPersonCircle className='icon-logar'/></NavLink>
                         <div className='container-logar'>
+                            
                             <div className="container-logar-logout"><FiLogOut className='icon-logout' onClick={finalizarSessao}/></div>
                         </div>
                         </>

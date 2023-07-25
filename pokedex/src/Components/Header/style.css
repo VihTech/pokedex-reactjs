@@ -143,6 +143,21 @@
     justify-content: end;
 }
 
+.icon-logar-link{
+    height: 80%;
+    width: 20%;
+    text-decoration: none;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.icon-logar-link:hover{
+    color: #a7a5a5;
+}
+
 .container-pesquisar{
     width: 20%;
     height: 61%;
@@ -153,6 +168,10 @@
     border-radius: 12px;
     margin-right: 5%;
 
+}
+
+.container-pesquisar:hover{
+    background-color: #ffffffce;
 }
 
 .container-pesquisar > svg{
@@ -194,6 +213,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.container-logar-logout:hover{
+    color: #EC4434;
 }
 
 .icon-logar{

@@ -47,6 +47,7 @@ export const LogarUsuario = () => {
                 setarIdUsuario(res.data.usuarioId)
                 setarNomeUsuario(res.data.novoUsuario)
                 loginToken(res.data.token)
+                window.location.href = '/'
             }
             
         } catch (error) {

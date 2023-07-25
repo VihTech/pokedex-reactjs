@@ -175,8 +175,18 @@
 
 }
 
-
 .container-logar > a{
+    height: 100%;
+    width: 100%;
+    text-decoration: none;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.container-logar-logout{
     height: 100%;
     width: 100%;
     text-decoration: none;
@@ -192,9 +202,17 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 }
 
-
+.icon-logout{
+    width: 70%;
+    height: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
 
 
 @media screen and (max-width: 414px) {

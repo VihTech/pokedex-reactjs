@@ -2,9 +2,11 @@ import './style.css'
 import {BsPersonCircle} from 'react-icons/bs'
 import { TbSearch } from 'react-icons/tb'
 import {GiHamburgerMenu} from 'react-icons/gi'
+import {FiLogOut} from 'react-icons/fi'
 import { NavLink } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import { pegarNomeUsuario } from '../../Services/localstorage';
+import { desconectar, pegarIdUsuario, pegarToken, pegarNomeUsuario } from "../../Services/localstorage"
+import { api } from '../../Services/API'
 
 const Header = () => {
 
@@ -12,11 +14,6 @@ const Header = () => {
     const [aberto, setAberto] = useState('container-menu-hamburguer-lista ativoMenu')
 
     const [usuario, setUsuario] = useState('');
-
-    useEffect(() => {
-        const nomeUsuario = pegarNomeUsuario();
-        setUsuario(nomeUsuario);
-      }, [usuario]);
 
     const abrirMenu = () => {
         if(menu){
@@ -27,6 +24,35 @@ const Header = () => {
             setAberto('container-menu-hamburguer-lista')
         }
     }
+
+    const finalizarSessao = async () =>{
+
+        const data ={
+            headers:{
+                token:pegarToken()
+            }
+        }
+
+        console.log(data)
+
+        try{
+
+            const res = await api.post('/deletar/token',data)
+
+            if(res.status === 200){
+                desconectar()
+                window.location.href = '/'
+            }
+
+        }catch(err){
+            console.log(err)
+        }
+    }
+
+    useEffect(() => {
+        const nomeUsuario = pegarNomeUsuario();
+        setUsuario(nomeUsuario);
+      }, [usuario]);
 
     return(
         <header className='container'>
@@ -72,7 +98,7 @@ const Header = () => {
                         <>
                         <NavLink to='/Pokedex' className="container-pesquisar"><TbSearch/></NavLink>
                         <div className='container-logar'>
-                            <NavLink to="/Cadastrar_usuario"><BsPersonCircle className='icon-logar'/></NavLink>
+                            <div className="container-logar-logout"><FiLogOut className='icon-logout' onClick={finalizarSessao}/></div>
                         </div>
                         </>
 

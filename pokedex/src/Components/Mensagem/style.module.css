@@ -8,6 +8,7 @@
     align-items: center;
     justify-content: center;
     border-radius: 10px;
+    position: relative;
     
 }
 
@@ -24,5 +25,10 @@
 }
 
 .erro{
-    background-color: #D9D9D9;
+    
+    background-color: #D30300;
+}
+
+.erro > p{
+    color: #fff;
 }

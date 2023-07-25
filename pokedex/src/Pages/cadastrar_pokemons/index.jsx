@@ -172,9 +172,10 @@ export const CadastrarPokemons = () =>{
             }
             
             const res = await api.post('/cadastrar/pokemon', data)
-            if(res.data.Mensagem === 400){
+            if(res.data.status === 400){
                 setTipomsg('erro')
                 setMensagemAviso(res.data.Mensagem)
+                console.log('eroror')
             }else{
                 setTipomsg('sucesso')
                 setMensagemAviso(res.data.Mensagem)
@@ -210,6 +211,9 @@ export const CadastrarPokemons = () =>{
 
         } catch (error) {
             console.log(error)
+            setTipomsg('erro')
+            setMensagemAviso('Há campos vazios!')
+            console.log('eroror')
     }}
 
     const pegarCategorias = async () => {

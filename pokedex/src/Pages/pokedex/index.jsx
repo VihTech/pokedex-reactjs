@@ -19,7 +19,27 @@ export const Pokedex = (props) => {
     const [idOpcoes, setIdOpcoes] = useState('')
     const [confirmacao, setConfirmacao] = useState(false)
     const [mainContainer, setMainContainer] = useState('main-pokedex')
+    const [moduloFiltro, setModuloFiltro] = useState(false)
+    const [mostrarTipagem, setMostrarTipagem] = useState('')
+    const [carregandoTipagem, setCarregandTipagem] = useState(false)
+    const [mostrarFraquezas, setMostrarFraquezas] = useState('')
+    const [carregandoFraquezas, setCarregandoFraquezas] = useState(false)
+    const [mostrarHabilidades, setMostrarHabilidades] = useState('')
+    const [carregandoHabilidades, setCarregandoHabilidades] = useState(false)
+    const [mostrarCategorias, setMostrarCategorias] = useState('')
+    const [carregandoCategoria, setCarregandoCategoria] = useState(false)
+    const [marcarTipo, setMarcarTipo] = useState('modulo-filtro-container-tipos-container-nome')
+    const [marcarFraqueza, setMarcarFraqueza] = useState('modulo-filtro-container-fraquezas-container-nome')
+    const [opcaoMarcada, setOpcaoMarcada] = useState('')
     const teste = useRef(null)
+
+    const abrirModuloFiltro = () => {
+        if (moduloFiltro){
+            setModuloFiltro(false)
+        }else{
+            setModuloFiltro(true)
+        }
+    }
 
     const abrirModuloConfirmacao = () => {
         if (confirmacao){
@@ -37,6 +57,7 @@ export const Pokedex = (props) => {
             console.log(res)
             setConfirmacao(false)
             setMainContainer('main-pokedex')
+            window.location.href = '/Pokedex'
 
         } catch (error) {
             console.log(error)
@@ -107,11 +128,83 @@ export const Pokedex = (props) => {
             console.log(error)
         }
     }
-      
+
+    const pegarTipagem = async () => {
+        try {
+            const res = await api.get('/mostrar/tipagem')
+            setMostrarTipagem(res.data)
+            setCarregandTipagem(true)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const pegarFraquezas = async () => {
+        try {
+            const res = await api.get('/mostrar/fraquezas')
+            setMostrarFraquezas(res.data)
+            setCarregandoFraquezas(true)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const pegarHabilidades = async () => {
+        try {
+            const res = await api.get('/mostrar/habilidades')
+            setMostrarHabilidades(res.data)
+            setCarregandoHabilidades(true)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const pegarCategorias = async () => {
+        try {
+            const res = await api.get('/mostrar/categoria')
+            setMostrarCategorias(res.data)
+            setCarregandoCategoria(true)
+        } catch (error) {
+            console.log(error)
+        }
+
+    }
+
+    const filtrarTipo = async (nome) => {
+
+        const data = {tipagem: nome}
+        try {
+            
+            const res = await api.post("/mostrar/por_tipagem", data)
+            setPokemon(res.data)
+            setModuloFiltro(false)
+            setMarcarTipo('modulo-filtro-container-tipo-container-nome-marcado')
+            setOpcaoMarcada(nome)
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const filtrarFraquezas= async (nome) => {
+
+        const data = {fraqueza: nome}
+        try {
+            
+            const res = await api.post("/mostrar/por_fraquezas", data)
+            setPokemon(res.data)
+            setModuloFiltro(false)
+            setMarcarFraqueza('modulo-filtro-container-fraquezas-container-nome-marcado')
+            setOpcaoMarcada(nome)
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     useEffect(() => {
         pegarPokemons()
-    }, [pokemon])
+    }, [])
 
     useEffect(() => {
         document.addEventListener('keydown', detectKeyDown, true)
@@ -133,6 +226,22 @@ export const Pokedex = (props) => {
         setUsuario(nomeUsuario);
         console.log(nomeUsuario)
       }, [usuario]);
+
+    useEffect (() => {
+        pegarTipagem()
+    }, [])
+
+    useEffect (() => {
+        pegarFraquezas()
+    }, [])
+
+    useEffect (() => {
+        pegarHabilidades()
+    }, [])
+
+    useEffect (() => {
+        pegarCategorias()
+    }, [])
 
     return(
         <div>
@@ -160,7 +269,103 @@ export const Pokedex = (props) => {
                         </div>
                     </div>
                 )}
+
+            
             <main className={mainContainer}>
+
+                {moduloFiltro&&(
+                    <div className="modulo-filtro">
+                        <div className="modulo-filtro-container">
+                            <div className="modulo-filtro-container-enfeite">
+                                <div className="modulo-filtro-container-enfeite-traco-maior"></div>                                               
+                                <div className="modulo-filtro-container-enfeite-logo"></div>
+                                <div className="modulo-filtro-container-enfeite-traco1"></div>
+                                <div className="modulo-filtro-container-enfeite-traco2"></div>
+
+                                <div className="modulo-filtro-container-enfeite-titulo">
+                                    <h2>FILTRO</h2>
+                                </div>
+                            </div>
+
+                            <div className="modulo-filtro-container-tipos">
+                                <h3>TIPOS</h3>
+
+                                <div className="modulo-filtro-container-tipos-container">
+                                    {carregandoTipagem?(
+                                        mostrarTipagem.map((item) => (
+                                            <>
+                                                {item.tipo === opcaoMarcada?(
+                                                    <>
+                                                    <div className={marcarTipo}>{item.tipo}</div>
+                                                    </>
+                                                ):(
+                                                    <div className='modulo-filtro-container-tipos-container-nome' onClick={() =>  filtrarTipo(item.tipo)}>{item.tipo}</div>
+                                                )}
+                                                
+                                            </>
+                                            ))
+                                    ):(
+                                        <p>Carregando</p>
+                                    )}
+                                </div>
+                            </div>
+
+                            <div className="modulo-filtro-container-fraquezas">
+                                <h3>FRAQUEZAS</h3>
+
+                                <div className="modulo-filtro-container-fraquezas-container">
+                                    {carregandoFraquezas?(
+                                            mostrarFraquezas.map((item) => (
+                                                <>  
+                                                    {item.fraqueza === opcaoMarcada?(
+                                                        <div className={marcarFraqueza}>{item.fraqueza}</div>
+                                                    ):(
+                                                        <div className='modulo-filtro-container-fraquezas-container-nome' onClick={() =>  filtrarFraquezas(item.fraqueza)}>{item.fraqueza}</div>
+                                                    )}
+                                                    
+                                                </>
+                                            ))
+                                        ):(
+                                            <p>Carregando</p>
+                                    )}
+                                </div>
+                            </div>
+
+                            <div className="modulo-filtro-container-habilidades">
+                                <h3>HABILIDADES</h3>
+
+                                <div className="modulo-filtro-container-habilidades-container">
+                                    {carregandoHabilidades?(
+                                        mostrarHabilidades.map((item) => (
+                                            <div className='modulo-filtro-container-habilidades-container-nome'>{item.habilidade}</div>
+                                        ))
+                                    ):(
+                                        <p>Carregando</p>
+                                    )}
+                                </div>
+                            </div>
+                                        
+                            
+                            <div className="modulo-filtro-container-categoria">
+                                <h3>CATEGORIA</h3>
+
+                                <div className="modulo-filtro-container-categoria-container">
+                                    {carregandoCategoria?(
+                                        mostrarCategorias.map((item) => (
+                                            <div className='modulo-filtro-container-categoria-container-nome'>{item.categoria}</div>
+                                        ))
+                                    ):(
+                                        <p>Carregando</p>
+                                    )}
+                                </div>
+                            </div>
+
+                        
+                        </div>
+                    </div>
+                )
+
+                }
 
                 
                 <div className="main-pokedex-container">
@@ -177,6 +382,15 @@ export const Pokedex = (props) => {
                             <div className="main-pokedex-container-img" onClick={pesquisarPeloNome}><FiSearch></FiSearch></div>
                         </div>
                         <button onClick={ordemAleatoria}>ALEATORIO</button>
+                        <div className="main-pokedex-pesquisa-container-filtro">
+
+                            <div className="main-pokedex-pesquisa-container-filtro-btn" onClick={abrirModuloFiltro}>
+                                <div className="main-pokedex-pesquisa-container-filtro-traco1"></div>
+                                <div className="main-pokedex-pesquisa-container-filtro-traco2"></div>
+                                <div className="main-pokedex-pesquisa-container-filtro-traco3"></div>
+
+                            </div>
+                        </div>
                     </div>
                     <div className="main-pokedex-pesquisa-linha"></div>
 

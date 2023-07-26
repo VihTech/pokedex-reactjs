@@ -87,10 +87,6 @@ export const CadastrarUsuario = () =>{
                             <h3>Cadastre-se para adicionar novos pokemons!</h3>
                             </div>
                             <div className="main-cadastrar-usuario-conteiner-vermelho-container-texto">
-                            <p>Já possui uma conta?</p>
-                            </div>
-                            <div className="main-cadastrar-usuario-conteiner-vermelho-butao">
-                                <NavLink to="/Logar_usuario">Logar</NavLink>
                             </div>
                         </div>
                     </div>

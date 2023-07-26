@@ -258,11 +258,18 @@ export const CadastrarPokemons = () =>{
     }
 
     const adicionandoTipagem = () => {
-        if (tipagem !== 'none' && !listaTipo.includes(tipagem)){
-            const novaTipagem = tipagem
-            const novaListaTipagem = [...listaTipo, novaTipagem];
-            setListaTipo(novaListaTipagem);
+        if (listaTipo.length === 2){
+            setTipomsg('erro')
+            setMensagemAviso('No máximo duas tipagens!')
+        }else{
+            if (tipagem !== 'none' && !listaTipo.includes(tipagem)){
+                const novaTipagem = tipagem
+                const novaListaTipagem = [...listaTipo, novaTipagem];
+                setListaTipo(novaListaTipagem);
+            }
+
         }
+
     }
 
     const adicionandoHabilidades = () => {

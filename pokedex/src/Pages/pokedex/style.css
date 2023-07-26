@@ -114,6 +114,355 @@ left: 25%;
 
 /* =============================================== */
 
+.modulo-filtro{
+  width: 30%;
+  height: 70%;
+  position: absolute;
+  z-index: 1;
+  right: 10%;
+  top: 33%;
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.modulo-filtro-container{
+  width: 90%;
+  height: 95%;
+  min-height: 95%;
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 4px 4px 6px 0px rgba(0, 0, 0, 0.25);
+  animation: aparecerConfirmacao 0.2s ease-in;
+  position: relative;
+  overflow:scroll;
+  flex-direction: column;
+}
+
+.modulo-filtro-container::-webkit-scrollbar {
+  width: 10px; /* width of the entire scrollbar */
+}
+
+.modulo-filtro-container::-webkit-scrollbar-thumb {
+  background-color: #EC4434; /* color of the scroll thumb */
+  border-radius: 20px; /* roundness of the scroll thumb */
+}
+
+/* =============================================== */
+
+.modulo-filtro-container-enfeite {
+  width: 100%;
+  height: 25%;
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+}
+
+.modulo-filtro-container-enfeite-traco-maior {
+width: 100%;
+height: 30%;
+background-color: #EC4434;
+display: flex;
+align-items: center;
+justify-content: end;
+position: absolute;
+top: 0;
+}
+
+.modulo-filtro-container-enfeite-logo {
+width: 25%;
+height: 65%;
+background-color: #EC4434;
+background-image: url("../../Imagens/logo_cadastro.png");
+background-repeat: no-repeat;
+background-position: center;
+background-size: 40%;
+position: absolute;
+display: flex;
+align-items: center;
+justify-content: center;
+left: 0;
+top: 0;
+}
+
+.modulo-filtro-container-enfeite-traco1 {
+width: 40%;
+height: 5%;
+background-color: #EC4434;
+position: absolute;
+top: 40%;
+left: 25%;
+}
+
+.modulo-filtro-container-enfeite-linha-maior{
+  width: 100%;
+  height: 20%;
+  background-color: #EC4434;
+}
+
+.modulo-filtro-container-enfeite-traco2 {
+width: 20%;
+height: 5%;
+background-color: #EC4434;
+position: absolute;
+top: 50%;
+left: 25%;
+}
+
+.modulo-filtro-container-enfeite-titulo{
+  width: 100%;
+  height: 90%;
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  
+}
+
+.modulo-filtro-container-enfeite-titulo > h2 {
+  width: 50%;
+  text-align: center;
+  border-bottom: 3px solid #EC4434;
+  font-family: "Inter", sans-serif;
+  font-weight: 900;
+  Letter-spacing: 5px;
+  font-size: 1.2rem;
+}
+
+/* =============================================== */
+
+.modulo-filtro-container-tipos{
+  width: 100%;
+  height: 30%;
+  display: flex;
+  align-items: center;
+  justify-content:end;
+  flex-direction: column;
+}
+
+.modulo-filtro-container-tipos > h3{
+  width: 100%;
+  height: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modulo-filtro-container-tipos-container{
+  width: 80%;
+  height: 70%;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.modulo-filtro-container-tipos-container-nome{
+  width: auto;
+  height: 30%;
+  background-color: #C0BEBE;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  border-radius: 20px;
+  padding-left: 4%;
+  padding-right: 4%;
+  cursor: pointer;
+}
+
+/* ===================================================== */
+
+.modulo-filtro-container-fraquezas{
+  width: 100%;
+  height: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.modulo-filtro-container-fraquezas > h3{
+  width: 100%;
+  height: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modulo-filtro-container-fraquezas-container{
+  width: 80%;
+  height: 70%;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.modulo-filtro-container-fraquezas-container-nome{
+  width: auto;
+  height: 30%;
+  background-color: #C0BEBE;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  border-radius: 20px;
+  padding-left: 4%;
+  padding-right: 4%;
+  cursor: pointer;
+}
+
+/* ===================================================== */
+
+/* ===================================================== */
+
+.modulo-filtro-container-habilidades{
+  width: 100%;
+  height: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.modulo-filtro-container-habilidades > h3{
+  width: 100%;
+  height: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modulo-filtro-container-habilidades-container{
+  width: 80%;
+  height: 70%;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.modulo-filtro-container-habilidades-container-nome{
+  width: auto;
+  height: 30%;
+  background-color: #C0BEBE;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  border-radius: 20px;
+  padding-left: 4%;
+  padding-right: 4%;
+  cursor: pointer;
+}
+
+/* ===================================================== */
+
+/* ===================================================== */
+
+.modulo-filtro-container-categoria{
+  width: 100%;
+  height: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.modulo-filtro-container-categoria > h3{
+  width: 100%;
+  height: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modulo-filtro-container-categoria-container{
+  width: 80%;
+  height: 70%;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.modulo-filtro-container-categoria-container-nome{
+  width: auto;
+  height: 30%;
+  background-color: #C0BEBE;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  border-radius: 20px;
+  padding-left: 4%;
+  padding-right: 4%;
+  cursor: pointer;
+}
+
+/* ===================================================== */
+
+.modulo-filtro-container-tipo-container-nome-marcado{
+  width: auto;
+  height: 30%;
+  background-color: #FF3636;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  border-radius: 20px;
+  padding-left: 4%;
+  padding-right: 4%;
+}
+
+.modulo-filtro-container-fraquezas-container-nome-marcado{
+  width: auto;
+  height: 30%;
+  background-color: #FF3636;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  border-radius: 20px;
+  padding-left: 4%;
+  padding-right: 4%;
+}
+
 .main-pokedex-container-confirmacao-texto {
   width: 90%;
   height: 40%;
@@ -186,7 +535,7 @@ left: 25%;
   top: 40%;
   border: none;
   outline: none;
-  right: 0;
+  right: 10%;
   background-color: #EC4434;
   position: absolute;
   border-radius: 10px;
@@ -196,6 +545,60 @@ left: 25%;
   font-family: "Inter", sans-serif;
   cursor: pointer;
   box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.main-pokedex-pesquisa-container-filtro{
+  width: 10%;
+  height: 70%;
+  position: absolute;
+  top: 40%;
+  right: 2%;
+  display: flex;
+  align-items: start;
+  justify-content: center;
+}
+
+.main-pokedex-pesquisa-container-filtro-btn{
+  width: 35%;
+  height: 50%;
+  background-color: #C0BEBE;
+  border-radius: 100px;
+  filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.25));
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  padding-top: 7%;
+  padding-bottom: 7%;
+}
+
+.main-pokedex-pesquisa-container-filtro-btn:hover{
+  background-color: #9c9c9c;
+}
+
+.main-pokedex-pesquisa-container-filtro-traco1{
+  width: 70%;
+  height: 15%;
+  background-color: #000;
+  border-radius: 20px;
+
+}
+
+.main-pokedex-pesquisa-container-filtro-traco2{
+  width: 55%;
+  height: 15%;
+  background-color: #000;
+  border-radius: 20px;
+
+}
+
+.main-pokedex-pesquisa-container-filtro-traco3{
+  width: 40%;
+  height: 15%;
+  background-color: #000;
+  border-radius: 20px;
+
 }
 
 .main-pokedex-pesquisa-container > p {

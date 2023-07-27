@@ -444,6 +444,7 @@ left: 25%;
   border-radius: 20px;
   padding-left: 4%;
   padding-right: 4%;
+  cursor: pointer;
 }
 
 .modulo-filtro-container-fraquezas-container-nome-marcado{
@@ -461,6 +462,43 @@ left: 25%;
   border-radius: 20px;
   padding-left: 4%;
   padding-right: 4%;
+  cursor: pointer;
+}
+
+.modulo-filtro-container-habilidades-container-nome-marcado{
+  width: auto;
+  height: 30%;
+  background-color: #FF3636;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  border-radius: 20px;
+  padding-left: 4%;
+  padding-right: 4%;
+  cursor: pointer;
+}
+
+.modulo-filtro-container-categorias-container-nome-marcado{
+  width: auto;
+  height: 30%;
+  background-color: #FF3636;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  border-radius: 20px;
+  padding-left: 4%;
+  padding-right: 4%;
+  cursor: pointer;
 }
 
 .main-pokedex-container-confirmacao-texto {
@@ -929,6 +967,10 @@ left: 25%;
 
 .main-pokedex-container-card-branco-logo-nome > p {
   color: #ffffff;
+  font-family: "Inter", sans-serif;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+
 }
 
 .main-pokedex-container-card-branco-logo-tipos {

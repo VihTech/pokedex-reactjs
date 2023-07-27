@@ -30,6 +30,8 @@ export const Pokedex = (props) => {
     const [carregandoCategoria, setCarregandoCategoria] = useState(false)
     const [marcarTipo, setMarcarTipo] = useState('modulo-filtro-container-tipos-container-nome')
     const [marcarFraqueza, setMarcarFraqueza] = useState('modulo-filtro-container-fraquezas-container-nome')
+    const [marcarHabilidade, setMarcarHabilidade] = useState('modulo-filtro-container-habilidades-container-nome')
+    const [marcarCategoria, setMarcarCategoria] = useState('modulo-filtro-container-categorias-container-nome')
     const [opcaoMarcada, setOpcaoMarcada] = useState('')
     const teste = useRef(null)
 
@@ -202,6 +204,45 @@ export const Pokedex = (props) => {
         }
     }
 
+
+    const filtrarHabilidades= async (nome) => {
+
+        const data = {habilidade: nome}
+        try {
+            
+            const res = await api.post("/mostrar/por_habilidade", data)
+            setPokemon(res.data)
+            setModuloFiltro(false)
+            setMarcarHabilidade('modulo-filtro-container-habilidades-container-nome-marcado')
+            setOpcaoMarcada(nome)
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const filtrarCategorias= async (nome) => {
+
+        const data = {categoria: nome}
+        try {
+            
+            const res = await api.post("/mostrar/por_categoria", data)
+            setPokemon(res.data)
+            setModuloFiltro(false)
+            setMarcarCategoria('modulo-filtro-container-categorias-container-nome-marcado')
+            setOpcaoMarcada(nome)
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const tirarFiltro = () => {
+        pegarPokemons()
+        setOpcaoMarcada('')
+        setModuloFiltro(false)
+    }
+
     useEffect(() => {
         pegarPokemons()
     }, [])
@@ -296,7 +337,7 @@ export const Pokedex = (props) => {
                                             <>
                                                 {item.tipo === opcaoMarcada?(
                                                     <>
-                                                    <div className={marcarTipo}>{item.tipo}</div>
+                                                    <div className={marcarTipo} onClick={tirarFiltro}>{item.tipo}</div>
                                                     </>
                                                 ):(
                                                     <div className='modulo-filtro-container-tipos-container-nome' onClick={() =>  filtrarTipo(item.tipo)}>{item.tipo}</div>
@@ -318,7 +359,7 @@ export const Pokedex = (props) => {
                                             mostrarFraquezas.map((item) => (
                                                 <>  
                                                     {item.fraqueza === opcaoMarcada?(
-                                                        <div className={marcarFraqueza}>{item.fraqueza}</div>
+                                                        <div className={marcarFraqueza} onClick={tirarFiltro}>{item.fraqueza}</div>
                                                     ):(
                                                         <div className='modulo-filtro-container-fraquezas-container-nome' onClick={() =>  filtrarFraquezas(item.fraqueza)}>{item.fraqueza}</div>
                                                     )}
@@ -337,11 +378,18 @@ export const Pokedex = (props) => {
                                 <div className="modulo-filtro-container-habilidades-container">
                                     {carregandoHabilidades?(
                                         mostrarHabilidades.map((item) => (
-                                            <div className='modulo-filtro-container-habilidades-container-nome'>{item.habilidade}</div>
+                                            <>  
+                                                {item.habilidade === opcaoMarcada?(
+                                                    <div className={marcarHabilidade} onClick={tirarFiltro}>{item.habilidade}</div>
+                                                ):(
+                                                    <div className='modulo-filtro-container-habilidades-container-nome' onClick={() =>  filtrarHabilidades(item.habilidade)}>{item.habilidade}</div>
+                                                )}
+                                                
+                                            </>
                                         ))
                                     ):(
                                         <p>Carregando</p>
-                                    )}
+                                        )}
                                 </div>
                             </div>
                                         
@@ -352,11 +400,18 @@ export const Pokedex = (props) => {
                                 <div className="modulo-filtro-container-categoria-container">
                                     {carregandoCategoria?(
                                         mostrarCategorias.map((item) => (
-                                            <div className='modulo-filtro-container-categoria-container-nome'>{item.categoria}</div>
+                                            <>  
+                                                {item.categoria === opcaoMarcada?(
+                                                    <div className={marcarCategoria} onClick={tirarFiltro}>{item.categoria}</div>
+                                                ):(
+                                                    <div className='modulo-filtro-container-categoria-container-nome' onClick={() =>  filtrarCategorias(item.categoria)}>{item.categoria}</div>
+                                                )}
+                                                
+                                            </>
                                         ))
                                     ):(
                                         <p>Carregando</p>
-                                    )}
+                                            )}
                                 </div>
                             </div>
 

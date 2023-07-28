@@ -7,6 +7,7 @@ import Ambos from '../../Imagens/Ambos.png'
 import Feminino from '../../Imagens/Feminino.png'
 import Masculino from '../../Imagens/Masculino.png'
 import Desconhecido from '../../Imagens/Desconhecido.png'
+import {BsFillQuestionCircleFill} from 'react-icons/bs'
 
 export const InformacoesPokemons = (props) => {
     const pokemon_info_id = useParams()
@@ -15,17 +16,31 @@ export const InformacoesPokemons = (props) => {
     const [modelInformacoes, setModelInformacoes] = useState(true)
     const [modelStatus, setModelStatus] = useState(false)
     const [modelCompetencias, setModelCompetencias] = useState(false)
+    const [modelExplicacao, setModelExplicacao] = useState(true)
     const [informacoesAtivo, setInformacoesAtivo] = useState('ativo')
     const [statusAtivo, setHabillidadesAtivo] = useState('')
     const [competenciasAtivo, setCompetenciasAtivo] = useState('')
     const [generoAtual, setGenero] = useState('')
+    const [explicacao, setExplicacao] = useState('')
+
+    const abrirModelExplicacao = (descricao) => {
+        if (modelExplicacao){
+            setModelExplicacao(false)
+            setExplicacao('')
+        }else{
+            setModelExplicacao(true)
+            setExplicacao(descricao)
+            console.log(descricao)
+        }
+    }
 
     const pegarTodasInformacoes = async () => {
         try {
             const res = await api.get('/mostrar/' + pokemon_info_id.id)
             setPokemon(res.data)
             setCarregando(true)
-            console.log(res.data.genero)
+            console.log(res.data)
+
             if (res.data.genero == 'Feminino'){
                 setGenero(Feminino)
             }
@@ -226,6 +241,54 @@ export const InformacoesPokemons = (props) => {
                                         
                                     </div>
                                 )}
+
+                                {modelCompetencias&&(
+                                    <div className="main-informacoes-pokemons-informacoes-container-competencias">
+                                        <div className="main-informacoes-pokemons-informacoes-container-competencias-habilidades">
+                                            <h3>HABILIDADES</h3>
+                                            <div className="main-informacoes-pokemons-informacoes-container-competencias-habilidades-container">
+                                                <ul>
+                                                    {pokemon.habilidades.split(',').map((habilidade, index) => (
+                                                        <li>{habilidade} <div className="descricao"><BsFillQuestionCircleFill onClick={() =>  abrirModelExplicacao(index)}/></div></li>
+                                                    ))}
+                                                 
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                        {modelExplicacao&&(
+                                            <div className="main-informacoes-pokemons-informacoes-container-competencias-habilidades-descricao">
+                                                <div className="main-informacoes-pokemons-informacoes-container-competencias-habilidades-descricao-container">
+                                                    <div className="main-informacoes-pokemons-informacoes-container-competencias-habilidades-descricao-container-enfeite">
+                                                        <div className="main-informacoes-pokemons-informacoes-container-competencias-habilidades-descricao-container-enfeite-traco-maior">
+                                                            <p onClick={abrirModelExplicacao}>X</p>
+                                                        </div>                                               
+                                                        <div className="main-informacoes-pokemons-informacoes-container-competencias-habilidades-descricao-container-enfeite-logo"></div>
+                                                        <div className="main-informacoes-pokemons-informacoes-container-competencias-habilidades-descricao-container-enfeite-traco1"></div>
+                                                        <div className="main-informacoes-pokemons-informacoes-container-competencias-habilidades-descricao-container-enfeite-traco2"></div>
+
+                                                        <div className="main-informacoes-pokemons-informacoes-container-competencias-habilidades-descricao-container-enfeite-titulo">
+                                                            <h2>EXPLICAÇÃO</h2>
+                                                        </div> 
+                                                    </div>
+
+                                                    <div className="main-informacoes-pokemons-informacoes-container-competencias-habilidades-descricao-container-descricao">
+
+                                                        {pokemon.descricoes_habilidade.split(',').map((descricao, index) => (
+                                                                <>
+                                                                    {index === explicacao&&(
+                                                                        <p>{descricao}</p>
+                                                                    )}
+                                                                </>
+                                                            ))}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        )}
+                                        <div className="main-informacoes-pokemons-informacoes-container-competencias-fraquezas"></div>
+                                    </div>
+                                )}
+
                             </div>
 
                         </div>

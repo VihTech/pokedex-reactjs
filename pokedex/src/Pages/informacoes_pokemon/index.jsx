@@ -16,7 +16,7 @@ export const InformacoesPokemons = (props) => {
     const [modelInformacoes, setModelInformacoes] = useState(true)
     const [modelStatus, setModelStatus] = useState(false)
     const [modelCompetencias, setModelCompetencias] = useState(false)
-    const [modelExplicacao, setModelExplicacao] = useState(true)
+    const [modelExplicacao, setModelExplicacao] = useState(false)
     const [informacoesAtivo, setInformacoesAtivo] = useState('ativo')
     const [statusAtivo, setHabillidadesAtivo] = useState('')
     const [competenciasAtivo, setCompetenciasAtivo] = useState('')

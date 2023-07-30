@@ -4,6 +4,7 @@ import "./style.css"
 import {FiSearch} from 'react-icons/fi'
 import { api } from "../../Services/API"
 import { EvolicaoContainer } from "../../Components/Evolucao"
+import { Mensagem } from '../../Components/Mensagem'
 
 export const CadastrarEvolucoes = () => {
     const [modelPesquisa, setModelPesquisa] = useState(false)
@@ -14,21 +15,41 @@ export const CadastrarEvolucoes = () => {
     const [pegarPokemonPeloId, setPegarPokemonPeloId] = useState('')
     const [pegarPokemonPeloIdFilho, setPegarPokemonPeloIdFilho] = useState('')
     const [carregando, setCarregando] = useState(false)
+    const [mensagemAviso, setMensagemAviso] = useState('')
+    const [tipo,setTipomsg] = useState('')
 
     const cadastrarGrade = async () => {
 
         const data = {
-            numeroPokemon: pegarPokemonPeloId.pokemon_info_id,
-            numeroPokemonEvolucao: pegarPokemonPeloIdFilho.pokemon_info_id
+            numeroPokemon: pegarPokemonPeloId.numero_pokemon,
+            numeroPokemonEvolucao: pegarPokemonPeloIdFilho.numero_pokemon
         }
 
         try {
+
+            if(mensagemAviso){
+                setTipomsg('')
+                setMensagemAviso('')
+            }
             
-            const res = await api.get('/cadastrar_grade', data)
-            console.log(data)
+            const res = await api.post('/cadastrar_grade', data)
+            console.log(res.data)
+            
+            if(res.data.status === 400){
+                setTipomsg('erro')
+                setMensagemAviso(res.data.Mensagem)
+                console.log('eroror')
+            }else{
+                setPegarPokemonPeloId('')
+                setPegarPokemonPeloIdFilho('')
+                setTipomsg('sucesso')
+                setMensagemAviso(res.data.Mensagem)
+            }
 
         } catch (error) {
             console.log(error)
+            setTipomsg('erro')
+            setMensagemAviso('Erro ao cadastrar grade!')
         }
     }
 
@@ -241,7 +262,9 @@ export const CadastrarEvolucoes = () => {
                     </div>
 
                     <div className="main-cadastrar-evolucoes-container-msg">
-                        
+                            {mensagemAviso&&
+                                <Mensagem tipo={tipo} msg={mensagemAviso}/>
+                                }
                     </div>
 
                     <div className="main-cadastrar-evolucoes-container-btn">

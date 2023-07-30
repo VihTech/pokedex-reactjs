@@ -6,7 +6,12 @@ export const EvolicaoContainer = (props) => {
         <div className="evolucao-container">
             <div className="evolucao-container-branco" onClick={acao}>
                 <div className="evolucao-container-branco-vermelho">
-                    <img src={props.imagem} alt="" />
+                    {!props.imagem?(
+                        <></>
+                    ):(
+                        <img src={props.imagem} alt="" />
+
+                    )}
                 </div>
             </div>
         </div>

@@ -12,7 +12,25 @@ export const CadastrarEvolucoes = () => {
     const [pokemon, setPokemon] = useState('')
     const [nome, setNome] = useState('')
     const [pegarPokemonPeloId, setPegarPokemonPeloId] = useState('')
+    const [pegarPokemonPeloIdFilho, setPegarPokemonPeloIdFilho] = useState('')
     const [carregando, setCarregando] = useState(false)
+
+    const cadastrarGrade = async () => {
+
+        const data = {
+            numeroPokemon: pegarPokemonPeloId.pokemon_info_id,
+            numeroPokemonEvolucao: pegarPokemonPeloIdFilho.pokemon_info_id
+        }
+
+        try {
+            
+            const res = await api.get('/cadastrar_grade', data)
+            console.log(data)
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     const pegarPokemons = async () => {
         try {
@@ -25,12 +43,22 @@ export const CadastrarEvolucoes = () => {
 
     const pegarIdPokemon = async (index) => {
         try {
-            console.log('oi')
             const res = await api.get('/mostrar/' + index)
-            console.log(res)
             setPegarPokemonPeloId(res.data)
+            console.log(pegarPokemonPeloId)
             setModelPesquisa(false)
-            setCarregando(true)
+            
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const pegarIdPokemonFilho = async (index) => {
+        try {
+            const res = await api.get('/mostrar/' + index)
+            setPegarPokemonPeloIdFilho(res.data)
+            setModelPesquisaFilho(false)
+            
         } catch (error) {
             console.log(error)
         }
@@ -74,6 +102,7 @@ export const CadastrarEvolucoes = () => {
           } else {
             console.log('Pokémon encontrado:', res.data);
             setPokemon(res.data)
+            setCarregando(true)
           }
         } catch (erro) {
           console.log(erro);
@@ -126,9 +155,16 @@ export const CadastrarEvolucoes = () => {
 
                         <div className="main-cadastrar-evolucoes-pesquisa-lista">
                             <ul>
-                                {pokemon.map((item, index) => (
-                                    <li onClick={() => pegarIdPokemon(item.pokemon_info_id)}>{item.nome} <span>#{item.numero_pokemon}</span></li>
-                                ))}
+
+                                {carregando&&(
+                                    <>
+                                    {pokemon.map((item, index) => (
+                                        <li onClick={() => pegarIdPokemon(item.pokemon_info_id)}>{item.nome} <span>#{item.numero_pokemon}</span></li>
+                                    ))}
+                                    </>
+
+                                )}
+
                             </ul>
                         </div>
 
@@ -159,7 +195,7 @@ export const CadastrarEvolucoes = () => {
                         <div className="main-cadastrar-evolucoes-pesquisa-lista">
                             <ul>
                                 {pokemon.map((item, index) => (
-                                    <li onClick={() => pegarIdPokemon(item.pokemon_info_id)}>{item.nome} <span>#{item.numero_pokemon}</span></li>
+                                    <li onClick={() => pegarIdPokemonFilho(item.pokemon_info_id)}>{item.nome} <span>#{item.numero_pokemon}</span></li>
                                 ))}
                             </ul>
                         </div>
@@ -182,7 +218,7 @@ export const CadastrarEvolucoes = () => {
                     </div>
 
                     <div className="main-cadastrar-evolucoes-container-evolucoes">
-                        <EvolicaoContainer onClick={abrirModelPesquisar}/>
+                        <EvolicaoContainer onClick={abrirModelPesquisar} imagem={pegarPokemonPeloId.imagem}/>
 
                         <div className="tracos">
                             <ul>
@@ -201,7 +237,7 @@ export const CadastrarEvolucoes = () => {
                             </ul>
                         </div>
 
-                        <EvolicaoContainer onClick={abrirModelPesquisaFilho}/>
+                        <EvolicaoContainer onClick={abrirModelPesquisaFilho} imagem={pegarPokemonPeloIdFilho.imagem}/>
                     </div>
 
                     <div className="main-cadastrar-evolucoes-container-msg">
@@ -209,7 +245,7 @@ export const CadastrarEvolucoes = () => {
                     </div>
 
                     <div className="main-cadastrar-evolucoes-container-btn">
-                        <button>CADASTRAR</button>
+                        <button onClick={cadastrarGrade}>CADASTRAR</button>
                     </div>
 
                 </div>

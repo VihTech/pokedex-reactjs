@@ -27,6 +27,7 @@
     position: relative;
     font-family: 'Inter', sans-serif;
     flex-direction: column;
+    overflow-x: hidden;
 }
 
 .main-inicio > svg{
@@ -36,6 +37,10 @@
     bottom: 0;
     z-index: 1;
     animation: setinha 0.8s ease-out infinite;
+}
+
+.oculto{
+    display: none;
 }
 
 .main-inicio::-webkit-scrollbar {
